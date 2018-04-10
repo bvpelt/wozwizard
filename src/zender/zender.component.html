@@ -1,0 +1,17 @@
+<div>
+    <p><label for="organisatie">organisatie </label><input [value]="organisatie" id="organisatie" type="text"
+                                                           placeholder="oin nummer van de zender" required
+                                                           (input)="organisatie = $event.target.value"> {{organisatie}}
+    </p>
+    <p><label for="applicatie">applicatie </label><input [value]="applicatie" id="applicatie" type="text"
+                                                         placeholder="applicatie van de zender" required
+                                                         (input)="applicatie = $event.target.value"/> {{applicatie }}
+    </p>
+    <p><label for="administratie">administratie </label><input [value]="administratie" id="administratie" type="text"
+                                                               placeholder="administratie van de zender" required
+                                                               (input)="administratie = $event.target.value"/>{{administratie}}
+    </p>
+    <p><label for="gebruiker">gebruiker </label><input [value]="gebruiker" id="gebruiker" type="text"
+                                                       placeholder="gebruiker van de zender"
+                                                       (input)="gebruiker = $event.target.value"/> {{gebruiker}}</p>
+</div>

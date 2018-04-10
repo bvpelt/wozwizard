@@ -7,717 +7,717 @@
                   xmlns:bg="http://www.egem.nl/StUF/sector/bg/0310"
                   xmlns:lv="http://www.stufstandaarden.nl/koppelvlak/woz0313/lv0100"
                   xsi:schemaLocation="http://www.stufstandaarden.nl/koppelvlak/woz0313/lv0100 woz0313_20160701/woz0313_lv0100/vraagAntwoord/lv0100_msg_vraagAntwoord.xsd">
-  <woz:stuurgegevens>
-    <stuf:berichtcode>Lv01</stuf:berichtcode>
-    <stuf:zender>
-      <stuf:organisatie>12</stuf:organisatie>
-      <stuf:applicatie>APP</stuf:applicatie>
-      <stuf:administratie>P</stuf:administratie>
-      <stuf:gebruiker>jan de vries</stuf:gebruiker>
-    </stuf:zender>
-    <stuf:ontvanger>
-      <stuf:organisatie>00000001802327497000</stuf:organisatie>
-      <stuf:applicatie>LVWOZ</stuf:applicatie>
-      <stuf:administratie>P</stuf:administratie>
-      <stuf:gebruiker>systeem</stuf:gebruiker>
-    </stuf:ontvanger>
-    <stuf:referentienummer>refnr</stuf:referentienummer>
-    <stuf:tijdstipBericht>20180301120000000</stuf:tijdstipBericht>
-    <stuf:entiteittype>WOZ</stuf:entiteittype>
-  </woz:stuurgegevens>
-  <woz:parameters>
-    <stuf:sortering>1</stuf:sortering>
-    <stuf:indicatorVervolgvraag>false</stuf:indicatorVervolgvraag>
-    <stuf:maximumAantal>15</stuf:maximumAantal>
-    <stuf:indicatorAfnemerIndicatie>false</stuf:indicatorAfnemerIndicatie>
-    <stuf:indicatorAantal>false</stuf:indicatorAantal>
-  </woz:parameters>
-  <woz:gelijk stuf:entiteittype="WOZ">
-    <woz:wozObjectNummer>122334455667</woz:wozObjectNummer>
-    <woz:aanduidingWOZobject>
-      <bg:aoa.identificatie>0000000122334456</bg:aoa.identificatie>
-      <bg:wpl.woonplaatsNaam/>
-      <bg:aoa.postcode>9999AA</bg:aoa.postcode>
-      <bg:gor.openbareRuimteNaam/>
-      <bg:aoa.huisnummer>1</bg:aoa.huisnummer>
-      <bg:aoa.huisletter>A</bg:aoa.huisletter>
-      <bg:aoa.huisnummertoevoeging/>
-      <bg:locatieOmschrijving/>
-    </woz:aanduidingWOZobject>
-    <woz:gebruikscode>10</woz:gebruikscode>
-    <woz:verantwoordelijkeGemeente>
-      <bg:gemeenteCode>0340</bg:gemeenteCode>
-    </woz:verantwoordelijkeGemeente>
-    <woz:ontleentAanduidingAan stuf:entiteittype="WOZAOTAND">
-      <woz:gerelateerde stuf:entiteittype="AOT">
-        <bg:identificatie>0123014565567567</bg:identificatie>
-      </woz:gerelateerde>
-    </woz:ontleentAanduidingAan>
-    <woz:isVerbondenMet stuf:entiteittype="WOZAOTOND">
-      <woz:gerelateerde stuf:entiteittype="AOT">
-        <bg:identificatie>0123021234567890</bg:identificatie>
-      </woz:gerelateerde>
-    </woz:isVerbondenMet>
-    <woz:bevatKadastraleObjecten stuf:entiteittype="WOZKOZ">
-      <woz:gerelateerde stuf:entiteittype="KOZ">
-        <bg:kadastraleIdentificatie>034000000012345</bg:kadastraleIdentificatie>
-        <bg:kadastraleAanduiding>
-          <bg:kadastraleGemeentecode/>
-          <bg:kadastraleSectie/>
-          <bg:kadastraalPerceelnummer/>
-          <bg:kdp.deelperceelNummer/>
-        </bg:kadastraleAanduiding>
-      </woz:gerelateerde>
-    </woz:bevatKadastraleObjecten>
-    <woz:heeftAlsAanduiding stuf:entiteittype="WOZNUM">
-      <woz:gerelateerde stuf:entiteittype="NUM">
-        <bg:identificatie>0340991234567890</bg:identificatie>
-      </woz:gerelateerde>
-    </woz:heeftAlsAanduiding>
-    <woz:heeftPand stuf:entiteittype="WOZPND">
-      <woz:gerelateerde stuf:entiteittype="PND">
-        <bg:identificatie>0000000988776655</bg:identificatie>
-        <bg:ingangsdatumObject>20180103</bg:ingangsdatumObject>
-        <bg:einddatumObject>20180104</bg:einddatumObject>
-      </woz:gerelateerde>
-    </woz:heeftPand>
-    <woz:heeftSluimerendObject stuf:entiteittype="WOZSWO">
-      <woz:gerelateerde stuf:entiteittype="SWO">
-        <woz:wozObjectNummer>988776655443</woz:wozObjectNummer>
-      </woz:gerelateerde>
-    </woz:heeftSluimerendObject>
-    <woz:heeftBelanghebbende stuf:entiteittype="WOZSUB">
-      <woz:gerelateerde stuf:entiteittype="SUB">
-        <woz:naam/>
-        <woz:bsVesNummerOfId/>
-        <woz:adresNederland>
-          <bg:postcode>9999AA</bg:postcode>
-          <bg:aoa.huisnummer>1</bg:aoa.huisnummer>
-          <bg:aoa.huisletter>a</bg:aoa.huisletter>
-          <bg:aoa.huisnummertoevoeging/>
-        </woz:adresNederland>
-      </woz:gerelateerde>
-      <woz:aanduidingEigenaarGebruiker>B</woz:aanduidingEigenaarGebruiker>
-    </woz:heeftBelanghebbende>
-    <woz:ligtIn stuf:entiteittype="WOZWSP">
-      <woz:gerelateerde stuf:entiteittype="WSP">
-        <woz:betrokkenWaterschap>2343</woz:betrokkenWaterschap>
-        <woz:waterschapNaam/>
-      </woz:gerelateerde>
-    </woz:ligtIn>
-  </woz:gelijk>
-  <woz:vanaf stuf:entiteittype="WOZ">
-    <woz:wozObjectNummer>122334455667</woz:wozObjectNummer>
-    <woz:aanduidingWOZobject>
-      <bg:aoa.identificatie>0000000122334456</bg:aoa.identificatie>
-      <bg:wpl.woonplaatsNaam/>
-      <bg:aoa.postcode>9999AA</bg:aoa.postcode>
-      <bg:gor.openbareRuimteNaam/>
-      <bg:aoa.huisnummer>1</bg:aoa.huisnummer>
-      <bg:aoa.huisletter>A</bg:aoa.huisletter>
-      <bg:aoa.huisnummertoevoeging/>
-      <bg:locatieOmschrijving/>
-    </woz:aanduidingWOZobject>
-    <woz:gebruikscode>10</woz:gebruikscode>
-    <woz:verantwoordelijkeGemeente>
-      <bg:gemeenteCode>0340</bg:gemeenteCode>
-    </woz:verantwoordelijkeGemeente>
-    <woz:ontleentAanduidingAan stuf:entiteittype="WOZAOTAND">
-      <woz:gerelateerde stuf:entiteittype="AOT">
-        <bg:identificatie>0123014565567567</bg:identificatie>
-      </woz:gerelateerde>
-    </woz:ontleentAanduidingAan>
-    <woz:isVerbondenMet stuf:entiteittype="WOZAOTOND">
-      <woz:gerelateerde stuf:entiteittype="AOT">
-        <bg:identificatie>0123021234567890</bg:identificatie>
-      </woz:gerelateerde>
-    </woz:isVerbondenMet>
-    <woz:bevatKadastraleObjecten stuf:entiteittype="WOZKOZ">
-      <woz:gerelateerde stuf:entiteittype="KOZ">
-        <bg:kadastraleIdentificatie>034000000012345</bg:kadastraleIdentificatie>
-        <bg:kadastraleAanduiding>
-          <bg:kadastraleGemeentecode/>
-          <bg:kadastraleSectie/>
-          <bg:kadastraalPerceelnummer/>
-          <bg:kdp.deelperceelNummer/>
-        </bg:kadastraleAanduiding>
-      </woz:gerelateerde>
-    </woz:bevatKadastraleObjecten>
-    <woz:heeftAlsAanduiding stuf:entiteittype="WOZNUM">
-      <woz:gerelateerde stuf:entiteittype="NUM">
-        <bg:identificatie>0340991234567890</bg:identificatie>
-      </woz:gerelateerde>
-    </woz:heeftAlsAanduiding>
-    <woz:heeftPand stuf:entiteittype="WOZPND">
-      <woz:gerelateerde stuf:entiteittype="PND">
-        <bg:identificatie>0000000988776655</bg:identificatie>
-        <bg:ingangsdatumObject>20180103</bg:ingangsdatumObject>
-        <bg:einddatumObject>20180104</bg:einddatumObject>
-      </woz:gerelateerde>
-    </woz:heeftPand>
-    <woz:heeftSluimerendObject stuf:entiteittype="WOZSWO">
-      <woz:gerelateerde stuf:entiteittype="SWO">
-        <woz:wozObjectNummer>988776655443</woz:wozObjectNummer>
-      </woz:gerelateerde>
-    </woz:heeftSluimerendObject>
-    <woz:heeftBelanghebbende stuf:entiteittype="WOZSUB">
-      <woz:gerelateerde stuf:entiteittype="SUB">
-        <woz:naam/>
-        <woz:bsVesNummerOfId/>
-        <woz:adresNederland>
-          <bg:postcode>9999AA</bg:postcode>
-          <bg:aoa.huisnummer>1</bg:aoa.huisnummer>
-          <bg:aoa.huisletter>a</bg:aoa.huisletter>
-          <bg:aoa.huisnummertoevoeging/>
-        </woz:adresNederland>
-      </woz:gerelateerde>
-      <woz:aanduidingEigenaarGebruiker>B</woz:aanduidingEigenaarGebruiker>
-    </woz:heeftBelanghebbende>
-    <woz:ligtIn stuf:entiteittype="WOZWSP">
-      <woz:gerelateerde stuf:entiteittype="WSP">
-        <woz:betrokkenWaterschap>2343</woz:betrokkenWaterschap>
-        <woz:waterschapNaam/>
-      </woz:gerelateerde>
-    </woz:ligtIn>
-  </woz:vanaf>
-  <woz:totEnMet stuf:entiteittype="WOZ">
-    <woz:wozObjectNummer>122334455667</woz:wozObjectNummer>
-    <woz:aanduidingWOZobject>
-      <bg:aoa.identificatie>0000000122334456</bg:aoa.identificatie>
-      <bg:wpl.woonplaatsNaam/>
-      <bg:aoa.postcode>9999AA</bg:aoa.postcode>
-      <bg:gor.openbareRuimteNaam/>
-      <bg:aoa.huisnummer>1</bg:aoa.huisnummer>
-      <bg:aoa.huisletter>A</bg:aoa.huisletter>
-      <bg:aoa.huisnummertoevoeging/>
-      <bg:locatieOmschrijving/>
-    </woz:aanduidingWOZobject>
-    <woz:gebruikscode>10</woz:gebruikscode>
-    <woz:verantwoordelijkeGemeente>
-      <bg:gemeenteCode>0340</bg:gemeenteCode>
-    </woz:verantwoordelijkeGemeente>
-    <woz:ontleentAanduidingAan stuf:entiteittype="WOZAOTAND">
-      <woz:gerelateerde stuf:entiteittype="AOT">
-        <bg:identificatie>0123014565567567</bg:identificatie>
-      </woz:gerelateerde>
-    </woz:ontleentAanduidingAan>
-    <woz:isVerbondenMet stuf:entiteittype="WOZAOTOND">
-      <woz:gerelateerde stuf:entiteittype="AOT">
-        <bg:identificatie>0123021234567890</bg:identificatie>
-      </woz:gerelateerde>
-    </woz:isVerbondenMet>
-    <woz:bevatKadastraleObjecten stuf:entiteittype="WOZKOZ">
-      <woz:gerelateerde stuf:entiteittype="KOZ">
-        <bg:kadastraleIdentificatie>034000000012345</bg:kadastraleIdentificatie>
-        <bg:kadastraleAanduiding>
-          <bg:kadastraleGemeentecode/>
-          <bg:kadastraleSectie/>
-          <bg:kadastraalPerceelnummer/>
-          <bg:kdp.deelperceelNummer/>
-        </bg:kadastraleAanduiding>
-      </woz:gerelateerde>
-    </woz:bevatKadastraleObjecten>
-    <woz:heeftAlsAanduiding stuf:entiteittype="WOZNUM">
-      <woz:gerelateerde stuf:entiteittype="NUM">
-        <bg:identificatie>0340991234567890</bg:identificatie>
-      </woz:gerelateerde>
-    </woz:heeftAlsAanduiding>
-    <woz:heeftPand stuf:entiteittype="WOZPND">
-      <woz:gerelateerde stuf:entiteittype="PND">
-        <bg:identificatie>0000000988776655</bg:identificatie>
-        <bg:ingangsdatumObject>20180103</bg:ingangsdatumObject>
-        <bg:einddatumObject>20180104</bg:einddatumObject>
-      </woz:gerelateerde>
-    </woz:heeftPand>
-    <woz:heeftSluimerendObject stuf:entiteittype="WOZSWO">
-      <woz:gerelateerde stuf:entiteittype="SWO">
-        <woz:wozObjectNummer>988776655443</woz:wozObjectNummer>
-      </woz:gerelateerde>
-    </woz:heeftSluimerendObject>
-    <woz:heeftBelanghebbende stuf:entiteittype="WOZSUB">
-      <woz:gerelateerde stuf:entiteittype="SUB">
-        <woz:naam/>
-        <woz:bsVesNummerOfId/>
-        <woz:adresNederland>
-          <bg:postcode>9999AA</bg:postcode>
-          <bg:aoa.huisnummer>1</bg:aoa.huisnummer>
-          <bg:aoa.huisletter>a</bg:aoa.huisletter>
-          <bg:aoa.huisnummertoevoeging/>
-        </woz:adresNederland>
-      </woz:gerelateerde>
-      <woz:aanduidingEigenaarGebruiker>B</woz:aanduidingEigenaarGebruiker>
-    </woz:heeftBelanghebbende>
-    <woz:ligtIn stuf:entiteittype="WOZWSP">
-      <woz:gerelateerde stuf:entiteittype="WSP">
-        <woz:betrokkenWaterschap>2343</woz:betrokkenWaterschap>
-        <woz:waterschapNaam/>
-      </woz:gerelateerde>
-    </woz:ligtIn>
-  </woz:totEnMet>
-  <woz:scope>
-    <woz:object stuf:entiteittype="WOZ">
-      <woz:wozObjectNummer xsi:nil="true"/>
-      <woz:aanduidingWOZobject>
-        <bg:aoa.identificatie xsi:nil="true"/>
-        <bg:wpl.woonplaatsNaam xsi:nil="true"/>
-        <bg:aoa.postcode xsi:nil="true"/>
-        <bg:gor.openbareRuimteNaam xsi:nil="true"/>
-        <bg:gor.straatnaam xsi:nil="true"/>
-        <bg:aoa.huisnummer xsi:nil="true"/>
-        <bg:aoa.huisletter xsi:nil="true"/>
-        <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
-        <bg:locatieOmschrijving xsi:nil="true"/>
-      </woz:aanduidingWOZobject>
-      <woz:statusWozObject xsi:nil="true"/>
-      <woz:grondoppervlakte xsi:nil="true"/>
-      <woz:gebruikscode xsi:nil="true"/>
-      <woz:codeGebouwdOngebouwd xsi:nil="true"/>
-      <woz:meegetaxeerdeOppervlakteGebouwd xsi:nil="true"/>
-      <woz:ozbVrijstelling xsi:nil="true"/>
-      <woz:verantwoordelijkeGemeente>
-        <bg:gemeenteCode xsi:nil="true"/>
-        <bg:gemeenteNaam xsi:nil="true"/>
-      </woz:verantwoordelijkeGemeente>
-      <woz:soortObjectCode xsi:nil="true"/>
-      <woz:wozObjectGeometrie xsi:nil="true"/>
-      <woz:inOnderzoek stuf:metagegeven="true" xsi:nil="true"/>
-      <woz:ingangsdatumObject xsi:nil="true"/>
-      <woz:einddatumObject xsi:nil="true"/>
-      <stuf:tijdvakGeldigheid>
-        <stuf:beginGeldigheid xsi:nil="true"/>
-        <stuf:eindGeldigheid xsi:nil="true"/>
-      </stuf:tijdvakGeldigheid>
-      <stuf:tijdstipRegistratie xsi:nil="true"/>
-      <woz:ontleentAanduidingAan stuf:entiteittype="WOZAOTAND">
-        <woz:gerelateerde>
-          <bg:ligplaats stuf:entiteittype="LIG">
-            <bg:identificatie xsi:nil="true"/>
-            <bg:adresAanduidingGrp>
-              <bg:num.identificatie xsi:nil="true"/>
-              <bg:wpl.woonplaatsNaam xsi:nil="true"/>
-              <bg:gor.openbareRuimteNaam xsi:nil="true"/>
-              <bg:gor.straatnaam xsi:nil="true"/>
-              <bg:aoa.postcode xsi:nil="true"/>
-              <bg:aoa.huisnummer xsi:nil="true"/>
-              <bg:aoa.huisletter xsi:nil="true"/>
-              <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
-            </bg:adresAanduidingGrp>
-          </bg:ligplaats>
-          <bg:standplaats stuf:entiteittype="STA">
-            <bg:identificatie xsi:nil="true"/>
-            <bg:adresAanduidingGrp>
-              <bg:num.identificatie xsi:nil="true"/>
-              <bg:wpl.woonplaatsNaam xsi:nil="true"/>
-              <bg:gor.openbareRuimteNaam xsi:nil="true"/>
-              <bg:gor.straatnaam xsi:nil="true"/>
-              <bg:aoa.postcode xsi:nil="true"/>
-              <bg:aoa.huisnummer xsi:nil="true"/>
-              <bg:aoa.huisletter xsi:nil="true"/>
-              <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
-            </bg:adresAanduidingGrp>
-          </bg:standplaats>
-          <bg:verblijfsobject stuf:entiteittype="VBO">
-            <bg:identificatie xsi:nil="true"/>
-            <bg:adresAanduidingGrp>
-              <bg:num.identificatie xsi:nil="true"/>
-              <bg:wpl.woonplaatsNaam xsi:nil="true"/>
-              <bg:gor.openbareRuimteNaam xsi:nil="true"/>
-              <bg:gor.straatnaam xsi:nil="true"/>
-              <bg:aoa.postcode xsi:nil="true"/>
-              <bg:aoa.huisnummer xsi:nil="true"/>
-              <bg:aoa.huisletter xsi:nil="true"/>
-              <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
-            </bg:adresAanduidingGrp>
-          </bg:verblijfsobject>
-        </woz:gerelateerde>
-        <woz:inOnderzoek stuf:metagegeven="true" xsi:nil="true"/>
-        <stuf:tijdvakRelatie>
-          <stuf:beginRelatie xsi:nil="true"/>
-          <stuf:eindRelatie xsi:nil="true"/>
-        </stuf:tijdvakRelatie>
-        <stuf:tijdvakGeldigheid>
-          <stuf:beginGeldigheid xsi:nil="true"/>
-          <stuf:eindGeldigheid xsi:nil="true"/>
-        </stuf:tijdvakGeldigheid>
-        <stuf:tijdstipRegistratie xsi:nil="true"/>
-      </woz:ontleentAanduidingAan>
-      <woz:isVerbondenMet stuf:entiteittype="WOZAOTOND">
-        <woz:gerelateerde>
-          <bg:ligplaats stuf:entiteittype="LIG">
-            <bg:identificatie xsi:nil="true"/>
-            <bg:adresAanduidingGrp>
-              <bg:num.identificatie xsi:nil="true"/>
-              <bg:wpl.woonplaatsNaam xsi:nil="true"/>
-              <bg:gor.openbareRuimteNaam xsi:nil="true"/>
-              <bg:gor.straatnaam xsi:nil="true"/>
-              <bg:aoa.postcode xsi:nil="true"/>
-              <bg:aoa.huisnummer xsi:nil="true"/>
-              <bg:aoa.huisletter xsi:nil="true"/>
-              <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
-            </bg:adresAanduidingGrp>
-          </bg:ligplaats>
-          <bg:standplaats stuf:entiteittype="STA">
-            <bg:identificatie xsi:nil="true"/>
-            <bg:adresAanduidingGrp>
-              <bg:num.identificatie xsi:nil="true"/>
-              <bg:wpl.woonplaatsNaam xsi:nil="true"/>
-              <bg:gor.openbareRuimteNaam xsi:nil="true"/>
-              <bg:gor.straatnaam xsi:nil="true"/>
-              <bg:aoa.postcode xsi:nil="true"/>
-              <bg:aoa.huisnummer xsi:nil="true"/>
-              <bg:aoa.huisletter xsi:nil="true"/>
-              <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
-            </bg:adresAanduidingGrp>
-          </bg:standplaats>
-          <bg:verblijfsobject stuf:entiteittype="VBO">
-            <bg:identificatie xsi:nil="true"/>
-            <bg:adresAanduidingGrp>
-              <bg:num.identificatie xsi:nil="true"/>
-              <bg:wpl.woonplaatsNaam xsi:nil="true"/>
-              <bg:gor.openbareRuimteNaam xsi:nil="true"/>
-              <bg:gor.straatnaam xsi:nil="true"/>
-              <bg:aoa.postcode xsi:nil="true"/>
-              <bg:aoa.huisnummer xsi:nil="true"/>
-              <bg:aoa.huisletter xsi:nil="true"/>
-              <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
-            </bg:adresAanduidingGrp>
-          </bg:verblijfsobject>
-        </woz:gerelateerde>
-        <woz:inOnderzoek stuf:metagegeven="true" xsi:nil="true"/>
-        <stuf:tijdvakRelatie>
-          <stuf:beginRelatie xsi:nil="true"/>
-          <stuf:eindRelatie xsi:nil="true"/>
-        </stuf:tijdvakRelatie>
-        <stuf:tijdvakGeldigheid>
-          <stuf:beginGeldigheid xsi:nil="true"/>
-          <stuf:eindGeldigheid xsi:nil="true"/>
-        </stuf:tijdvakGeldigheid>
-        <stuf:tijdstipRegistratie xsi:nil="true"/>
-      </woz:isVerbondenMet>
-      <woz:bevatKadastraleObjecten stuf:entiteittype="WOZKOZ">
-        <woz:gerelateerde stuf:entiteittype="KOZ">
-          <bg:kadastraleIdentificatie xsi:nil="true"/>
-          <bg:kadastraleAanduiding>
-            <bg:kadastraleGemeentecode xsi:nil="true"/>
-            <bg:kadastraleSectie xsi:nil="true"/>
-            <bg:kadastraalPerceelnummer xsi:nil="true"/>
-            <bg:kdp.deelperceelNummer xsi:nil="true"/>
-            <bg:apr.appartementsIndex xsi:nil="true"/>
-          </bg:kadastraleAanduiding>
-          <bg:ingangsdatumObject xsi:nil="true"/>
-          <bg:einddatumObject xsi:nil="true"/>
-        </woz:gerelateerde>
-        <woz:toegekendeOppervlakte xsi:nil="true"/>
-        <woz:meegetaxeerdeOppervlakte xsi:nil="true"/>
-        <woz:inOnderzoek stuf:metagegeven="true" xsi:nil="true"/>
-        <stuf:tijdvakRelatie>
-          <stuf:beginRelatie xsi:nil="true"/>
-          <stuf:eindRelatie xsi:nil="true"/>
-        </stuf:tijdvakRelatie>
-        <stuf:tijdvakGeldigheid>
-          <stuf:beginGeldigheid xsi:nil="true"/>
-          <stuf:eindGeldigheid xsi:nil="true"/>
-        </stuf:tijdvakGeldigheid>
-        <stuf:tijdstipRegistratie xsi:nil="true"/>
-      </woz:bevatKadastraleObjecten>
-      <woz:heeftAlsAanduiding stuf:entiteittype="WOZNUM">
-        <woz:gerelateerde stuf:entiteittype="NUM">
-          <bg:identificatie xsi:nil="true"/>
-          <bg:wpl.woonplaatsNaam xsi:nil="true"/>
-          <bg:gor.openbareRuimteNaam xsi:nil="true"/>
-          <bg:huisnummer xsi:nil="true"/>
-          <bg:huisletter xsi:nil="true"/>
-          <bg:huisnummertoevoeging xsi:nil="true"/>
-          <bg:postcode xsi:nil="true"/>
-          <bg:gor.straatnaam xsi:nil="true"/>
-          <bg:ingangsdatumObject xsi:nil="true"/>
-          <bg:einddatumObject xsi:nil="true"/>
-        </woz:gerelateerde>
-        <woz:locatieOmschrijving xsi:nil="true"/>
-        <woz:inOnderzoek stuf:metagegeven="true" xsi:nil="true"/>
-        <stuf:tijdvakRelatie>
-          <stuf:beginRelatie xsi:nil="true"/>
-          <stuf:eindRelatie xsi:nil="true"/>
-        </stuf:tijdvakRelatie>
-        <stuf:tijdvakGeldigheid>
-          <stuf:beginGeldigheid xsi:nil="true"/>
-          <stuf:eindGeldigheid xsi:nil="true"/>
-        </stuf:tijdvakGeldigheid>
-        <stuf:tijdstipRegistratie xsi:nil="true"/>
-      </woz:heeftAlsAanduiding>
-      <woz:heeftPand stuf:entiteittype="WOZPND">
-        <woz:gerelateerde stuf:entiteittype="PND">
-          <bg:identificatie xsi:nil="true"/>
-          <bg:ingangsdatumObject xsi:nil="true"/>
-          <bg:einddatumObject xsi:nil="true"/>
-        </woz:gerelateerde>
-        <woz:inOnderzoek stuf:metagegeven="true" xsi:nil="true"/>
-        <stuf:tijdvakRelatie>
-          <stuf:beginRelatie xsi:nil="true"/>
-          <stuf:eindRelatie xsi:nil="true"/>
-        </stuf:tijdvakRelatie>
-        <stuf:tijdvakGeldigheid>
-          <stuf:beginGeldigheid xsi:nil="true"/>
-          <stuf:eindGeldigheid xsi:nil="true"/>
-        </stuf:tijdvakGeldigheid>
-        <stuf:tijdstipRegistratie xsi:nil="true"/>
-      </woz:heeftPand>
-      <woz:heeftSluimerendObject stuf:entiteittype="WOZSWO">
-        <woz:gerelateerde stuf:entiteittype="SWO">
-          <woz:wozObjectNummer xsi:nil="true"/>
-        </woz:gerelateerde>
-        <woz:inOnderzoek stuf:metagegeven="true" xsi:nil="true"/>
-        <stuf:tijdvakRelatie>
-          <stuf:beginRelatie xsi:nil="true"/>
-          <stuf:eindRelatie xsi:nil="true"/>
-        </stuf:tijdvakRelatie>
-        <stuf:tijdvakGeldigheid>
-          <stuf:beginGeldigheid xsi:nil="true"/>
-          <stuf:eindGeldigheid xsi:nil="true"/>
-        </stuf:tijdvakGeldigheid>
-        <stuf:tijdstipRegistratie xsi:nil="true"/>
-      </woz:heeftSluimerendObject>
-      <woz:heeftBelanghebbende stuf:entiteittype="WOZSUB">
-        <woz:gerelateerde>
-          <woz:natuurlijkPersoon stuf:entiteittype="NPS">
-            <woz:isEen stuf:entiteittype="NPSNPS">
-              <woz:gerelateerde stuf:entiteittype="NPS">
-                <bg:inp.bsn xsi:nil="true"/>
-                <bg:anp.identificatie xsi:nil="true"/>
-                <bg:geslachtsnaam xsi:nil="true"/>
-                <bg:voorvoegselGeslachtsnaam xsi:nil="true"/>
-                <bg:voorletters xsi:nil="true"/>
-                <bg:aanduidingNaamgebruik xsi:nil="true"/>
-                <bg:geslachtsnaamPartner xsi:nil="true"/>
-                <bg:voorvoegselGeslachtsnaamPartner xsi:nil="true"/>
-                <bg:aanhefAanschrijving xsi:nil="true"/>
-                <bg:geslachtsnaamAanschrijving xsi:nil="true"/>
-                <bg:geslachtsaanduiding xsi:nil="true"/>
-                <bg:geboortedatum xsi:nil="true"/>
-                <bg:overlijdensdatum xsi:nil="true"/>
-                <bg:inp.verblijftIn stuf:entiteittype="NPSTGO">
-                  <bg:gerelateerde stuf:entiteittype="TGO">
+    <woz:stuurgegevens>
+        <stuf:berichtcode>Lv01</stuf:berichtcode>
+        <stuf:zender>
+            <stuf:organisatie>12</stuf:organisatie>
+            <stuf:applicatie>APP</stuf:applicatie>
+            <stuf:administratie>P</stuf:administratie>
+            <stuf:gebruiker>jan de vries</stuf:gebruiker>
+        </stuf:zender>
+        <stuf:ontvanger>
+            <stuf:organisatie>00000001802327497000</stuf:organisatie>
+            <stuf:applicatie>LVWOZ</stuf:applicatie>
+            <stuf:administratie>P</stuf:administratie>
+            <stuf:gebruiker>systeem</stuf:gebruiker>
+        </stuf:ontvanger>
+        <stuf:referentienummer>refnr</stuf:referentienummer>
+        <stuf:tijdstipBericht>20180301120000000</stuf:tijdstipBericht>
+        <stuf:entiteittype>WOZ</stuf:entiteittype>
+    </woz:stuurgegevens>
+    <woz:parameters>
+        <stuf:sortering>1</stuf:sortering>
+        <stuf:indicatorVervolgvraag>false</stuf:indicatorVervolgvraag>
+        <stuf:maximumAantal>15</stuf:maximumAantal>
+        <stuf:indicatorAfnemerIndicatie>false</stuf:indicatorAfnemerIndicatie>
+        <stuf:indicatorAantal>false</stuf:indicatorAantal>
+    </woz:parameters>
+    <woz:gelijk stuf:entiteittype="WOZ">
+        <woz:wozObjectNummer>122334455667</woz:wozObjectNummer>
+        <woz:aanduidingWOZobject>
+            <bg:aoa.identificatie>0000000122334456</bg:aoa.identificatie>
+            <bg:wpl.woonplaatsNaam/>
+            <bg:aoa.postcode>9999AA</bg:aoa.postcode>
+            <bg:gor.openbareRuimteNaam/>
+            <bg:aoa.huisnummer>1</bg:aoa.huisnummer>
+            <bg:aoa.huisletter>A</bg:aoa.huisletter>
+            <bg:aoa.huisnummertoevoeging/>
+            <bg:locatieOmschrijving/>
+        </woz:aanduidingWOZobject>
+        <woz:gebruikscode>10</woz:gebruikscode>
+        <woz:verantwoordelijkeGemeente>
+            <bg:gemeenteCode>0340</bg:gemeenteCode>
+        </woz:verantwoordelijkeGemeente>
+        <woz:ontleentAanduidingAan stuf:entiteittype="WOZAOTAND">
+            <woz:gerelateerde stuf:entiteittype="AOT">
+                <bg:identificatie>0123014565567567</bg:identificatie>
+            </woz:gerelateerde>
+        </woz:ontleentAanduidingAan>
+        <woz:isVerbondenMet stuf:entiteittype="WOZAOTOND">
+            <woz:gerelateerde stuf:entiteittype="AOT">
+                <bg:identificatie>0123021234567890</bg:identificatie>
+            </woz:gerelateerde>
+        </woz:isVerbondenMet>
+        <woz:bevatKadastraleObjecten stuf:entiteittype="WOZKOZ">
+            <woz:gerelateerde stuf:entiteittype="KOZ">
+                <bg:kadastraleIdentificatie>034000000012345</bg:kadastraleIdentificatie>
+                <bg:kadastraleAanduiding>
+                    <bg:kadastraleGemeentecode/>
+                    <bg:kadastraleSectie/>
+                    <bg:kadastraalPerceelnummer/>
+                    <bg:kdp.deelperceelNummer/>
+                </bg:kadastraleAanduiding>
+            </woz:gerelateerde>
+        </woz:bevatKadastraleObjecten>
+        <woz:heeftAlsAanduiding stuf:entiteittype="WOZNUM">
+            <woz:gerelateerde stuf:entiteittype="NUM">
+                <bg:identificatie>0340991234567890</bg:identificatie>
+            </woz:gerelateerde>
+        </woz:heeftAlsAanduiding>
+        <woz:heeftPand stuf:entiteittype="WOZPND">
+            <woz:gerelateerde stuf:entiteittype="PND">
+                <bg:identificatie>0000000988776655</bg:identificatie>
+                <bg:ingangsdatumObject>20180103</bg:ingangsdatumObject>
+                <bg:einddatumObject>20180104</bg:einddatumObject>
+            </woz:gerelateerde>
+        </woz:heeftPand>
+        <woz:heeftSluimerendObject stuf:entiteittype="WOZSWO">
+            <woz:gerelateerde stuf:entiteittype="SWO">
+                <woz:wozObjectNummer>988776655443</woz:wozObjectNummer>
+            </woz:gerelateerde>
+        </woz:heeftSluimerendObject>
+        <woz:heeftBelanghebbende stuf:entiteittype="WOZSUB">
+            <woz:gerelateerde stuf:entiteittype="SUB">
+                <woz:naam/>
+                <woz:bsVesNummerOfId/>
+                <woz:adresNederland>
+                    <bg:postcode>9999AA</bg:postcode>
+                    <bg:aoa.huisnummer>1</bg:aoa.huisnummer>
+                    <bg:aoa.huisletter>a</bg:aoa.huisletter>
+                    <bg:aoa.huisnummertoevoeging/>
+                </woz:adresNederland>
+            </woz:gerelateerde>
+            <woz:aanduidingEigenaarGebruiker>B</woz:aanduidingEigenaarGebruiker>
+        </woz:heeftBelanghebbende>
+        <woz:ligtIn stuf:entiteittype="WOZWSP">
+            <woz:gerelateerde stuf:entiteittype="WSP">
+                <woz:betrokkenWaterschap>2343</woz:betrokkenWaterschap>
+                <woz:waterschapNaam/>
+            </woz:gerelateerde>
+        </woz:ligtIn>
+    </woz:gelijk>
+    <woz:vanaf stuf:entiteittype="WOZ">
+        <woz:wozObjectNummer>122334455667</woz:wozObjectNummer>
+        <woz:aanduidingWOZobject>
+            <bg:aoa.identificatie>0000000122334456</bg:aoa.identificatie>
+            <bg:wpl.woonplaatsNaam/>
+            <bg:aoa.postcode>9999AA</bg:aoa.postcode>
+            <bg:gor.openbareRuimteNaam/>
+            <bg:aoa.huisnummer>1</bg:aoa.huisnummer>
+            <bg:aoa.huisletter>A</bg:aoa.huisletter>
+            <bg:aoa.huisnummertoevoeging/>
+            <bg:locatieOmschrijving/>
+        </woz:aanduidingWOZobject>
+        <woz:gebruikscode>10</woz:gebruikscode>
+        <woz:verantwoordelijkeGemeente>
+            <bg:gemeenteCode>0340</bg:gemeenteCode>
+        </woz:verantwoordelijkeGemeente>
+        <woz:ontleentAanduidingAan stuf:entiteittype="WOZAOTAND">
+            <woz:gerelateerde stuf:entiteittype="AOT">
+                <bg:identificatie>0123014565567567</bg:identificatie>
+            </woz:gerelateerde>
+        </woz:ontleentAanduidingAan>
+        <woz:isVerbondenMet stuf:entiteittype="WOZAOTOND">
+            <woz:gerelateerde stuf:entiteittype="AOT">
+                <bg:identificatie>0123021234567890</bg:identificatie>
+            </woz:gerelateerde>
+        </woz:isVerbondenMet>
+        <woz:bevatKadastraleObjecten stuf:entiteittype="WOZKOZ">
+            <woz:gerelateerde stuf:entiteittype="KOZ">
+                <bg:kadastraleIdentificatie>034000000012345</bg:kadastraleIdentificatie>
+                <bg:kadastraleAanduiding>
+                    <bg:kadastraleGemeentecode/>
+                    <bg:kadastraleSectie/>
+                    <bg:kadastraalPerceelnummer/>
+                    <bg:kdp.deelperceelNummer/>
+                </bg:kadastraleAanduiding>
+            </woz:gerelateerde>
+        </woz:bevatKadastraleObjecten>
+        <woz:heeftAlsAanduiding stuf:entiteittype="WOZNUM">
+            <woz:gerelateerde stuf:entiteittype="NUM">
+                <bg:identificatie>0340991234567890</bg:identificatie>
+            </woz:gerelateerde>
+        </woz:heeftAlsAanduiding>
+        <woz:heeftPand stuf:entiteittype="WOZPND">
+            <woz:gerelateerde stuf:entiteittype="PND">
+                <bg:identificatie>0000000988776655</bg:identificatie>
+                <bg:ingangsdatumObject>20180103</bg:ingangsdatumObject>
+                <bg:einddatumObject>20180104</bg:einddatumObject>
+            </woz:gerelateerde>
+        </woz:heeftPand>
+        <woz:heeftSluimerendObject stuf:entiteittype="WOZSWO">
+            <woz:gerelateerde stuf:entiteittype="SWO">
+                <woz:wozObjectNummer>988776655443</woz:wozObjectNummer>
+            </woz:gerelateerde>
+        </woz:heeftSluimerendObject>
+        <woz:heeftBelanghebbende stuf:entiteittype="WOZSUB">
+            <woz:gerelateerde stuf:entiteittype="SUB">
+                <woz:naam/>
+                <woz:bsVesNummerOfId/>
+                <woz:adresNederland>
+                    <bg:postcode>9999AA</bg:postcode>
+                    <bg:aoa.huisnummer>1</bg:aoa.huisnummer>
+                    <bg:aoa.huisletter>a</bg:aoa.huisletter>
+                    <bg:aoa.huisnummertoevoeging/>
+                </woz:adresNederland>
+            </woz:gerelateerde>
+            <woz:aanduidingEigenaarGebruiker>B</woz:aanduidingEigenaarGebruiker>
+        </woz:heeftBelanghebbende>
+        <woz:ligtIn stuf:entiteittype="WOZWSP">
+            <woz:gerelateerde stuf:entiteittype="WSP">
+                <woz:betrokkenWaterschap>2343</woz:betrokkenWaterschap>
+                <woz:waterschapNaam/>
+            </woz:gerelateerde>
+        </woz:ligtIn>
+    </woz:vanaf>
+    <woz:totEnMet stuf:entiteittype="WOZ">
+        <woz:wozObjectNummer>122334455667</woz:wozObjectNummer>
+        <woz:aanduidingWOZobject>
+            <bg:aoa.identificatie>0000000122334456</bg:aoa.identificatie>
+            <bg:wpl.woonplaatsNaam/>
+            <bg:aoa.postcode>9999AA</bg:aoa.postcode>
+            <bg:gor.openbareRuimteNaam/>
+            <bg:aoa.huisnummer>1</bg:aoa.huisnummer>
+            <bg:aoa.huisletter>A</bg:aoa.huisletter>
+            <bg:aoa.huisnummertoevoeging/>
+            <bg:locatieOmschrijving/>
+        </woz:aanduidingWOZobject>
+        <woz:gebruikscode>10</woz:gebruikscode>
+        <woz:verantwoordelijkeGemeente>
+            <bg:gemeenteCode>0340</bg:gemeenteCode>
+        </woz:verantwoordelijkeGemeente>
+        <woz:ontleentAanduidingAan stuf:entiteittype="WOZAOTAND">
+            <woz:gerelateerde stuf:entiteittype="AOT">
+                <bg:identificatie>0123014565567567</bg:identificatie>
+            </woz:gerelateerde>
+        </woz:ontleentAanduidingAan>
+        <woz:isVerbondenMet stuf:entiteittype="WOZAOTOND">
+            <woz:gerelateerde stuf:entiteittype="AOT">
+                <bg:identificatie>0123021234567890</bg:identificatie>
+            </woz:gerelateerde>
+        </woz:isVerbondenMet>
+        <woz:bevatKadastraleObjecten stuf:entiteittype="WOZKOZ">
+            <woz:gerelateerde stuf:entiteittype="KOZ">
+                <bg:kadastraleIdentificatie>034000000012345</bg:kadastraleIdentificatie>
+                <bg:kadastraleAanduiding>
+                    <bg:kadastraleGemeentecode/>
+                    <bg:kadastraleSectie/>
+                    <bg:kadastraalPerceelnummer/>
+                    <bg:kdp.deelperceelNummer/>
+                </bg:kadastraleAanduiding>
+            </woz:gerelateerde>
+        </woz:bevatKadastraleObjecten>
+        <woz:heeftAlsAanduiding stuf:entiteittype="WOZNUM">
+            <woz:gerelateerde stuf:entiteittype="NUM">
+                <bg:identificatie>0340991234567890</bg:identificatie>
+            </woz:gerelateerde>
+        </woz:heeftAlsAanduiding>
+        <woz:heeftPand stuf:entiteittype="WOZPND">
+            <woz:gerelateerde stuf:entiteittype="PND">
+                <bg:identificatie>0000000988776655</bg:identificatie>
+                <bg:ingangsdatumObject>20180103</bg:ingangsdatumObject>
+                <bg:einddatumObject>20180104</bg:einddatumObject>
+            </woz:gerelateerde>
+        </woz:heeftPand>
+        <woz:heeftSluimerendObject stuf:entiteittype="WOZSWO">
+            <woz:gerelateerde stuf:entiteittype="SWO">
+                <woz:wozObjectNummer>988776655443</woz:wozObjectNummer>
+            </woz:gerelateerde>
+        </woz:heeftSluimerendObject>
+        <woz:heeftBelanghebbende stuf:entiteittype="WOZSUB">
+            <woz:gerelateerde stuf:entiteittype="SUB">
+                <woz:naam/>
+                <woz:bsVesNummerOfId/>
+                <woz:adresNederland>
+                    <bg:postcode>9999AA</bg:postcode>
+                    <bg:aoa.huisnummer>1</bg:aoa.huisnummer>
+                    <bg:aoa.huisletter>a</bg:aoa.huisletter>
+                    <bg:aoa.huisnummertoevoeging/>
+                </woz:adresNederland>
+            </woz:gerelateerde>
+            <woz:aanduidingEigenaarGebruiker>B</woz:aanduidingEigenaarGebruiker>
+        </woz:heeftBelanghebbende>
+        <woz:ligtIn stuf:entiteittype="WOZWSP">
+            <woz:gerelateerde stuf:entiteittype="WSP">
+                <woz:betrokkenWaterschap>2343</woz:betrokkenWaterschap>
+                <woz:waterschapNaam/>
+            </woz:gerelateerde>
+        </woz:ligtIn>
+    </woz:totEnMet>
+    <woz:scope>
+        <woz:object stuf:entiteittype="WOZ">
+            <woz:wozObjectNummer xsi:nil="true"/>
+            <woz:aanduidingWOZobject>
+                <bg:aoa.identificatie xsi:nil="true"/>
+                <bg:wpl.woonplaatsNaam xsi:nil="true"/>
+                <bg:aoa.postcode xsi:nil="true"/>
+                <bg:gor.openbareRuimteNaam xsi:nil="true"/>
+                <bg:gor.straatnaam xsi:nil="true"/>
+                <bg:aoa.huisnummer xsi:nil="true"/>
+                <bg:aoa.huisletter xsi:nil="true"/>
+                <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
+                <bg:locatieOmschrijving xsi:nil="true"/>
+            </woz:aanduidingWOZobject>
+            <woz:statusWozObject xsi:nil="true"/>
+            <woz:grondoppervlakte xsi:nil="true"/>
+            <woz:gebruikscode xsi:nil="true"/>
+            <woz:codeGebouwdOngebouwd xsi:nil="true"/>
+            <woz:meegetaxeerdeOppervlakteGebouwd xsi:nil="true"/>
+            <woz:ozbVrijstelling xsi:nil="true"/>
+            <woz:verantwoordelijkeGemeente>
+                <bg:gemeenteCode xsi:nil="true"/>
+                <bg:gemeenteNaam xsi:nil="true"/>
+            </woz:verantwoordelijkeGemeente>
+            <woz:soortObjectCode xsi:nil="true"/>
+            <woz:wozObjectGeometrie xsi:nil="true"/>
+            <woz:inOnderzoek stuf:metagegeven="true" xsi:nil="true"/>
+            <woz:ingangsdatumObject xsi:nil="true"/>
+            <woz:einddatumObject xsi:nil="true"/>
+            <stuf:tijdvakGeldigheid>
+                <stuf:beginGeldigheid xsi:nil="true"/>
+                <stuf:eindGeldigheid xsi:nil="true"/>
+            </stuf:tijdvakGeldigheid>
+            <stuf:tijdstipRegistratie xsi:nil="true"/>
+            <woz:ontleentAanduidingAan stuf:entiteittype="WOZAOTAND">
+                <woz:gerelateerde>
+                    <bg:ligplaats stuf:entiteittype="LIG">
+                        <bg:identificatie xsi:nil="true"/>
+                        <bg:adresAanduidingGrp>
+                            <bg:num.identificatie xsi:nil="true"/>
+                            <bg:wpl.woonplaatsNaam xsi:nil="true"/>
+                            <bg:gor.openbareRuimteNaam xsi:nil="true"/>
+                            <bg:gor.straatnaam xsi:nil="true"/>
+                            <bg:aoa.postcode xsi:nil="true"/>
+                            <bg:aoa.huisnummer xsi:nil="true"/>
+                            <bg:aoa.huisletter xsi:nil="true"/>
+                            <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
+                        </bg:adresAanduidingGrp>
+                    </bg:ligplaats>
+                    <bg:standplaats stuf:entiteittype="STA">
+                        <bg:identificatie xsi:nil="true"/>
+                        <bg:adresAanduidingGrp>
+                            <bg:num.identificatie xsi:nil="true"/>
+                            <bg:wpl.woonplaatsNaam xsi:nil="true"/>
+                            <bg:gor.openbareRuimteNaam xsi:nil="true"/>
+                            <bg:gor.straatnaam xsi:nil="true"/>
+                            <bg:aoa.postcode xsi:nil="true"/>
+                            <bg:aoa.huisnummer xsi:nil="true"/>
+                            <bg:aoa.huisletter xsi:nil="true"/>
+                            <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
+                        </bg:adresAanduidingGrp>
+                    </bg:standplaats>
+                    <bg:verblijfsobject stuf:entiteittype="VBO">
+                        <bg:identificatie xsi:nil="true"/>
+                        <bg:adresAanduidingGrp>
+                            <bg:num.identificatie xsi:nil="true"/>
+                            <bg:wpl.woonplaatsNaam xsi:nil="true"/>
+                            <bg:gor.openbareRuimteNaam xsi:nil="true"/>
+                            <bg:gor.straatnaam xsi:nil="true"/>
+                            <bg:aoa.postcode xsi:nil="true"/>
+                            <bg:aoa.huisnummer xsi:nil="true"/>
+                            <bg:aoa.huisletter xsi:nil="true"/>
+                            <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
+                        </bg:adresAanduidingGrp>
+                    </bg:verblijfsobject>
+                </woz:gerelateerde>
+                <woz:inOnderzoek stuf:metagegeven="true" xsi:nil="true"/>
+                <stuf:tijdvakRelatie>
+                    <stuf:beginRelatie xsi:nil="true"/>
+                    <stuf:eindRelatie xsi:nil="true"/>
+                </stuf:tijdvakRelatie>
+                <stuf:tijdvakGeldigheid>
+                    <stuf:beginGeldigheid xsi:nil="true"/>
+                    <stuf:eindGeldigheid xsi:nil="true"/>
+                </stuf:tijdvakGeldigheid>
+                <stuf:tijdstipRegistratie xsi:nil="true"/>
+            </woz:ontleentAanduidingAan>
+            <woz:isVerbondenMet stuf:entiteittype="WOZAOTOND">
+                <woz:gerelateerde>
+                    <bg:ligplaats stuf:entiteittype="LIG">
+                        <bg:identificatie xsi:nil="true"/>
+                        <bg:adresAanduidingGrp>
+                            <bg:num.identificatie xsi:nil="true"/>
+                            <bg:wpl.woonplaatsNaam xsi:nil="true"/>
+                            <bg:gor.openbareRuimteNaam xsi:nil="true"/>
+                            <bg:gor.straatnaam xsi:nil="true"/>
+                            <bg:aoa.postcode xsi:nil="true"/>
+                            <bg:aoa.huisnummer xsi:nil="true"/>
+                            <bg:aoa.huisletter xsi:nil="true"/>
+                            <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
+                        </bg:adresAanduidingGrp>
+                    </bg:ligplaats>
+                    <bg:standplaats stuf:entiteittype="STA">
+                        <bg:identificatie xsi:nil="true"/>
+                        <bg:adresAanduidingGrp>
+                            <bg:num.identificatie xsi:nil="true"/>
+                            <bg:wpl.woonplaatsNaam xsi:nil="true"/>
+                            <bg:gor.openbareRuimteNaam xsi:nil="true"/>
+                            <bg:gor.straatnaam xsi:nil="true"/>
+                            <bg:aoa.postcode xsi:nil="true"/>
+                            <bg:aoa.huisnummer xsi:nil="true"/>
+                            <bg:aoa.huisletter xsi:nil="true"/>
+                            <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
+                        </bg:adresAanduidingGrp>
+                    </bg:standplaats>
+                    <bg:verblijfsobject stuf:entiteittype="VBO">
+                        <bg:identificatie xsi:nil="true"/>
+                        <bg:adresAanduidingGrp>
+                            <bg:num.identificatie xsi:nil="true"/>
+                            <bg:wpl.woonplaatsNaam xsi:nil="true"/>
+                            <bg:gor.openbareRuimteNaam xsi:nil="true"/>
+                            <bg:gor.straatnaam xsi:nil="true"/>
+                            <bg:aoa.postcode xsi:nil="true"/>
+                            <bg:aoa.huisnummer xsi:nil="true"/>
+                            <bg:aoa.huisletter xsi:nil="true"/>
+                            <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
+                        </bg:adresAanduidingGrp>
+                    </bg:verblijfsobject>
+                </woz:gerelateerde>
+                <woz:inOnderzoek stuf:metagegeven="true" xsi:nil="true"/>
+                <stuf:tijdvakRelatie>
+                    <stuf:beginRelatie xsi:nil="true"/>
+                    <stuf:eindRelatie xsi:nil="true"/>
+                </stuf:tijdvakRelatie>
+                <stuf:tijdvakGeldigheid>
+                    <stuf:beginGeldigheid xsi:nil="true"/>
+                    <stuf:eindGeldigheid xsi:nil="true"/>
+                </stuf:tijdvakGeldigheid>
+                <stuf:tijdstipRegistratie xsi:nil="true"/>
+            </woz:isVerbondenMet>
+            <woz:bevatKadastraleObjecten stuf:entiteittype="WOZKOZ">
+                <woz:gerelateerde stuf:entiteittype="KOZ">
+                    <bg:kadastraleIdentificatie xsi:nil="true"/>
+                    <bg:kadastraleAanduiding>
+                        <bg:kadastraleGemeentecode xsi:nil="true"/>
+                        <bg:kadastraleSectie xsi:nil="true"/>
+                        <bg:kadastraalPerceelnummer xsi:nil="true"/>
+                        <bg:kdp.deelperceelNummer xsi:nil="true"/>
+                        <bg:apr.appartementsIndex xsi:nil="true"/>
+                    </bg:kadastraleAanduiding>
+                    <bg:ingangsdatumObject xsi:nil="true"/>
+                    <bg:einddatumObject xsi:nil="true"/>
+                </woz:gerelateerde>
+                <woz:toegekendeOppervlakte xsi:nil="true"/>
+                <woz:meegetaxeerdeOppervlakte xsi:nil="true"/>
+                <woz:inOnderzoek stuf:metagegeven="true" xsi:nil="true"/>
+                <stuf:tijdvakRelatie>
+                    <stuf:beginRelatie xsi:nil="true"/>
+                    <stuf:eindRelatie xsi:nil="true"/>
+                </stuf:tijdvakRelatie>
+                <stuf:tijdvakGeldigheid>
+                    <stuf:beginGeldigheid xsi:nil="true"/>
+                    <stuf:eindGeldigheid xsi:nil="true"/>
+                </stuf:tijdvakGeldigheid>
+                <stuf:tijdstipRegistratie xsi:nil="true"/>
+            </woz:bevatKadastraleObjecten>
+            <woz:heeftAlsAanduiding stuf:entiteittype="WOZNUM">
+                <woz:gerelateerde stuf:entiteittype="NUM">
                     <bg:identificatie xsi:nil="true"/>
-                    <bg:adresAanduidingGrp>
-                      <bg:num.identificatie xsi:nil="true"/>
-                      <bg:wpl.woonplaatsNaam xsi:nil="true"/>
-                      <bg:gor.openbareRuimteNaam xsi:nil="true"/>
-                      <bg:gor.straatnaam xsi:nil="true"/>
-                      <bg:aoa.postcode xsi:nil="true"/>
-                      <bg:aoa.huisnummer xsi:nil="true"/>
-                      <bg:aoa.huisletter xsi:nil="true"/>
-                      <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
-                    </bg:adresAanduidingGrp>
-                  </bg:gerelateerde>
-                </bg:inp.verblijftIn>
-                <bg:verblijfsadres>
-                  <bg:aoa.identificatie xsi:nil="true"/>
-                  <bg:wpl.woonplaatsNaam xsi:nil="true"/>
-                  <bg:gor.openbareRuimteNaam xsi:nil="true"/>
-                  <bg:gor.straatnaam xsi:nil="true"/>
-                  <bg:aoa.postcode xsi:nil="true"/>
-                  <bg:aoa.huisnummer xsi:nil="true"/>
-                  <bg:aoa.huisletter xsi:nil="true"/>
-                  <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
-                  <bg:inp.locatiebeschrijving xsi:nil="true"/>
-                </bg:verblijfsadres>
-                <bg:sub.verblijfBuitenland>
-                  <bg:lnd.landcode xsi:nil="true"/>
-                  <bg:lnd.landnaam xsi:nil="true"/>
-                  <bg:sub.adresBuitenland1 xsi:nil="true"/>
-                  <bg:sub.adresBuitenland2 xsi:nil="true"/>
-                  <bg:sub.adresBuitenland3 xsi:nil="true"/>
-                </bg:sub.verblijfBuitenland>
-                <bg:sub.correspondentieAdres>
-                  <bg:wpl.woonplaatsNaam xsi:nil="true"/>
-                  <bg:postcode xsi:nil="true"/>
-                  <bg:aoa.identificatie xsi:nil="true"/>
-                  <bg:gor.openbareRuimteNaam xsi:nil="true"/>
-                  <bg:gor.straatnaam xsi:nil="true"/>
-                  <bg:aoa.huisnummer xsi:nil="true"/>
-                  <bg:aoa.huisletter xsi:nil="true"/>
-                  <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
-                  <bg:sub.postadresType xsi:nil="true"/>
-                  <bg:sub.postadresNummer xsi:nil="true"/>
-                </bg:sub.correspondentieAdres>
-                <bg:inp.indicatieGeheim xsi:nil="true"/>
-              </woz:gerelateerde>
-            </woz:isEen>
-            <woz:soFiNummer xsi:nil="true"/>
-            <woz:aanvullingSoFiNummer xsi:nil="true"/>
-            <woz:verantwoordelijkeGemeente xsi:nil="true"/>
-            <woz:datumEindeSynchronisatie xsi:nil="true"/>
-          </woz:natuurlijkPersoon>
-          <woz:nietNatuurlijkPersoon stuf:entiteittype="NNP">
-            <woz:isEen stuf:entiteittype="NNPNNP">
-              <woz:gerelateerde stuf:entiteittype="NNP">
-                <bg:inn.nnpId xsi:nil="true"/>
-                <bg:ann.identificatie xsi:nil="true"/>
-                <bg:statutaireNaam xsi:nil="true"/>
-                <bg:sub.correspondentieAdres>
-                  <bg:wpl.woonplaatsNaam xsi:nil="true"/>
-                  <bg:postcode xsi:nil="true"/>
-                  <bg:aoa.identificatie xsi:nil="true"/>
-                  <bg:gor.openbareRuimteNaam xsi:nil="true"/>
-                  <bg:gor.straatnaam xsi:nil="true"/>
-                  <bg:aoa.huisnummer xsi:nil="true"/>
-                  <bg:aoa.huisletter xsi:nil="true"/>
-                  <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
-                  <bg:sub.postadresType xsi:nil="true"/>
-                  <bg:sub.postadresNummer xsi:nil="true"/>
-                </bg:sub.correspondentieAdres>
-                <bg:sub.verblijfBuitenland>
-                  <bg:lnd.landcode xsi:nil="true"/>
-                  <bg:lnd.landnaam xsi:nil="true"/>
-                  <bg:sub.adresBuitenland1 xsi:nil="true"/>
-                  <bg:sub.adresBuitenland2 xsi:nil="true"/>
-                  <bg:sub.adresBuitenland3 xsi:nil="true"/>
-                </bg:sub.verblijfBuitenland>
-                <bg:rps.isEigenaarVan stuf:entiteittype="NNPMAC">
-                  <bg:gerelateerde stuf:entiteittype="MAC">
-                    <bg:kvkNummer xsi:nil="true"/>
-                  </bg:gerelateerde>
-                </bg:rps.isEigenaarVan>
-              </woz:gerelateerde>
-            </woz:isEen>
-            <woz:aanvullingSoFiNummer xsi:nil="true"/>
-            <woz:verantwoordelijkeGemeente xsi:nil="true"/>
-            <woz:datumEindeSynchronisatie xsi:nil="true"/>
-          </woz:nietNatuurlijkPersoon>
-          <woz:vestiging stuf:entiteittype="VES">
-            <woz:isEen stuf:entiteittype="VESVES">
-              <woz:gerelateerde stuf:entiteittype="VES">
-                <bg:vestigingsNummer xsi:nil="true"/>
-                <bg:handelsnaam xsi:nil="true"/>
-                <bg:verblijfsadres>
-                  <bg:aoa.identificatie xsi:nil="true"/>
-                  <bg:wpl.woonplaatsNaam xsi:nil="true"/>
-                  <bg:gor.openbareRuimteNaam xsi:nil="true"/>
-                  <bg:gor.straatnaam xsi:nil="true"/>
-                  <bg:aoa.postcode xsi:nil="true"/>
-                  <bg:aoa.huisnummer xsi:nil="true"/>
-                  <bg:aoa.huisletter xsi:nil="true"/>
-                  <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
-                  <bg:inp.locatiebeschrijving xsi:nil="true"/>
-                </bg:verblijfsadres>
-                <bg:sub.verblijfBuitenland>
-                  <bg:lnd.landcode xsi:nil="true"/>
-                  <bg:lnd.landnaam xsi:nil="true"/>
-                  <bg:sub.adresBuitenland1 xsi:nil="true"/>
-                  <bg:sub.adresBuitenland2 xsi:nil="true"/>
-                  <bg:sub.adresBuitenland3 xsi:nil="true"/>
-                </bg:sub.verblijfBuitenland>
-                <bg:sub.correspondentieAdres>
-                  <bg:wpl.woonplaatsNaam xsi:nil="true"/>
-                  <bg:postcode xsi:nil="true"/>
-                  <bg:aoa.identificatie xsi:nil="true"/>
-                  <bg:gor.openbareRuimteNaam xsi:nil="true"/>
-                  <bg:gor.straatnaam xsi:nil="true"/>
-                  <bg:aoa.huisnummer xsi:nil="true"/>
-                  <bg:aoa.huisletter xsi:nil="true"/>
-                  <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
-                  <bg:sub.postadresType xsi:nil="true"/>
-                  <bg:sub.postadresNummer xsi:nil="true"/>
-                </bg:sub.correspondentieAdres>
-                <bg:oefentActiviteitenUitVoor stuf:entiteittype="VESMAC">
-                  <bg:gerelateerde stuf:entiteittype="MAC">
-                    <bg:kvkNummer xsi:nil="true"/>
-                  </bg:gerelateerde>
-                </bg:oefentActiviteitenUitVoor>
-                <bg:heeftAlsHoofdLocatie stuf:entiteittype="VESTGOHFD">
-                  <bg:gerelateerde stuf:entiteittype="TGO">
+                    <bg:wpl.woonplaatsNaam xsi:nil="true"/>
+                    <bg:gor.openbareRuimteNaam xsi:nil="true"/>
+                    <bg:huisnummer xsi:nil="true"/>
+                    <bg:huisletter xsi:nil="true"/>
+                    <bg:huisnummertoevoeging xsi:nil="true"/>
+                    <bg:postcode xsi:nil="true"/>
+                    <bg:gor.straatnaam xsi:nil="true"/>
+                    <bg:ingangsdatumObject xsi:nil="true"/>
+                    <bg:einddatumObject xsi:nil="true"/>
+                </woz:gerelateerde>
+                <woz:locatieOmschrijving xsi:nil="true"/>
+                <woz:inOnderzoek stuf:metagegeven="true" xsi:nil="true"/>
+                <stuf:tijdvakRelatie>
+                    <stuf:beginRelatie xsi:nil="true"/>
+                    <stuf:eindRelatie xsi:nil="true"/>
+                </stuf:tijdvakRelatie>
+                <stuf:tijdvakGeldigheid>
+                    <stuf:beginGeldigheid xsi:nil="true"/>
+                    <stuf:eindGeldigheid xsi:nil="true"/>
+                </stuf:tijdvakGeldigheid>
+                <stuf:tijdstipRegistratie xsi:nil="true"/>
+            </woz:heeftAlsAanduiding>
+            <woz:heeftPand stuf:entiteittype="WOZPND">
+                <woz:gerelateerde stuf:entiteittype="PND">
                     <bg:identificatie xsi:nil="true"/>
-                    <bg:adresAanduidingGrp>
-                      <bg:num.identificatie xsi:nil="true"/>
-                      <bg:wpl.woonplaatsNaam xsi:nil="true"/>
-                      <bg:gor.openbareRuimteNaam xsi:nil="true"/>
-                      <bg:gor.straatnaam xsi:nil="true"/>
-                      <bg:aoa.postcode xsi:nil="true"/>
-                      <bg:aoa.huisnummer xsi:nil="true"/>
-                      <bg:aoa.huisletter xsi:nil="true"/>
-                      <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
-                    </bg:adresAanduidingGrp>
-                  </bg:gerelateerde>
-                </bg:heeftAlsHoofdLocatie>
-              </woz:gerelateerde>
-            </woz:isEen>
-            <woz:soFiNummer xsi:nil="true"/>
-            <woz:aanvullingSoFiNummer xsi:nil="true"/>
-            <woz:verantwoordelijkeGemeente xsi:nil="true"/>
-            <woz:datumEindeSynchronisatie xsi:nil="true"/>
-          </woz:vestiging>
-        </woz:gerelateerde>
-        <woz:aanduidingEigenaarGebruiker xsi:nil="true"/>
-        <woz:statusBelang xsi:nil="true"/>
-        <woz:avr.aard xsi:nil="true"/>
-        <woz:inOnderzoek stuf:metagegeven="true" xsi:nil="true"/>
-        <stuf:tijdvakRelatie>
-          <stuf:beginRelatie xsi:nil="true"/>
-          <stuf:eindRelatie xsi:nil="true"/>
-        </stuf:tijdvakRelatie>
-        <stuf:tijdvakGeldigheid>
-          <stuf:beginGeldigheid xsi:nil="true"/>
-          <stuf:eindGeldigheid xsi:nil="true"/>
-        </stuf:tijdvakGeldigheid>
-        <stuf:tijdstipRegistratie xsi:nil="true"/>
-      </woz:heeftBelanghebbende>
-      <woz:ligtIn stuf:entiteittype="WOZWSP">
-        <woz:gerelateerde stuf:entiteittype="WSP">
-          <woz:betrokkenWaterschap>2343</woz:betrokkenWaterschap>
-          <woz:waterschapNaam/>
-        </woz:gerelateerde>
-      </woz:ligtIn>
-    </woz:object>
-  </woz:scope>
-  <woz:start>
-    <woz:object stuf:entiteittype="WOZ">
-      <woz:wozObjectNummer>122334455667</woz:wozObjectNummer>
-      <woz:aanduidingWOZobject>
-        <bg:aoa.identificatie>1212349089786754</bg:aoa.identificatie>
-        <bg:wpl.woonplaatsNaam>xxd</bg:wpl.woonplaatsNaam>
-        <bg:aoa.postcode>9999AA</bg:aoa.postcode>
-        <bg:gor.openbareRuimteNaam>openbare ruimte naam</bg:gor.openbareRuimteNaam>
-        <bg:gor.straatnaam>straat naam</bg:gor.straatnaam>
-        <bg:aoa.huisletter>A</bg:aoa.huisletter>
-        <bg:aoa.huisnummertoevoeging>b</bg:aoa.huisnummertoevoeging>
-        <bg:locatieOmschrijving>tegenover het huis</bg:locatieOmschrijving>
-      </woz:aanduidingWOZobject>
-      <woz:statusWozObject>0</woz:statusWozObject>
-      <woz:grondoppervlakte>1234</woz:grondoppervlakte>
-      <woz:gebruikscode>10</woz:gebruikscode>
-      <woz:codeGebouwdOngebouwd>B</woz:codeGebouwdOngebouwd>
-      <woz:meegetaxeerdeOppervlakteGebouwd>234325</woz:meegetaxeerdeOppervlakteGebouwd>
-      <woz:ozbVrijstelling>0</woz:ozbVrijstelling>
-      <woz:verantwoordelijkeGemeente>
-        <bg:gemeenteCode>0345</bg:gemeenteCode>
-        <bg:gemeenteNaam>as</bg:gemeenteNaam>
-      </woz:verantwoordelijkeGemeente>
-      <woz:soortObjectCode>0004</woz:soortObjectCode>
-      <woz:wozObjectGeometrie/>
-      <woz:inOnderzoek stuf:metagegeven="true" elementnaam="codeGebouwdOngebouwd">J</woz:inOnderzoek>
-      <woz:ingangsdatumObject>20180301</woz:ingangsdatumObject>
-      <woz:einddatumObject>20180302</woz:einddatumObject>
-      <stuf:tijdvakGeldigheid>
-        <stuf:beginGeldigheid>20180301</stuf:beginGeldigheid>
-        <stuf:eindGeldigheid>20180304</stuf:eindGeldigheid>
-      </stuf:tijdvakGeldigheid>
-      <stuf:tijdstipRegistratie>20180227100000000</stuf:tijdstipRegistratie>
-      <woz:historieMaterieel>
-        <stuf:tijdvakGeldigheid>
-          <stuf:beginGeldigheid>20180201</stuf:beginGeldigheid>
-          <stuf:eindGeldigheid>20180301</stuf:eindGeldigheid>
-        </stuf:tijdvakGeldigheid>
-      </woz:historieMaterieel>
-      <woz:historieFormeel>
-        <stuf:tijdvakGeldigheid>
-          <stuf:beginGeldigheid>20180201</stuf:beginGeldigheid>
-          <stuf:eindGeldigheid>20180301</stuf:eindGeldigheid>
-        </stuf:tijdvakGeldigheid>
-        <stuf:tijdstipRegistratie>20180227100000000</stuf:tijdstipRegistratie>
-      </woz:historieFormeel>
-      <woz:ontleentAanduidingAan stuf:entiteittype="WOZAOTAND">
-        <woz:gerelateerde/>
-      </woz:ontleentAanduidingAan>
-    </woz:object>
-  </woz:start>
+                    <bg:ingangsdatumObject xsi:nil="true"/>
+                    <bg:einddatumObject xsi:nil="true"/>
+                </woz:gerelateerde>
+                <woz:inOnderzoek stuf:metagegeven="true" xsi:nil="true"/>
+                <stuf:tijdvakRelatie>
+                    <stuf:beginRelatie xsi:nil="true"/>
+                    <stuf:eindRelatie xsi:nil="true"/>
+                </stuf:tijdvakRelatie>
+                <stuf:tijdvakGeldigheid>
+                    <stuf:beginGeldigheid xsi:nil="true"/>
+                    <stuf:eindGeldigheid xsi:nil="true"/>
+                </stuf:tijdvakGeldigheid>
+                <stuf:tijdstipRegistratie xsi:nil="true"/>
+            </woz:heeftPand>
+            <woz:heeftSluimerendObject stuf:entiteittype="WOZSWO">
+                <woz:gerelateerde stuf:entiteittype="SWO">
+                    <woz:wozObjectNummer xsi:nil="true"/>
+                </woz:gerelateerde>
+                <woz:inOnderzoek stuf:metagegeven="true" xsi:nil="true"/>
+                <stuf:tijdvakRelatie>
+                    <stuf:beginRelatie xsi:nil="true"/>
+                    <stuf:eindRelatie xsi:nil="true"/>
+                </stuf:tijdvakRelatie>
+                <stuf:tijdvakGeldigheid>
+                    <stuf:beginGeldigheid xsi:nil="true"/>
+                    <stuf:eindGeldigheid xsi:nil="true"/>
+                </stuf:tijdvakGeldigheid>
+                <stuf:tijdstipRegistratie xsi:nil="true"/>
+            </woz:heeftSluimerendObject>
+            <woz:heeftBelanghebbende stuf:entiteittype="WOZSUB">
+                <woz:gerelateerde>
+                    <woz:natuurlijkPersoon stuf:entiteittype="NPS">
+                        <woz:isEen stuf:entiteittype="NPSNPS">
+                            <woz:gerelateerde stuf:entiteittype="NPS">
+                                <bg:inp.bsn xsi:nil="true"/>
+                                <bg:anp.identificatie xsi:nil="true"/>
+                                <bg:geslachtsnaam xsi:nil="true"/>
+                                <bg:voorvoegselGeslachtsnaam xsi:nil="true"/>
+                                <bg:voorletters xsi:nil="true"/>
+                                <bg:aanduidingNaamgebruik xsi:nil="true"/>
+                                <bg:geslachtsnaamPartner xsi:nil="true"/>
+                                <bg:voorvoegselGeslachtsnaamPartner xsi:nil="true"/>
+                                <bg:aanhefAanschrijving xsi:nil="true"/>
+                                <bg:geslachtsnaamAanschrijving xsi:nil="true"/>
+                                <bg:geslachtsaanduiding xsi:nil="true"/>
+                                <bg:geboortedatum xsi:nil="true"/>
+                                <bg:overlijdensdatum xsi:nil="true"/>
+                                <bg:inp.verblijftIn stuf:entiteittype="NPSTGO">
+                                    <bg:gerelateerde stuf:entiteittype="TGO">
+                                        <bg:identificatie xsi:nil="true"/>
+                                        <bg:adresAanduidingGrp>
+                                            <bg:num.identificatie xsi:nil="true"/>
+                                            <bg:wpl.woonplaatsNaam xsi:nil="true"/>
+                                            <bg:gor.openbareRuimteNaam xsi:nil="true"/>
+                                            <bg:gor.straatnaam xsi:nil="true"/>
+                                            <bg:aoa.postcode xsi:nil="true"/>
+                                            <bg:aoa.huisnummer xsi:nil="true"/>
+                                            <bg:aoa.huisletter xsi:nil="true"/>
+                                            <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
+                                        </bg:adresAanduidingGrp>
+                                    </bg:gerelateerde>
+                                </bg:inp.verblijftIn>
+                                <bg:verblijfsadres>
+                                    <bg:aoa.identificatie xsi:nil="true"/>
+                                    <bg:wpl.woonplaatsNaam xsi:nil="true"/>
+                                    <bg:gor.openbareRuimteNaam xsi:nil="true"/>
+                                    <bg:gor.straatnaam xsi:nil="true"/>
+                                    <bg:aoa.postcode xsi:nil="true"/>
+                                    <bg:aoa.huisnummer xsi:nil="true"/>
+                                    <bg:aoa.huisletter xsi:nil="true"/>
+                                    <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
+                                    <bg:inp.locatiebeschrijving xsi:nil="true"/>
+                                </bg:verblijfsadres>
+                                <bg:sub.verblijfBuitenland>
+                                    <bg:lnd.landcode xsi:nil="true"/>
+                                    <bg:lnd.landnaam xsi:nil="true"/>
+                                    <bg:sub.adresBuitenland1 xsi:nil="true"/>
+                                    <bg:sub.adresBuitenland2 xsi:nil="true"/>
+                                    <bg:sub.adresBuitenland3 xsi:nil="true"/>
+                                </bg:sub.verblijfBuitenland>
+                                <bg:sub.correspondentieAdres>
+                                    <bg:wpl.woonplaatsNaam xsi:nil="true"/>
+                                    <bg:postcode xsi:nil="true"/>
+                                    <bg:aoa.identificatie xsi:nil="true"/>
+                                    <bg:gor.openbareRuimteNaam xsi:nil="true"/>
+                                    <bg:gor.straatnaam xsi:nil="true"/>
+                                    <bg:aoa.huisnummer xsi:nil="true"/>
+                                    <bg:aoa.huisletter xsi:nil="true"/>
+                                    <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
+                                    <bg:sub.postadresType xsi:nil="true"/>
+                                    <bg:sub.postadresNummer xsi:nil="true"/>
+                                </bg:sub.correspondentieAdres>
+                                <bg:inp.indicatieGeheim xsi:nil="true"/>
+                            </woz:gerelateerde>
+                        </woz:isEen>
+                        <woz:soFiNummer xsi:nil="true"/>
+                        <woz:aanvullingSoFiNummer xsi:nil="true"/>
+                        <woz:verantwoordelijkeGemeente xsi:nil="true"/>
+                        <woz:datumEindeSynchronisatie xsi:nil="true"/>
+                    </woz:natuurlijkPersoon>
+                    <woz:nietNatuurlijkPersoon stuf:entiteittype="NNP">
+                        <woz:isEen stuf:entiteittype="NNPNNP">
+                            <woz:gerelateerde stuf:entiteittype="NNP">
+                                <bg:inn.nnpId xsi:nil="true"/>
+                                <bg:ann.identificatie xsi:nil="true"/>
+                                <bg:statutaireNaam xsi:nil="true"/>
+                                <bg:sub.correspondentieAdres>
+                                    <bg:wpl.woonplaatsNaam xsi:nil="true"/>
+                                    <bg:postcode xsi:nil="true"/>
+                                    <bg:aoa.identificatie xsi:nil="true"/>
+                                    <bg:gor.openbareRuimteNaam xsi:nil="true"/>
+                                    <bg:gor.straatnaam xsi:nil="true"/>
+                                    <bg:aoa.huisnummer xsi:nil="true"/>
+                                    <bg:aoa.huisletter xsi:nil="true"/>
+                                    <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
+                                    <bg:sub.postadresType xsi:nil="true"/>
+                                    <bg:sub.postadresNummer xsi:nil="true"/>
+                                </bg:sub.correspondentieAdres>
+                                <bg:sub.verblijfBuitenland>
+                                    <bg:lnd.landcode xsi:nil="true"/>
+                                    <bg:lnd.landnaam xsi:nil="true"/>
+                                    <bg:sub.adresBuitenland1 xsi:nil="true"/>
+                                    <bg:sub.adresBuitenland2 xsi:nil="true"/>
+                                    <bg:sub.adresBuitenland3 xsi:nil="true"/>
+                                </bg:sub.verblijfBuitenland>
+                                <bg:rps.isEigenaarVan stuf:entiteittype="NNPMAC">
+                                    <bg:gerelateerde stuf:entiteittype="MAC">
+                                        <bg:kvkNummer xsi:nil="true"/>
+                                    </bg:gerelateerde>
+                                </bg:rps.isEigenaarVan>
+                            </woz:gerelateerde>
+                        </woz:isEen>
+                        <woz:aanvullingSoFiNummer xsi:nil="true"/>
+                        <woz:verantwoordelijkeGemeente xsi:nil="true"/>
+                        <woz:datumEindeSynchronisatie xsi:nil="true"/>
+                    </woz:nietNatuurlijkPersoon>
+                    <woz:vestiging stuf:entiteittype="VES">
+                        <woz:isEen stuf:entiteittype="VESVES">
+                            <woz:gerelateerde stuf:entiteittype="VES">
+                                <bg:vestigingsNummer xsi:nil="true"/>
+                                <bg:handelsnaam xsi:nil="true"/>
+                                <bg:verblijfsadres>
+                                    <bg:aoa.identificatie xsi:nil="true"/>
+                                    <bg:wpl.woonplaatsNaam xsi:nil="true"/>
+                                    <bg:gor.openbareRuimteNaam xsi:nil="true"/>
+                                    <bg:gor.straatnaam xsi:nil="true"/>
+                                    <bg:aoa.postcode xsi:nil="true"/>
+                                    <bg:aoa.huisnummer xsi:nil="true"/>
+                                    <bg:aoa.huisletter xsi:nil="true"/>
+                                    <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
+                                    <bg:inp.locatiebeschrijving xsi:nil="true"/>
+                                </bg:verblijfsadres>
+                                <bg:sub.verblijfBuitenland>
+                                    <bg:lnd.landcode xsi:nil="true"/>
+                                    <bg:lnd.landnaam xsi:nil="true"/>
+                                    <bg:sub.adresBuitenland1 xsi:nil="true"/>
+                                    <bg:sub.adresBuitenland2 xsi:nil="true"/>
+                                    <bg:sub.adresBuitenland3 xsi:nil="true"/>
+                                </bg:sub.verblijfBuitenland>
+                                <bg:sub.correspondentieAdres>
+                                    <bg:wpl.woonplaatsNaam xsi:nil="true"/>
+                                    <bg:postcode xsi:nil="true"/>
+                                    <bg:aoa.identificatie xsi:nil="true"/>
+                                    <bg:gor.openbareRuimteNaam xsi:nil="true"/>
+                                    <bg:gor.straatnaam xsi:nil="true"/>
+                                    <bg:aoa.huisnummer xsi:nil="true"/>
+                                    <bg:aoa.huisletter xsi:nil="true"/>
+                                    <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
+                                    <bg:sub.postadresType xsi:nil="true"/>
+                                    <bg:sub.postadresNummer xsi:nil="true"/>
+                                </bg:sub.correspondentieAdres>
+                                <bg:oefentActiviteitenUitVoor stuf:entiteittype="VESMAC">
+                                    <bg:gerelateerde stuf:entiteittype="MAC">
+                                        <bg:kvkNummer xsi:nil="true"/>
+                                    </bg:gerelateerde>
+                                </bg:oefentActiviteitenUitVoor>
+                                <bg:heeftAlsHoofdLocatie stuf:entiteittype="VESTGOHFD">
+                                    <bg:gerelateerde stuf:entiteittype="TGO">
+                                        <bg:identificatie xsi:nil="true"/>
+                                        <bg:adresAanduidingGrp>
+                                            <bg:num.identificatie xsi:nil="true"/>
+                                            <bg:wpl.woonplaatsNaam xsi:nil="true"/>
+                                            <bg:gor.openbareRuimteNaam xsi:nil="true"/>
+                                            <bg:gor.straatnaam xsi:nil="true"/>
+                                            <bg:aoa.postcode xsi:nil="true"/>
+                                            <bg:aoa.huisnummer xsi:nil="true"/>
+                                            <bg:aoa.huisletter xsi:nil="true"/>
+                                            <bg:aoa.huisnummertoevoeging xsi:nil="true"/>
+                                        </bg:adresAanduidingGrp>
+                                    </bg:gerelateerde>
+                                </bg:heeftAlsHoofdLocatie>
+                            </woz:gerelateerde>
+                        </woz:isEen>
+                        <woz:soFiNummer xsi:nil="true"/>
+                        <woz:aanvullingSoFiNummer xsi:nil="true"/>
+                        <woz:verantwoordelijkeGemeente xsi:nil="true"/>
+                        <woz:datumEindeSynchronisatie xsi:nil="true"/>
+                    </woz:vestiging>
+                </woz:gerelateerde>
+                <woz:aanduidingEigenaarGebruiker xsi:nil="true"/>
+                <woz:statusBelang xsi:nil="true"/>
+                <woz:avr.aard xsi:nil="true"/>
+                <woz:inOnderzoek stuf:metagegeven="true" xsi:nil="true"/>
+                <stuf:tijdvakRelatie>
+                    <stuf:beginRelatie xsi:nil="true"/>
+                    <stuf:eindRelatie xsi:nil="true"/>
+                </stuf:tijdvakRelatie>
+                <stuf:tijdvakGeldigheid>
+                    <stuf:beginGeldigheid xsi:nil="true"/>
+                    <stuf:eindGeldigheid xsi:nil="true"/>
+                </stuf:tijdvakGeldigheid>
+                <stuf:tijdstipRegistratie xsi:nil="true"/>
+            </woz:heeftBelanghebbende>
+            <woz:ligtIn stuf:entiteittype="WOZWSP">
+                <woz:gerelateerde stuf:entiteittype="WSP">
+                    <woz:betrokkenWaterschap>2343</woz:betrokkenWaterschap>
+                    <woz:waterschapNaam/>
+                </woz:gerelateerde>
+            </woz:ligtIn>
+        </woz:object>
+    </woz:scope>
+    <woz:start>
+        <woz:object stuf:entiteittype="WOZ">
+            <woz:wozObjectNummer>122334455667</woz:wozObjectNummer>
+            <woz:aanduidingWOZobject>
+                <bg:aoa.identificatie>1212349089786754</bg:aoa.identificatie>
+                <bg:wpl.woonplaatsNaam>xxd</bg:wpl.woonplaatsNaam>
+                <bg:aoa.postcode>9999AA</bg:aoa.postcode>
+                <bg:gor.openbareRuimteNaam>openbare ruimte naam</bg:gor.openbareRuimteNaam>
+                <bg:gor.straatnaam>straat naam</bg:gor.straatnaam>
+                <bg:aoa.huisletter>A</bg:aoa.huisletter>
+                <bg:aoa.huisnummertoevoeging>b</bg:aoa.huisnummertoevoeging>
+                <bg:locatieOmschrijving>tegenover het huis</bg:locatieOmschrijving>
+            </woz:aanduidingWOZobject>
+            <woz:statusWozObject>0</woz:statusWozObject>
+            <woz:grondoppervlakte>1234</woz:grondoppervlakte>
+            <woz:gebruikscode>10</woz:gebruikscode>
+            <woz:codeGebouwdOngebouwd>B</woz:codeGebouwdOngebouwd>
+            <woz:meegetaxeerdeOppervlakteGebouwd>234325</woz:meegetaxeerdeOppervlakteGebouwd>
+            <woz:ozbVrijstelling>0</woz:ozbVrijstelling>
+            <woz:verantwoordelijkeGemeente>
+                <bg:gemeenteCode>0345</bg:gemeenteCode>
+                <bg:gemeenteNaam>as</bg:gemeenteNaam>
+            </woz:verantwoordelijkeGemeente>
+            <woz:soortObjectCode>0004</woz:soortObjectCode>
+            <woz:wozObjectGeometrie/>
+            <woz:inOnderzoek stuf:metagegeven="true" elementnaam="codeGebouwdOngebouwd">J</woz:inOnderzoek>
+            <woz:ingangsdatumObject>20180301</woz:ingangsdatumObject>
+            <woz:einddatumObject>20180302</woz:einddatumObject>
+            <stuf:tijdvakGeldigheid>
+                <stuf:beginGeldigheid>20180301</stuf:beginGeldigheid>
+                <stuf:eindGeldigheid>20180304</stuf:eindGeldigheid>
+            </stuf:tijdvakGeldigheid>
+            <stuf:tijdstipRegistratie>20180227100000000</stuf:tijdstipRegistratie>
+            <woz:historieMaterieel>
+                <stuf:tijdvakGeldigheid>
+                    <stuf:beginGeldigheid>20180201</stuf:beginGeldigheid>
+                    <stuf:eindGeldigheid>20180301</stuf:eindGeldigheid>
+                </stuf:tijdvakGeldigheid>
+            </woz:historieMaterieel>
+            <woz:historieFormeel>
+                <stuf:tijdvakGeldigheid>
+                    <stuf:beginGeldigheid>20180201</stuf:beginGeldigheid>
+                    <stuf:eindGeldigheid>20180301</stuf:eindGeldigheid>
+                </stuf:tijdvakGeldigheid>
+                <stuf:tijdstipRegistratie>20180227100000000</stuf:tijdstipRegistratie>
+            </woz:historieFormeel>
+            <woz:ontleentAanduidingAan stuf:entiteittype="WOZAOTAND">
+                <woz:gerelateerde/>
+            </woz:ontleentAanduidingAan>
+        </woz:object>
+    </woz:start>
 </lv:wozLv01-lvwoz>

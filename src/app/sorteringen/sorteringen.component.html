@@ -1,0 +1,46 @@
+<!--
+<div>
+  selected sortering: {{sortering}}
+</div>
+<div>
+  data: {{entiteitSortering}}
+</div>
+-->
+<div>
+  <select id="selectedSortering" name="selectedSortering" [(ngModel)]="selectedSortering.id"
+          (change)="onSelect($event.target.value)">
+    <option [ngValue]="null" disabled>Kies een sortering</option>
+    <option *ngFor="let s of entiteitSortering" [value]="s.id">
+      {{s.name}}
+    </option>
+  </select>
+  <!--
+  <div *ngIf="selectedSortering.id">selected: {{selectedSortering.id}} name: {{selectedSortering.name}}</div>
+  -->
+</div>
+<div>
+  <fieldset id="inputfields" *ngIf="fields && fields.length">
+    <legend>Criteria voor sortering {{selectedSortering.id}}</legend>
+    <p *ngFor="let f of fields">
+      <label>{{f.key}}</label>
+      <input class="minval" [(ngModel)]="f.value" placeholder="(min) value of {{f.key}}">
+      <input class="maxval" [(ngModel)]="f.maxvalue" placeholder="max value of {{f.key}}">
+    </p>
+  </fieldset>
+
+  <fieldset id="relaties">
+    <legend>Relaties</legend>
+
+    <p *ngFor="let o of options; index as i ">
+      <label>{{o.name}}</label>
+      <input type="checkbox" id="CB_{{i}}"
+             (change)="onCheckboxChanged(o, i, $event)"/>
+
+    </p>
+  </fieldset>
+</div>
+<div>
+  <pre lang="xml" onload="makeText()">
+{{xmlString}}
+  </pre>
+</div>

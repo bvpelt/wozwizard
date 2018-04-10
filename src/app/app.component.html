@@ -1,53 +1,18 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-</div>
-<h2>LVWOZ Bericht Opties</h2>
-<p>
-  <label>
-    <input #ontleentAanduidingAanCheckBox id="ontleentAanduidingAanCheckBox" type="checkbox" [checked]="ontleentAanduidingAan" (change)="onOntleentAanduidingAanChanged(ontleentAanduidingAanCheckBox.checked)" />ontleentAanduidingAan
-  </label>
-</p>
-<p>
-  <label>
-    <input #isVerbondenMetCheckBox id="isVerbondenMetCheckBox" type="checkbox" [checked]="isVerbondenMet" (change)="onIsVerbondenMetChanged(isVerbondenMetCheckBox.checked)" />isVerbondenMet
-  </label>
-</p>
-<p>
-  <label>
-    <input #bevatKadastraleObjectenCheckBox id="bevatKadastraleObjectenCheckBox" type="checkbox" [checked]="bevatKadastraleObjecten" (change)="onBevatKadastraleObjectenChanged(bevatKadastraleObjectenCheckBox.checked)" />bevatKadastraleObjecten
-  </label>
-</p>
-<p>
-  <label>
-    <input #heeftAlsAanduidingCheckBox id="heeftAlsAanduidingCheckBox" type="checkbox" [checked]="heeftAlsAanduiding" (change)="onHeeftAlsAanduidingChanged(heeftAlsAanduidingCheckBox.checked)" />heeftAlsAanduiding
-  </label>
-</p>
-<p>
-  <label>
-    <input #heeftPandCheckBox id="heeftPandCheckBox" type="checkbox" [checked]="heeftPand" (change)="onHeeftPandChanged(heeftPandCheckBox.checked)" />heeftPand
-  </label>
-</p>
-<p>
-  <label>
-    <input #heeftSluimerendObjectCheckBox id="heeftSluimerendObjectCheckBox" type="checkbox" [checked]="heeftSluimerendObject" (change)="onHeeftSluimerendObjectChanged(heeftSluimerendObjectCheckBox.checked)" />heeftSluimerendObject
-  </label>
-</p>
-<p>
-  <label>
-    <input #heeftBelanghebbendeCheckBox id="heeftBelanghebbendeCheckBox" type="checkbox" [checked]="heeftBelanghebbende" (change)="onHeeftBelanghebbendeChanged(heeftBelanghebbendeCheckBox.checked)" />heeftBelanghebbende
-  </label>
-</p>
-<p>
-  <label>
-    <input #ligtInCheckBox id="ligtInCheckBox" type="checkbox" [checked]="ligtIn" (change)="onLigtInChanged(ligtInCheckBox.checked)" />ligtIn
-  </label>
-</p>
-<h2>LVWOZ Aanvraag</h2>
+<h1>{{ title }}</h1>
+<app-entiteiten (notify)='onNotify($event)'></app-entiteiten>
 
-<pre lang="xml" onload="makeText()">
-{{xmlString}}
-</pre>
+<ng-container *ngIf="showSortering">
+  <ng-container *ngIf="showSwoSortering">
+    <label>swo sortering: </label>
+    <app-sorteringen [sortering]="selectedSortering"></app-sorteringen>
+  </ng-container>
+  <ng-container *ngIf="showWozSortering">
+    <label>woz sortering: </label>
+    <app-sorteringen [sortering]="selectedSortering"></app-sorteringen>
+  </ng-container>
+  <ng-container *ngIf="showWrdSortering">
+    <label>wrd sortering: </label>
+    <app-sorteringen [sortering]="selectedSortering"></app-sorteringen>
+  </ng-container>
+</ng-container>
 

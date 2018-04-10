@@ -1,0 +1,32 @@
+select option {
+  color: black;
+}
+
+select option:checked {
+  color: white;
+  background: #369;
+}
+
+label {
+  float: left;
+  clear: left;
+  width: 15em;
+  margin-right: 1em;
+}
+
+pre {
+  color: black;
+  font-size: 80%;
+}
+
+fieldset {
+  margin-top: 15px;
+}
+
+.minval {
+  clear: left;
+}
+
+.maxval {
+  margin-left: 15px;
+}

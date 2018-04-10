@@ -1,0 +1,8 @@
+select option {
+  color: black;
+}
+
+select option:checked {
+  color: white;
+  background: #369;
+}
