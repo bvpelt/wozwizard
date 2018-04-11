@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {Wrdsortering} from './wrdsortering.component';
 
 @Component({

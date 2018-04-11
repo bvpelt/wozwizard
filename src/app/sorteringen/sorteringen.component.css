@@ -1,32 +1,32 @@
 select option {
-  color: black;
+    color: black;
 }
 
 select option:checked {
-  color: white;
-  background: #369;
+    color: white;
+    background: #369;
 }
 
 label {
-  float: left;
-  clear: left;
-  width: 15em;
-  margin-right: 1em;
+    float: left;
+    clear: left;
+    width: 15em;
+    margin-right: 1em;
 }
 
 pre {
-  color: black;
-  font-size: 80%;
+    color: black;
+    font-size: 80%;
 }
 
 fieldset {
-  margin-top: 15px;
+    margin-top: 15px;
 }
 
 .minval {
-  clear: left;
+    clear: left;
 }
 
 .maxval {
-  margin-left: 15px;
+    margin-left: 15px;
 }

@@ -1,4 +1,4 @@
-import {Component, Input, EventEmitter} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Item} from './item.component';
 
 @Component({
@@ -12,8 +12,8 @@ export class ItemslistComponent {
 
     public fieldList: Item[] = null;
 
-    public fillFieldList () {
-        console.log("Loading fieldList")
+    public fillFieldList() {
+        console.log('Loading fieldList');
         for (var i = 0; i < this.fieldList.length; i++) {
             this.fieldList[i] = new Item(i, this.fieldNames[i], '');
         }

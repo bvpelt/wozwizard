@@ -8,17 +8,17 @@ import {SorteringenComponent} from './sorteringen/sorteringen.component';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    EntiteitenComponent,
-    SorteringenComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        EntiteitenComponent,
+        SorteringenComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

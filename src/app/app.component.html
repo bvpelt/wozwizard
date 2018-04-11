@@ -2,17 +2,17 @@
 <app-entiteiten (notify)='onNotify($event)'></app-entiteiten>
 
 <ng-container *ngIf="showSortering">
-  <ng-container *ngIf="showSwoSortering">
-    <label>swo sortering: </label>
-    <app-sorteringen [sortering]="selectedSortering"></app-sorteringen>
-  </ng-container>
-  <ng-container *ngIf="showWozSortering">
-    <label>woz sortering: </label>
-    <app-sorteringen [sortering]="selectedSortering"></app-sorteringen>
-  </ng-container>
-  <ng-container *ngIf="showWrdSortering">
-    <label>wrd sortering: </label>
-    <app-sorteringen [sortering]="selectedSortering"></app-sorteringen>
-  </ng-container>
+    <ng-container *ngIf="showSwoSortering">
+        <label>swo sortering: </label>
+        <app-sorteringen [sortering]="selectedSortering"></app-sorteringen>
+    </ng-container>
+    <ng-container *ngIf="showWozSortering">
+        <label>woz sortering: </label>
+        <app-sorteringen [sortering]="selectedSortering"></app-sorteringen>
+    </ng-container>
+    <ng-container *ngIf="showWrdSortering">
+        <label>wrd sortering: </label>
+        <app-sorteringen [sortering]="selectedSortering"></app-sorteringen>
+    </ng-container>
 </ng-container>
 

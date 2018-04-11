@@ -1,6 +1,5 @@
-import {Component, Output, EventEmitter} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {Swosortering} from './swosortering.component';
-import { ItemslistComponent} from '../item/items.component';
 
 @Component({
     selector: 'swosorteringlist-root',
@@ -24,7 +23,7 @@ export class SwosorteringlistComponent {
     ];
 
     onSelect(entiteitId) {
-        console.log("called with: " + entiteitId + " aantal entities: " + this.data.length + " data: " + this.data);
+        console.log('called with: ' + entiteitId + ' aantal entities: ' + this.data.length + ' data: ' + this.data);
         this.mySortering = null;
         for (var i = 0; i < this.data.length; i++) {
             //console.log("check loop: " + i + " entiteit id: " + this.entities[i].id + " naam: " + this.entities[i].name);

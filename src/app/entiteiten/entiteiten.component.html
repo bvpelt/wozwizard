@@ -1,8 +1,8 @@
 <select id="selectEntiteit" name="selectEntiteit" [(ngModel)]="selectedEntiteit.id"
         (change)="onSelect($event.target.value)">
-  <option [ngValue]="null" disabled>Kies een entiteit</option>
-  <option *ngFor="let ent of entiteiten" [value]="ent.id">
-    {{ent.name}}
-  </option>
+    <option [ngValue]="null" disabled>Kies een entiteit</option>
+    <option *ngFor="let ent of entiteiten" [value]="ent.id">
+        {{ent.name}}
+    </option>
 </select>
 <div *ngIf="selectedEntiteit.id">selected: {{selectedEntiteit.id}} name: {{selectedEntiteit.name}}</div>

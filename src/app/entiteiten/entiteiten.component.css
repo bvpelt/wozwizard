@@ -1,8 +1,8 @@
 select option {
-  color: black;
+    color: black;
 }
 
 select option:checked {
-  color: white;
-  background: #369;
+    color: white;
+    background: #369;
 }

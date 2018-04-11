@@ -1,7 +1,10 @@
 <div ng-if="(fillFieldList.length > 0)">
     <p *ngFor="let field of fieldList" onload="fillFieldList()">
-        <label for="{{field.name}}">{{field.name}} </label><input [value]="{{field.name}}" id="{{field.name}}" type="text"
-                                                          placeholder="vul waarde in voor: {{field.name}}" required
-                                                          (input)="{{field.name}} = $event.target.value"/> {{field.value }}
+        <label for="{{field.name}}">{{field.name}} </label><input [value]="{{field.name}}" id="{{field.name}}"
+                                                                  type="text"
+                                                                  placeholder="vul waarde in voor: {{field.name}}"
+                                                                  required
+                                                                  (input)="{{field.name}} = $event.target.value"/>
+        {{field.value }}
     </p>
 </div>
