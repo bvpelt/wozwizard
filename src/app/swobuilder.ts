@@ -149,24 +149,31 @@ export class SWOBuilder {
             switch (this.sortering.id) {
                 case 1: { // wozObjectNummer
                     criteria = this.makeCriteriaWozObjectNummer();
+                    break;
                 }
                 case 2: { // kadastraleIdentificatie
                     criteria = this.makeCriteriaKadastraleIdentificatie();
+                    break;
                 }
                 case 3: { // 'kadastraleGemeenteCode', 'kadastraleSectie', 'perceelnummer'
                     criteria = this.makeCriteriaKadastraleAanduiding01();
+                    break;
                 }
                 case 4: { // 'kadastraleGemeenteCode', 'kadastraleSectie', 'perceelnummer'
                     criteria = this.makeCriteriaKadastraleAanduiding01();
+                    break;
                 }
                 case 5: { // 'kadastraleGemeenteCode', 'kadastraleSectie', 'perceelnummer', 'deelperceelnummer'
                     criteria = this.makeCriteriaKadastraleAanduiding02();
+                    break;
                 }
                 case 6: { // 'kadastraleGemeenteCode', 'kadastraleSectie', 'perceelnummer', 'appartementsindex'
                     criteria = this.makeCriteriaKadastraleAanduiding03();
+                    break;
                 }
                 case 7: { //  betrokkenWaterschap
                     criteria = this.makeCriteriaBetrokkenWaterschap();
+                    break;
                 }
                 default:
             }
@@ -245,10 +252,10 @@ export class SWOBuilder {
         var summaxval: number = 0;
 
         for (var i = 0; this.fields && i < this.fields.length; i++) {
-            if (this.fields[i].value && this.fields[i].value.length > 0) {
+            if (this.fields[i] && this.fields[i].value && this.fields[i].value.length > 0) {
                 sumval += 1;
             }
-            if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) {
+            if (this.fields[i] && this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) {
                 summaxval += 1;
             }
         }
@@ -265,19 +272,19 @@ export class SWOBuilder {
         var c8: string;
 
 
-        if ((vanaf == false) && this.fields[0].value && this.fields[0].value.length > 0) {
+        if ((vanaf == false) && this.fields[0] && this.fields[0].value && this.fields[0].value.length > 0) {
             // gelijk
             c1 = '    <woz:gelijk stuf:entiteittype="SWO">\n' +
                 '        <woz:omvat stuf:entiteittype="SWOKOZ">\n' +
                 '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
                 '                <bg:kadastraleAanduiding>\n' +
                 '                    <bg:kadastraleGemeentecode>' + this.fields[0].value + ' </bg:kadastraleGemeentecode>\n';
-            if (this.fields[1].value && this.fields[1].value.length > 0) {
+            if (this.fields[1] && this.fields[1].value && this.fields[1].value.length > 0) {
                 c2 = '                    <bg:kadastraleSectie>' + this.fields[1].value + ' </bg:kadastraleSectie>\n';
             } else {
                 c2 = '';
             }
-            if (this.fields[2].value || this.fields[2].value.length > 0) {
+            if (this.fields[2] && this.fields[2].value && this.fields[2].value.length > 0) {
                 c3 = '                    <bg:kadastraalPerceelnummer>' + this.fields[2].value + ' </bg:kadastraalPerceelnummer>\n';
             } else {
                 c3 = '';
@@ -296,12 +303,12 @@ export class SWOBuilder {
                 '                <bg:kadastraleAanduiding>\n' +
                 '                    <bg:kadastraleGemeentecode>' + this.fields[0].value + ' </bg:kadastraleGemeentecode>\n';
 
-            if (this.fields[1].value && this.fields[1].value.length > 0) {
+            if (this.fields[1] && this.fields[1].value && this.fields[1].value.length > 0) {
                 c2 = '                    <bg:kadastraleSectie>' + this.fields[1].value + ' </bg:kadastraleSectie>\n';
             } else {
                 c2 = '';
             }
-            if (this.fields[2].value && this.fields[2].value.length > 0) {
+            if (this.fields[2] && this.fields[2].value && this.fields[2].value.length > 0) {
                 c3 = '                    <bg:kadastraalPerceelnummer>' + this.fields[2].value + ' </bg:kadastraalPerceelnummer>\n';
             } else {
                 c3 = '';
@@ -316,12 +323,12 @@ export class SWOBuilder {
                 '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
                 '                <bg:kadastraleAanduiding>\n' +
                 '                    <bg:kadastraleGemeentecode>' + this.fields[0].maxvalue + ' </bg:kadastraleGemeentecode>\n';
-            if (this.fields[1].maxvalue && this.fields[1].maxvalue.length > 0) {
+            if (this.fields[1] && this.fields[1].maxvalue && this.fields[1].maxvalue.length > 0) {
                 c6 = '                    <bg:kadastraleSectie>' + this.fields[1].maxvalue + ' </bg:kadastraleSectie>\n';
             } else {
                 c6 = '';
             }
-            if (this.fields[2].maxvalue && this.fields[2].maxvalue.length > 0) {
+            if (this.fields[2] && this.fields[2].maxvalue && this.fields[2].maxvalue.length > 0) {
                 c7 = '                    <bg:kadastraalPerceelnummer>' + this.fields[2].maxvalue + ' </bg:kadastraalPerceelnummer>\n';
             } else {
                 c7 = '';
@@ -369,24 +376,24 @@ export class SWOBuilder {
         var c10: string;
 
 
-        if ((vanaf == false) && this.fields[0].value && this.fields[0].value.length > 0) {
+        if ((vanaf == false) && this.fields[0] && this.fields[0].value && this.fields[0].value.length > 0) {
             // gelijk
             c1 = '    <woz:gelijk stuf:entiteittype="SWO">\n' +
                 '        <woz:omvat stuf:entiteittype="SWOKOZ">\n' +
                 '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
                 '                <bg:kadastraleAanduiding>\n' +
                 '                    <bg:kadastraleGemeentecode>' + this.fields[0].value + ' </bg:kadastraleGemeentecode>\n';
-            if (this.fields[1].value && this.fields[1].value.length > 0) {
+            if (this.fields[1] && this.fields[1].value && this.fields[1].value.length > 0) {
                 c2 = '                    <bg:kadastraleSectie>' + this.fields[1].value + ' </bg:kadastraleSectie>\n';
             } else {
                 c2 = '';
             }
-            if (this.fields[2].value || this.fields[2].value.length > 0) {
+            if (this.fields[2] && this.fields[2].value || this.fields[2].value.length > 0) {
                 c3 = '                    <bg:kadastraalPerceelnummer>' + this.fields[2].value + ' </bg:kadastraalPerceelnummer>\n';
             } else {
                 c3 = '';
             }
-            if (this.fields[3].value || this.fields[3].value.length > 0) {
+            if (this.fields[3] && this.fields[3].value || this.fields[3].value.length > 0) {
                 c4 = '                    <bg:kdp.deelperceelNummer>' + this.fields[3].value + ' </bg:kdp.deelperceelNummer>\n';
             } else {
                 c4 = '';
@@ -405,17 +412,17 @@ export class SWOBuilder {
                 '                <bg:kadastraleAanduiding>\n' +
                 '                    <bg:kadastraleGemeentecode>' + this.fields[0].value + ' </bg:kadastraleGemeentecode>\n';
 
-            if (this.fields[1].value && this.fields[1].value.length > 0) {
+            if (this.fields[1] && this.fields[1].value && this.fields[1].value.length > 0) {
                 c2 = '                    <bg:kadastraleSectie>' + this.fields[1].value + ' </bg:kadastraleSectie>\n';
             } else {
                 c2 = '';
             }
-            if (this.fields[2].value && this.fields[2].value.length > 0) {
+            if (this.fields[2] && this.fields[2].value && this.fields[2].value.length > 0) {
                 c3 = '                    <bg:kadastraalPerceelnummer>' + this.fields[2].value + ' </bg:kadastraalPerceelnummer>\n';
             } else {
                 c3 = '';
             }
-            if (this.fields[3].value && this.fields[3].value.length > 0) {
+            if (this.fields[3] && this.fields[3].value && this.fields[3].value.length > 0) {
                 c4 = '                    <bg:kdp.deelperceelNummer>' + this.fields[3].value + ' </bg:kdp.deelperceelNummer>\n';
             } else {
                 c4 = '';
@@ -431,17 +438,17 @@ export class SWOBuilder {
                 '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
                 '                <bg:kadastraleAanduiding>\n' +
                 '                    <bg:kadastraleGemeentecode>' + this.fields[0].maxvalue + ' </bg:kadastraleGemeentecode>\n';
-            if (this.fields[1].maxvalue && this.fields[1].maxvalue.length > 0) {
+            if (this.fields[1] && this.fields[1].maxvalue && this.fields[1].maxvalue.length > 0) {
                 c7 = '                    <bg:kadastraleSectie>' + this.fields[1].maxvalue + ' </bg:kadastraleSectie>\n';
             } else {
                 c7 = '';
             }
-            if (this.fields[2].maxvalue && this.fields[2].maxvalue.length > 0) {
+            if (this.fields[2] && this.fields[2].maxvalue && this.fields[2].maxvalue.length > 0) {
                 c8 = '                    <bg:kadastraalPerceelnummer>' + this.fields[2].maxvalue + ' </bg:kadastraalPerceelnummer>\n';
             } else {
                 c8 = '';
             }
-            if (this.fields[3].maxvalue && this.fields[3].maxvalue.length > 0) {
+            if (this.fields[3] && this.fields[3].maxvalue && this.fields[3].maxvalue.length > 0) {
                 c9 = '                    <bg:kdp.deelperceelNummer>' + this.fields[3].maxvalue + ' </bg:kdp.deelperceelNummer>\n';
             } else {
                 c9 = '';
@@ -466,10 +473,10 @@ export class SWOBuilder {
         var summaxval: number = 0;
 
         for (var i = 0; this.fields && i < this.fields.length; i++) {
-            if (this.fields[i].value && this.fields[i].value.length > 0) {
+            if (this.fields[i] && this.fields[i].value && this.fields[i].value.length > 0) {
                 sumval += 1;
             }
-            if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) {
+            if (this.fields[i] && this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) {
                 summaxval += 1;
             }
         }
@@ -488,24 +495,24 @@ export class SWOBuilder {
         var c10: string;
 
 
-        if ((vanaf == false) && this.fields[0].value && this.fields[0].value.length > 0) {
+        if ((vanaf == false) && this.fields[0] && this.fields[0].value && this.fields[0].value.length > 0) {
             // gelijk
             c1 = '    <woz:gelijk stuf:entiteittype="SWO">\n' +
                 '        <woz:omvat stuf:entiteittype="SWOKOZ">\n' +
                 '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
                 '                <bg:kadastraleAanduiding>\n' +
                 '                    <bg:kadastraleGemeentecode>' + this.fields[0].value + ' </bg:kadastraleGemeentecode>\n';
-            if (this.fields[1].value && this.fields[1].value.length > 0) {
+            if (this.fields[1] && this.fields[1].value && this.fields[1].value.length > 0) {
                 c2 = '                    <bg:kadastraleSectie>' + this.fields[1].value + ' </bg:kadastraleSectie>\n';
             } else {
                 c2 = '';
             }
-            if (this.fields[2].value || this.fields[2].value.length > 0) {
+            if (this.fields[2] && this.fields[2].value && this.fields[2].value.length > 0) {
                 c3 = '                    <bg:kadastraalPerceelnummer>' + this.fields[2].value + ' </bg:kadastraalPerceelnummer>\n';
             } else {
                 c3 = '';
             }
-            if (this.fields[3].value || this.fields[3].value.length > 0) {
+            if (this.fields[3] && this.fields[3].value || this.fields[3].value.length > 0) {
                 c4 = '                    <bg:apr.appartementsIndex>' + this.fields[3].value + ' </bg:apr.appartementsIndex>\n';
             } else {
                 c4 = '';
@@ -524,17 +531,17 @@ export class SWOBuilder {
                 '                <bg:kadastraleAanduiding>\n' +
                 '                    <bg:kadastraleGemeentecode>' + this.fields[0].value + ' </bg:kadastraleGemeentecode>\n';
 
-            if (this.fields[1].value && this.fields[1].value.length > 0) {
+            if (this.fields[1] && this.fields[1].value && this.fields[1].value.length > 0) {
                 c2 = '                    <bg:kadastraleSectie>' + this.fields[1].value + ' </bg:kadastraleSectie>\n';
             } else {
                 c2 = '';
             }
-            if (this.fields[2].value && this.fields[2].value.length > 0) {
+            if (this.fields[2] && this.fields[2].value && this.fields[2].value.length > 0) {
                 c3 = '                    <bg:kadastraalPerceelnummer>' + this.fields[2].value + ' </bg:kadastraalPerceelnummer>\n';
             } else {
                 c3 = '';
             }
-            if (this.fields[3].value && this.fields[3].value.length > 0) {
+            if (this.fields[3] && this.fields[3].value && this.fields[3].value.length > 0) {
                 c4 = '                    <bg:apr.appartementsIndex>' + this.fields[3].value + ' </bg:apr.appartementsIndex>\n';
             } else {
                 c4 = '';
@@ -550,17 +557,17 @@ export class SWOBuilder {
                 '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
                 '                <bg:kadastraleAanduiding>\n' +
                 '                    <bg:kadastraleGemeentecode>' + this.fields[0].maxvalue + ' </bg:kadastraleGemeentecode>\n';
-            if (this.fields[1].maxvalue && this.fields[1].maxvalue.length > 0) {
+            if (this.fields[1] && this.fields[1].maxvalue && this.fields[1].maxvalue.length > 0) {
                 c7 = '                    <bg:kadastraleSectie>' + this.fields[1].maxvalue + ' </bg:kadastraleSectie>\n';
             } else {
                 c7 = '';
             }
-            if (this.fields[2].maxvalue && this.fields[2].maxvalue.length > 0) {
+            if (this.fields[2] && this.fields[2].maxvalue && this.fields[2].maxvalue.length > 0) {
                 c8 = '                    <bg:kadastraalPerceelnummer>' + this.fields[2].maxvalue + ' </bg:kadastraalPerceelnummer>\n';
             } else {
                 c8 = '';
             }
-            if (this.fields[3].maxvalue && this.fields[3].maxvalue.length > 0) {
+            if (this.fields[3] && this.fields[3].maxvalue && this.fields[3].maxvalue.length > 0) {
                 c9 = '                    <bg:apr.appartementsIndex>' + this.fields[3].maxvalue + ' </bg:apr.appartementsIndex>\n';
             } else {
                 c9 = '';
