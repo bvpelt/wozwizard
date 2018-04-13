@@ -19,6 +19,14 @@ pre {
     font-size: 80%;
 }
 
+input:valid {
+    background: hsla(100, 90%, 70%, 1);
+}
+
+input:invalid {
+    background: hsla(0, 90%, 70%, 1);
+}
+
 fieldset {
     margin-top: 15px;
 }

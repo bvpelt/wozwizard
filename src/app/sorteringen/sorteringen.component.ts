@@ -19,7 +19,7 @@ const swodata = [
 
 const wozdata = [
     new Sortering(1, ['wozObjectNummer']),
-    new Sortering(2, ['identificatie']),
+    new Sortering(2, ['identificatie (ontleentaanduiding aan)']),
     new Sortering(3, ['aoa.identificatie']),
     new Sortering(4, ['aoa.postcode', 'aoa.huisnummer', 'aoa.huisletter', 'aoa.huisnummertoevoeging']),
     new Sortering(5, ['wpl.woonplaatsNaam', 'gor.openbareRuimteNaam', 'aoa.huisnummer', 'aoa.huisletter',
@@ -42,9 +42,9 @@ const wozdata = [
     new Sortering(18, ['gebruikscode', 'wpl.woonplaatsnaam', 'gor.openbareruimteNaam', 'aoa.huisnummer',
         'aoa.huisletter', 'aoa.huisnummertoevoeging']),
     new Sortering(20, ['wozObjectnummer', 'wozObjectnummer']),
-    new Sortering(24, ['identificatie']),
-    new Sortering(25, ['identificatie']),
-    new Sortering(26, ['identificatie']),
+    new Sortering(24, ['identificatie isVerbondenMet']),
+    new Sortering(25, ['identificatie heeftPand']),
+    new Sortering(26, ['identificatie heeftAlsAanduiding']),
     new Sortering(27, ['gemeenteCode']),
     new Sortering(28, ['betrokkenWaterschap'])
 ];
@@ -135,7 +135,54 @@ export class SorteringenComponent implements OnInit {
                 // this.notify.emit(this.entiteiten[i].id);
                 this.fields = [];
                 for (var j = 0; j < this.entiteitSortering[i].name.length; j++) {
-                    this.fields.push(new Keyvalue(j, this.entiteitSortering[i].name[j]));
+                    var pattern: string = '';
+                    switch (this.entiteitSortering[i].name[j]) {
+                        case 'aoa.huisletter':
+                            pattern = '[A-Za-z]';
+                            break;
+                        case 'aoa.huisnummer':
+                            pattern = '\\d{5}';
+                            break;
+                        case 'aoa.huisnummertoevoeging':
+                            pattern = '(bis|[a-zA-Z])';
+                            break;
+                        case 'aoa.postcode':
+                            pattern = '\\d{4}[A-Z]{2}';
+                            break;
+                        case 'appartementsindex':
+                            pattern = '\\d{5}';
+                            break;
+                        case 'deelperceelnummer':
+                            pattern = '\\d{5}';
+                            break;
+                        case 'gor.openbareRuimteNaam':
+                            pattern = '.{0..35}';
+                            break;
+                        case 'kadastraleIdentificatie':
+                            pattern = '\\d{12}';
+                            break;
+                        case 'kadastraleGemeenteCode':
+                            pattern = '[A-Za-z0-9]{5}';
+                            break;
+                        case 'kadastraleSectie':
+                            pattern = '\\d{5}';
+                            break;
+                        case 'identificatie (ontleentaanduiding aan)':
+                            pattern = '\\d{16}';
+                            break;
+                        case 'perceelnummer':
+                            pattern = '\\d{5}';
+                            break;
+                        case 'wpl.woonplaatsNaam':
+                            pattern =  '.{0..35}';
+                            break;
+                        case 'wozObjectNummer':
+                            pattern = '\\d{12}';
+                            break;
+                        default:
+                            pattern = '.*';
+                    }
+                    this.fields.push(new Keyvalue(j, this.entiteitSortering[i].name[j], pattern));
                 }
                 break;
             }

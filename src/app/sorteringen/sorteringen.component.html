@@ -16,15 +16,17 @@
         <legend>Criteria voor sortering {{selectedSortering.id}}</legend>
         <p *ngFor="let f of fields">
             <label>{{f.key}}</label>
-            <input class="minval" [(ngModel)]="f.value" placeholder="(min) value of {{f.key}}" (blur)="rebuild()">
-            <input class="maxval" [(ngModel)]="f.maxvalue" placeholder="max value of {{f.key}}" (blur)="rebuild()">
+            <input class="minval" [(ngModel)]="f.value" placeholder="(min) value of {{f.key}}" pattern="{{f.pattern}}"
+                   (blur)="rebuild()">
+            <input class="maxval" [(ngModel)]="f.maxvalue" placeholder="max value of {{f.key}}" pattern="{{f.pattern}}"
+                   (blur)="rebuild()">
         </p>
     </fieldset>
 
     <div>
         Results:
         <p *ngFor="let f of fields">
-            name: {{f.key}} minval: {{f.value}} maxval: {{f.maxvalue}}
+            name: {{f.key}} pattern: {{f.pattern}} minval: {{f.value}} maxval: {{f.maxvalue}}
         </p>
     </div>
 

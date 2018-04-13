@@ -133,6 +133,7 @@ export class SWOBuilder {
             this.getOmvat() +
             this.getLigtIn() +
             this.xmlString03;
+
         return this.xmlString;
     }
 
@@ -150,7 +151,7 @@ export class SWOBuilder {
                 '        <woz:wozObjectNummer>' + this.fields[0].value + ' </woz:wozObjectNummer>\n' +
                 '    </woz:vanaf>\n' +
                 '    <woz:totEnMet stuf:entiteittype="SWO">\n' +
-                '        <woz:wozObjectNummer>' + this.fields[0].value + ' </woz:wozObjectNummer>\n' +
+                '        <woz:wozObjectNummer>' + this.fields[0].maxvalue + ' </woz:wozObjectNummer>\n' +
                 '    </woz:totEnMet>\n';
         }
         return criteria;
@@ -319,52 +320,52 @@ export class SWOBuilder {
                                 '</bg:kadastraleGemeentecode>\n';
                             tm += '                    <bg:kadastraleGemeentecode>' +
                                 this.fields[i].maxvalue +
-                                ' </bg:kadastraleGemeentecode>\n';
+                                '</bg:kadastraleGemeentecode>\n';
                         } else {
                             gelijk += '                    <bg:kadastraleGemeentecode>' +
                                 this.fields[i].value +
-                                ' </bg:kadastraleGemeentecode>\n';
+                                '</bg:kadastraleGemeentecode>\n';
                         }
                         break;
                     case 1: // kadsectie
                         if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
                             vanaf += '                    <bg:kadastraleSectie>' +
                                 this.fields[i].value +
-                                ' </bg:kadastraleSectie>\n';
+                                '</bg:kadastraleSectie>\n';
                             tm += '                    <bg:kadastraleSectie>' +
                                 this.fields[i].maxvalue +
-                                ' </bg:kadastraleSectie>\n';
+                                '</bg:kadastraleSectie>\n';
                         } else {
                             gelijk += '                    <bg:kadastraleSectie>' +
                                 this.fields[i].value +
-                                ' </bg:kadastraleSectie>\n';
+                                '</bg:kadastraleSectie>\n';
                         }
 
                         break;
                     case 2: // kadperceel
                         if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
                             vanaf += '                    <bg:kadastraalPerceelnummer>' +
-                                this.fields[i].value + ' </bg:kadastraalPerceelnummer>\n';
+                                this.fields[i].value + '</bg:kadastraalPerceelnummer>\n';
                             tm += '                    <bg:kadastraalPerceelnummer>' +
-                                this.fields[i].maxvalue + ' </bg:kadastraalPerceelnummer>\n';
+                                this.fields[i].maxvalue + '</bg:kadastraalPerceelnummer>\n';
                         } else {
                             gelijk += '                    <bg:kadastraalPerceelnummer>' +
                                 this.fields[i].value +
-                                ' </bg:kadastraalPerceelnummer>\n';
+                                '</bg:kadastraalPerceelnummer>\n';
                         }
                         break;
                     case 3: // deelperceelNr
                         if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
                             vanaf += '                    <bg:kdp.deelperceelNummer>' +
                                 this.fields[i].value +
-                                ' </bg:kdp.deelperceelNummer>\n';
+                                '</bg:kdp.deelperceelNummer>\n';
                             tm += '                    <bg:kdp.deelperceelNummer>' +
                                 this.fields[i].maxvalue +
-                                ' </bg:kdp.deelperceelNummer>\n';
+                                '</bg:kdp.deelperceelNummer>\n';
                         } else {
                             gelijk += '                    <bg:kdp.deelperceelNummer>' +
                                 this.fields[i].value +
-                                ' </bg:kdp.deelperceelNummer>\n';
+                                '</bg:kdp.deelperceelNummer>\n';
                         }
                         break;
                     default:
