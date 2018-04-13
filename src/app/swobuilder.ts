@@ -26,10 +26,10 @@ export class SWOBuilder {
         '            <stuf:gebruiker>b</stuf:gebruiker>\n' +
         '        </stuf:zender>\n' +
         '        <stuf:ontvanger>\n' +
-        '            <stuf:organisatie>o</stuf:organisatie>\n' +
-        '            <stuf:applicatie>app</stuf:applicatie>\n' +
-        '            <stuf:administratie>a</stuf:administratie>\n' +
-        '            <stuf:gebruiker>g</stuf:gebruiker>\n' +
+        '            <stuf:organisatie>00000001802327497000</stuf:organisatie>\n' +
+        '            <stuf:applicatie>LVWOZ</stuf:applicatie>\n' +
+        '            <stuf:administratie>P</stuf:administratie>\n' +
+        /*'            <stuf:gebruiker>g</stuf:gebruiker>\n' + */
         '        </stuf:ontvanger>\n' +
         '        <stuf:referentienummer>r</stuf:referentienummer>\n' +
         '        <stuf:tijdstipBericht>20180301153040000</stuf:tijdstipBericht>\n' +
@@ -42,59 +42,7 @@ export class SWOBuilder {
         '        <stuf:indicatorAfnemerIndicatie>false</stuf:indicatorAfnemerIndicatie>\n' +
         '        <stuf:indicatorAantal>false</stuf:indicatorAantal>\n' +
         '    </woz:parameters>\n';
-    /* Criteria
-    '    <woz:gelijk stuf:entiteittype="SWO">\n' +
-    '        <woz:wozObjectNummer>123456789012</woz:wozObjectNummer>\n' +
-    '        <woz:verantwoordelijkeGemeente>\n' +
-    '            <bg:gemeenteCode>0342</bg:gemeenteCode>\n' +
-    '        </woz:verantwoordelijkeGemeente>\n' +
-    '        <woz:omvat stuf:entiteittype="SWOKOZ">\n' +
-    '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
-    '                <bg:kadastraleIdentificatie>123456789012345</bg:kadastraleIdentificatie>\n' +
-    '                <bg:kadastraleAanduiding>\n' +
-    '                    <bg:kadastraleGemeentecode>b</bg:kadastraleGemeentecode>\n' +
-    '                    <bg:kadastraleSectie>s</bg:kadastraleSectie>\n' +
-    '                    <bg:kadastraalPerceelnummer>1234</bg:kadastraalPerceelnummer>\n' +
-    '                    <bg:kdp.deelperceelNummer>1235</bg:kdp.deelperceelNummer>\n' +
-    '                </bg:kadastraleAanduiding>\n' +
-    '            </woz:gerelateerde>\n' +
-    '        </woz:omvat>\n' +
-    '    </woz:gelijk>\n' +
-    '    <woz:vanaf stuf:entiteittype="SWO">\n' +
-    '        <woz:wozObjectNummer>123456789012</woz:wozObjectNummer>\n' +
-    '        <woz:verantwoordelijkeGemeente>\n' +
-    '            <bg:gemeenteCode>0342</bg:gemeenteCode>\n' +
-    '        </woz:verantwoordelijkeGemeente>\n' +
-    '        <woz:omvat stuf:entiteittype="SWOKOZ">\n' +
-    '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
-    '                <bg:kadastraleIdentificatie>123456789012345</bg:kadastraleIdentificatie>\n' +
-    '                <bg:kadastraleAanduiding>\n' +
-    '                    <bg:kadastraleGemeentecode>b</bg:kadastraleGemeentecode>\n' +
-    '                    <bg:kadastraleSectie>s</bg:kadastraleSectie>\n' +
-    '                    <bg:kadastraalPerceelnummer>1234</bg:kadastraalPerceelnummer>\n' +
-    '                    <bg:kdp.deelperceelNummer>1235</bg:kdp.deelperceelNummer>\n' +
-    '                </bg:kadastraleAanduiding>\n' +
-    '            </woz:gerelateerde>\n' +
-    '        </woz:omvat>\n' +
-    '    </woz:vanaf>\n' +
-    '    <woz:totEnMet stuf:entiteittype="SWO">\n' +
-    '        <woz:wozObjectNummer>123456789012</woz:wozObjectNummer>\n' +
-    '        <woz:verantwoordelijkeGemeente>\n' +
-    '            <bg:gemeenteCode>0342</bg:gemeenteCode>\n' +
-    '        </woz:verantwoordelijkeGemeente>\n' +
-    '        <woz:omvat stuf:entiteittype="SWOKOZ">\n' +
-    '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
-    '                <bg:kadastraleIdentificatie>123456789012345</bg:kadastraleIdentificatie>\n' +
-    '                <bg:kadastraleAanduiding>\n' +
-    '                    <bg:kadastraleGemeentecode>b</bg:kadastraleGemeentecode>\n' +
-    '                    <bg:kadastraleSectie>s</bg:kadastraleSectie>\n' +
-    '                    <bg:kadastraalPerceelnummer>1234</bg:kadastraalPerceelnummer>\n' +
-    '                    <bg:kdp.deelperceelNummer>1235</bg:kdp.deelperceelNummer>\n' +
-    '                </bg:kadastraleAanduiding>\n' +
-    '            </woz:gerelateerde>\n' +
-    '        </woz:omvat>\n' +
-    '    </woz:totEnMet>\n' +
-    */
+
     private xmlString02: string = '    <woz:scope>\n' +
         '        <woz:object stuf:entiteittype="SWO">\n' +
         '            <woz:wozObjectNummer xsi:nil="true"/>\n' +
@@ -244,101 +192,91 @@ export class SWOBuilder {
     private makeCriteriaKadastraleAanduiding01() {
         var criteria: string;
 
-        // bepaal of hier gebruik gemaakt wordt van gelijk of vanaf - t/m
-        // door voor alle op gegeven velden vast te stellen dat alleen field.value ingevuld is,
-        // of vast te stellen dat voor alle velden field.value en field.maxvalue ingevuld is
+        var omvatkadaand = '        <woz:omvat stuf:entiteittype="SWOKOZ">\n' +
+            '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
+            '                <bg:kadastraleAanduiding>\n';
+        var omvataand = '                </bg:kadastraleAanduiding>\n' +
+            '            </woz:gerelateerde>\n' +
+            '        </woz:omvat>\n';
 
-        var sumval: number = 0;
-        var summaxval: number = 0;
+        var gelijkBegin: string = '    <woz:gelijk stuf:entiteittype="SWO">\n' + omvatkadaand;
+        var gelijkEind: string = omvataand + '    </woz:gelijk>\n';
 
+        var vanafBegin: string = '    <woz:vanaf stuf:entiteittype="SWO">\n' + omvatkadaand;
+        var vanafEind: string = omvataand + '    </woz:vanaf>\n';
+
+        var tmBegin: string = '    <woz:totEnMet stuf:entiteittype="SWO">\n' + omvatkadaand;
+        var tmEind: string = omvataand + '    </woz:totEnMet>\n';
+
+        var gelijk: string = '';
+        var vanaf: string = '';
+        var tm: string = '';
+
+        // Voor elk veld
+        // bepaal of
+        // - alleen field.value is ingevuld, dan toevoegen bij gelijk
+        // - field.value en field.maxvalue zijn ingevuld, dan toevoegen bij vanaf en t/m
+        //
         for (var i = 0; this.fields && i < this.fields.length; i++) {
             if (this.fields[i] && this.fields[i].value && this.fields[i].value.length > 0) {
-                sumval += 1;
-            }
-            if (this.fields[i] && this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) {
-                summaxval += 1;
+                switch (i) {
+                    case 0: //kadgemcode
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '                    <bg:kadastraleGemeentecode>' +
+                                this.fields[i].value +
+                                '</bg:kadastraleGemeentecode>\n';
+                            tm += '                    <bg:kadastraleGemeentecode>' +
+                                this.fields[0].maxvalue +
+                                ' </bg:kadastraleGemeentecode>\n';
+                        } else {
+                            gelijk += '                    <bg:kadastraleGemeentecode>' +
+                                this.fields[i].value +
+                                ' </bg:kadastraleGemeentecode>\n';
+                        }
+                        break;
+                    case 1: // kadsectie
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '                    <bg:kadastraleSectie>' +
+                                this.fields[i].value +
+                                ' </bg:kadastraleSectie>\n';
+                            tm += '                    <bg:kadastraleSectie>' +
+                                this.fields[i].maxvalue +
+                                ' </bg:kadastraleSectie>\n';
+                        } else {
+                            gelijk += '                    <bg:kadastraleSectie>' +
+                                this.fields[i].value +
+                                ' </bg:kadastraleSectie>\n';
+                        }
+
+                        break;
+                    case 2: // kadperceel
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '                    <bg:kadastraalPerceelnummer>' +
+                                this.fields[i].value + ' </bg:kadastraalPerceelnummer>\n';
+                            tm += '                    <bg:kadastraalPerceelnummer>' +
+                                this.fields[i].maxvalue + ' </bg:kadastraalPerceelnummer>\n';
+                        } else {
+                            gelijk += '                    <bg:kadastraalPerceelnummer>' +
+                                this.fields[i].value +
+                                ' </bg:kadastraalPerceelnummer>\n';
+                        }
+                        break;
+                    default:
+                }
             }
         }
 
-        var vanaf: boolean = (sumval == summaxval);
-        //console.log('vanaf: ' + vanaf + ' val: ' + sumval + ' maxval: ' + summaxval);
-        var c1: string;
-        var c2: string;
-        var c3: string;
-        var c4: string;
-        var c5: string;
-        var c6: string;
-        var c7: string;
-        var c8: string;
+        var c1: string = '';
+        var c2: string = '';
 
-
-        if ((vanaf == false) && this.fields[0] && this.fields[0].value && this.fields[0].value.length > 0) {
-            // gelijk
-            c1 = '    <woz:gelijk stuf:entiteittype="SWO">\n' +
-                '        <woz:omvat stuf:entiteittype="SWOKOZ">\n' +
-                '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
-                '                <bg:kadastraleAanduiding>\n' +
-                '                    <bg:kadastraleGemeentecode>' + this.fields[0].value + ' </bg:kadastraleGemeentecode>\n';
-            if (this.fields[1] && this.fields[1].value && this.fields[1].value.length > 0) {
-                c2 = '                    <bg:kadastraleSectie>' + this.fields[1].value + ' </bg:kadastraleSectie>\n';
-            } else {
-                c2 = '';
-            }
-            if (this.fields[2] && this.fields[2].value && this.fields[2].value.length > 0) {
-                c3 = '                    <bg:kadastraalPerceelnummer>' + this.fields[2].value + ' </bg:kadastraalPerceelnummer>\n';
-            } else {
-                c3 = '';
-            }
-            c4 = '                </bg:kadastraleAanduiding>\n' +
-                '            </woz:gerelateerde>\n' +
-                '        </woz:omvat>\n' +
-                '    </woz:gelijk>\n';
-
-            criteria = c1 + c2 + c3 + c4;
-        } else {
-            // vanaf en t/m
-            c1 = '    <woz:vanaf stuf:entiteittype="SWO">\n' +
-                '        <woz:omvat stuf:entiteittype="SWOKOZ">\n' +
-                '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
-                '                <bg:kadastraleAanduiding>\n' +
-                '                    <bg:kadastraleGemeentecode>' + this.fields[0].value + ' </bg:kadastraleGemeentecode>\n';
-
-            if (this.fields[1] && this.fields[1].value && this.fields[1].value.length > 0) {
-                c2 = '                    <bg:kadastraleSectie>' + this.fields[1].value + ' </bg:kadastraleSectie>\n';
-            } else {
-                c2 = '';
-            }
-            if (this.fields[2] && this.fields[2].value && this.fields[2].value.length > 0) {
-                c3 = '                    <bg:kadastraalPerceelnummer>' + this.fields[2].value + ' </bg:kadastraalPerceelnummer>\n';
-            } else {
-                c3 = '';
-            }
-            c4 = '                </bg:kadastraleAanduiding>\n' +
-                '            </woz:gerelateerde>\n' +
-                '        </woz:omvat>\n' +
-                '    </woz:vanaf>\n';
-
-            c5 = '    <woz:totEnMet stuf:entiteittype="SWO">\n' +
-                '        <woz:omvat stuf:entiteittype="SWOKOZ">\n' +
-                '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
-                '                <bg:kadastraleAanduiding>\n' +
-                '                    <bg:kadastraleGemeentecode>' + this.fields[0].maxvalue + ' </bg:kadastraleGemeentecode>\n';
-            if (this.fields[1] && this.fields[1].maxvalue && this.fields[1].maxvalue.length > 0) {
-                c6 = '                    <bg:kadastraleSectie>' + this.fields[1].maxvalue + ' </bg:kadastraleSectie>\n';
-            } else {
-                c6 = '';
-            }
-            if (this.fields[2] && this.fields[2].maxvalue && this.fields[2].maxvalue.length > 0) {
-                c7 = '                    <bg:kadastraalPerceelnummer>' + this.fields[2].maxvalue + ' </bg:kadastraalPerceelnummer>\n';
-            } else {
-                c7 = '';
-            }
-            c8 = '                </bg:kadastraleAanduiding>\n' +
-                '            </woz:gerelateerde>\n' +
-                '        </woz:omvat>\n' +
-                '    </woz:totEnMet>\n';
-            criteria = c1 + c2 + c3 + c4 + c5 + c6 + c7 + c8;
+        if (gelijk.length > 0) {
+            c1 = gelijkBegin + gelijk + gelijkEind;
         }
+        if ((vanaf.length > 0) && (tm.length > 0)) {
+            c2 = vanafBegin + vanaf + vanafEind + tmBegin + tm + tmEind;
+        }
+        console.log('c1: ' + c1 + '\nc2: ' + c2 + '\ncriteria: ' + criteria);
+        criteria = c1 + c2;
         return criteria;
     }
 
@@ -346,238 +284,210 @@ export class SWOBuilder {
     private makeCriteriaKadastraleAanduiding02() {
         var criteria: string;
 
-        // bepaal of hier gebruik gemaakt wordt van gelijk of vanaf - t/m
-        // door voor alle op gegeven velden vast te stellen dat alleen field.value ingevuld is,
-        // of vast te stellen dat voor alle velden field.value en field.maxvalue ingevuld is
+        var omvatkadaand = '        <woz:omvat stuf:entiteittype="SWOKOZ">\n' +
+            '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
+            '                <bg:kadastraleAanduiding>\n';
+        var omvataand = '                </bg:kadastraleAanduiding>\n' +
+            '            </woz:gerelateerde>\n' +
+            '        </woz:omvat>\n';
 
-        var sumval: number = 0;
-        var summaxval: number = 0;
+        var gelijkBegin: string = '    <woz:gelijk stuf:entiteittype="SWO">\n' + omvatkadaand;
+        var gelijkEind: string = omvataand + '    </woz:gelijk>\n';
 
+        var vanafBegin: string = '    <woz:vanaf stuf:entiteittype="SWO">\n' + omvatkadaand;
+        var vanafEind: string = omvataand + '    </woz:vanaf>\n';
+
+        var tmBegin: string = '    <woz:totEnMet stuf:entiteittype="SWO">\n' + omvatkadaand;
+        var tmEind: string = omvataand + '    </woz:totEnMet>\n';
+
+        var gelijk: string = '';
+        var vanaf: string = '';
+        var tm: string = '';
+
+        // Voor elk veld
+        // bepaal of
+        // - alleen field.value is ingevuld, dan toevoegen bij gelijk
+        // - field.value en field.maxvalue zijn ingevuld, dan toevoegen bij vanaf en t/m
+        //
         for (var i = 0; this.fields && i < this.fields.length; i++) {
-            if (this.fields[i].value && this.fields[i].value.length > 0) {
-                sumval += 1;
-            }
-            if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) {
-                summaxval += 1;
+            if (this.fields[i] && this.fields[i].value && this.fields[i].value.length > 0) {
+                switch (i) {
+                    case 0: //kadgemcode
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '                    <bg:kadastraleGemeentecode>' +
+                                this.fields[i].value +
+                                '</bg:kadastraleGemeentecode>\n';
+                            tm += '                    <bg:kadastraleGemeentecode>' +
+                                this.fields[i].maxvalue +
+                                ' </bg:kadastraleGemeentecode>\n';
+                        } else {
+                            gelijk += '                    <bg:kadastraleGemeentecode>' +
+                                this.fields[i].value +
+                                ' </bg:kadastraleGemeentecode>\n';
+                        }
+                        break;
+                    case 1: // kadsectie
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '                    <bg:kadastraleSectie>' +
+                                this.fields[i].value +
+                                ' </bg:kadastraleSectie>\n';
+                            tm += '                    <bg:kadastraleSectie>' +
+                                this.fields[i].maxvalue +
+                                ' </bg:kadastraleSectie>\n';
+                        } else {
+                            gelijk += '                    <bg:kadastraleSectie>' +
+                                this.fields[i].value +
+                                ' </bg:kadastraleSectie>\n';
+                        }
+
+                        break;
+                    case 2: // kadperceel
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '                    <bg:kadastraalPerceelnummer>' +
+                                this.fields[i].value + ' </bg:kadastraalPerceelnummer>\n';
+                            tm += '                    <bg:kadastraalPerceelnummer>' +
+                                this.fields[i].maxvalue + ' </bg:kadastraalPerceelnummer>\n';
+                        } else {
+                            gelijk += '                    <bg:kadastraalPerceelnummer>' +
+                                this.fields[i].value +
+                                ' </bg:kadastraalPerceelnummer>\n';
+                        }
+                        break;
+                    case 3: // deelperceelNr
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '                    <bg:kdp.deelperceelNummer>' +
+                                this.fields[i].value +
+                                ' </bg:kdp.deelperceelNummer>\n';
+                            tm += '                    <bg:kdp.deelperceelNummer>' +
+                                this.fields[i].maxvalue +
+                                ' </bg:kdp.deelperceelNummer>\n';
+                        } else {
+                            gelijk += '                    <bg:kdp.deelperceelNummer>' +
+                                this.fields[i].value +
+                                ' </bg:kdp.deelperceelNummer>\n';
+                        }
+                        break;
+                    default:
+                }
             }
         }
 
-        var vanaf: boolean = (sumval == summaxval);
-        //console.log('vanaf: ' + vanaf + ' val: ' + sumval + ' maxval: ' + summaxval);
-        var c1: string;
-        var c2: string;
-        var c3: string;
-        var c4: string;
-        var c5: string;
-        var c6: string;
-        var c7: string;
-        var c8: string;
-        var c9: string;
-        var c10: string;
+        var c1: string = '';
+        var c2: string = '';
 
-
-        if ((vanaf == false) && this.fields[0] && this.fields[0].value && this.fields[0].value.length > 0) {
-            // gelijk
-            c1 = '    <woz:gelijk stuf:entiteittype="SWO">\n' +
-                '        <woz:omvat stuf:entiteittype="SWOKOZ">\n' +
-                '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
-                '                <bg:kadastraleAanduiding>\n' +
-                '                    <bg:kadastraleGemeentecode>' + this.fields[0].value + ' </bg:kadastraleGemeentecode>\n';
-            if (this.fields[1] && this.fields[1].value && this.fields[1].value.length > 0) {
-                c2 = '                    <bg:kadastraleSectie>' + this.fields[1].value + ' </bg:kadastraleSectie>\n';
-            } else {
-                c2 = '';
-            }
-            if (this.fields[2] && this.fields[2].value || this.fields[2].value.length > 0) {
-                c3 = '                    <bg:kadastraalPerceelnummer>' + this.fields[2].value + ' </bg:kadastraalPerceelnummer>\n';
-            } else {
-                c3 = '';
-            }
-            if (this.fields[3] && this.fields[3].value || this.fields[3].value.length > 0) {
-                c4 = '                    <bg:kdp.deelperceelNummer>' + this.fields[3].value + ' </bg:kdp.deelperceelNummer>\n';
-            } else {
-                c4 = '';
-            }
-            c5 = '                </bg:kadastraleAanduiding>\n' +
-                '            </woz:gerelateerde>\n' +
-                '        </woz:omvat>\n' +
-                '    </woz:gelijk>\n';
-
-            criteria = c1 + c2 + c3 + c4 + c5;
-        } else {
-            // vanaf en t/m
-            c1 = '    <woz:vanaf stuf:entiteittype="SWO">\n' +
-                '        <woz:omvat stuf:entiteittype="SWOKOZ">\n' +
-                '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
-                '                <bg:kadastraleAanduiding>\n' +
-                '                    <bg:kadastraleGemeentecode>' + this.fields[0].value + ' </bg:kadastraleGemeentecode>\n';
-
-            if (this.fields[1] && this.fields[1].value && this.fields[1].value.length > 0) {
-                c2 = '                    <bg:kadastraleSectie>' + this.fields[1].value + ' </bg:kadastraleSectie>\n';
-            } else {
-                c2 = '';
-            }
-            if (this.fields[2] && this.fields[2].value && this.fields[2].value.length > 0) {
-                c3 = '                    <bg:kadastraalPerceelnummer>' + this.fields[2].value + ' </bg:kadastraalPerceelnummer>\n';
-            } else {
-                c3 = '';
-            }
-            if (this.fields[3] && this.fields[3].value && this.fields[3].value.length > 0) {
-                c4 = '                    <bg:kdp.deelperceelNummer>' + this.fields[3].value + ' </bg:kdp.deelperceelNummer>\n';
-            } else {
-                c4 = '';
-            }
-
-            c5 = '                </bg:kadastraleAanduiding>\n' +
-                '            </woz:gerelateerde>\n' +
-                '        </woz:omvat>\n' +
-                '    </woz:vanaf>\n';
-
-            c6 = '    <woz:totEnMet stuf:entiteittype="SWO">\n' +
-                '        <woz:omvat stuf:entiteittype="SWOKOZ">\n' +
-                '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
-                '                <bg:kadastraleAanduiding>\n' +
-                '                    <bg:kadastraleGemeentecode>' + this.fields[0].maxvalue + ' </bg:kadastraleGemeentecode>\n';
-            if (this.fields[1] && this.fields[1].maxvalue && this.fields[1].maxvalue.length > 0) {
-                c7 = '                    <bg:kadastraleSectie>' + this.fields[1].maxvalue + ' </bg:kadastraleSectie>\n';
-            } else {
-                c7 = '';
-            }
-            if (this.fields[2] && this.fields[2].maxvalue && this.fields[2].maxvalue.length > 0) {
-                c8 = '                    <bg:kadastraalPerceelnummer>' + this.fields[2].maxvalue + ' </bg:kadastraalPerceelnummer>\n';
-            } else {
-                c8 = '';
-            }
-            if (this.fields[3] && this.fields[3].maxvalue && this.fields[3].maxvalue.length > 0) {
-                c9 = '                    <bg:kdp.deelperceelNummer>' + this.fields[3].maxvalue + ' </bg:kdp.deelperceelNummer>\n';
-            } else {
-                c9 = '';
-            }
-            c10 = '                </bg:kadastraleAanduiding>\n' +
-                '            </woz:gerelateerde>\n' +
-                '        </woz:omvat>\n' +
-                '    </woz:totEnMet>\n';
-            criteria = c1 + c2 + c3 + c4 + c5 + c6 + c7 + c8 + c9 + c10;
+        if (gelijk.length > 0) {
+            c1 = gelijkBegin + gelijk + gelijkEind;
         }
+        if ((vanaf.length > 0) && (tm.length > 0)) {
+            c2 = vanafBegin + vanaf + vanafEind + tmBegin + tm + tmEind;
+        }
+        console.log('c1: ' + c1 + '\nc2: ' + c2 + '\ncriteria: ' + criteria);
+        criteria = c1 + c2;
         return criteria;
     }
 
     private makeCriteriaKadastraleAanduiding03() {
         var criteria: string;
 
-        // bepaal of hier gebruik gemaakt wordt van gelijk of vanaf - t/m
-        // door voor alle op gegeven velden vast te stellen dat alleen field.value ingevuld is,
-        // of vast te stellen dat voor alle velden field.value en field.maxvalue ingevuld is
+        var omvatkadaand = '        <woz:omvat stuf:entiteittype="SWOKOZ">\n' +
+            '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
+            '                <bg:kadastraleAanduiding>\n';
+        var omvataand = '                </bg:kadastraleAanduiding>\n' +
+            '            </woz:gerelateerde>\n' +
+            '        </woz:omvat>\n';
 
-        var sumval: number = 0;
-        var summaxval: number = 0;
+        var gelijkBegin: string = '    <woz:gelijk stuf:entiteittype="SWO">\n' + omvatkadaand;
+        var gelijkEind: string = omvataand + '    </woz:gelijk>\n';
 
+        var vanafBegin: string = '    <woz:vanaf stuf:entiteittype="SWO">\n' + omvatkadaand;
+        var vanafEind: string = omvataand + '    </woz:vanaf>\n';
+
+        var tmBegin: string = '    <woz:totEnMet stuf:entiteittype="SWO">\n' + omvatkadaand;
+        var tmEind: string = omvataand + '    </woz:totEnMet>\n';
+
+        var gelijk: string = '';
+        var vanaf: string = '';
+        var tm: string = '';
+
+        // Voor elk veld
+        // bepaal of
+        // - alleen field.value is ingevuld, dan toevoegen bij gelijk
+        // - field.value en field.maxvalue zijn ingevuld, dan toevoegen bij vanaf en t/m
+        //
         for (var i = 0; this.fields && i < this.fields.length; i++) {
             if (this.fields[i] && this.fields[i].value && this.fields[i].value.length > 0) {
-                sumval += 1;
-            }
-            if (this.fields[i] && this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) {
-                summaxval += 1;
+                switch (i) {
+                    case 0: //kadgemcode
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '                    <bg:kadastraleGemeentecode>' +
+                                this.fields[i].value +
+                                '</bg:kadastraleGemeentecode>\n';
+                            tm += '                    <bg:kadastraleGemeentecode>' +
+                                this.fields[i].maxvalue +
+                                ' </bg:kadastraleGemeentecode>\n';
+                        } else {
+                            gelijk += '                    <bg:kadastraleGemeentecode>' +
+                                this.fields[i].value +
+                                ' </bg:kadastraleGemeentecode>\n';
+                        }
+                        break;
+                    case 1: // kadsectie
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '                    <bg:kadastraleSectie>' +
+                                this.fields[i].value +
+                                ' </bg:kadastraleSectie>\n';
+                            tm += '                    <bg:kadastraleSectie>' +
+                                this.fields[i].maxvalue +
+                                ' </bg:kadastraleSectie>\n';
+                        } else {
+                            gelijk += '                    <bg:kadastraleSectie>' +
+                                this.fields[i].value +
+                                ' </bg:kadastraleSectie>\n';
+                        }
+
+                        break;
+                    case 2: // kadperceel
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '                    <bg:kadastraalPerceelnummer>' +
+                                this.fields[i].value + ' </bg:kadastraalPerceelnummer>\n';
+                            tm += '                    <bg:kadastraalPerceelnummer>' +
+                                this.fields[i].maxvalue + ' </bg:kadastraalPerceelnummer>\n';
+                        } else {
+                            gelijk += '                    <bg:kadastraalPerceelnummer>' +
+                                this.fields[i].value +
+                                ' </bg:kadastraalPerceelnummer>\n';
+                        }
+                        break;
+                    case 3: // deelperceelNr
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '                    <bg:apr.appartementsIndex>' +
+                                this.fields[i].value +
+                                ' </bg:apr.appartementsIndex>\n';
+                            tm += '                    <bg:apr.appartementsIndex>' +
+                                this.fields[i].maxvalue +
+                                ' </bg:apr.appartementsIndex>\n';
+                        } else {
+                            gelijk += '                    <bg:apr.appartementsIndex>' +
+                                this.fields[i].value +
+                                ' </bg:apr.appartementsIndex>\n';
+                        }
+                        break;
+                    default:
+                }
             }
         }
 
-        var vanaf: boolean = (sumval == summaxval);
-        //console.log('vanaf: ' + vanaf + ' val: ' + sumval + ' maxval: ' + summaxval);
-        var c1: string;
-        var c2: string;
-        var c3: string;
-        var c4: string;
-        var c5: string;
-        var c6: string;
-        var c7: string;
-        var c8: string;
-        var c9: string;
-        var c10: string;
+        var c1: string = '';
+        var c2: string = '';
 
-
-        if ((vanaf == false) && this.fields[0] && this.fields[0].value && this.fields[0].value.length > 0) {
-            // gelijk
-            c1 = '    <woz:gelijk stuf:entiteittype="SWO">\n' +
-                '        <woz:omvat stuf:entiteittype="SWOKOZ">\n' +
-                '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
-                '                <bg:kadastraleAanduiding>\n' +
-                '                    <bg:kadastraleGemeentecode>' + this.fields[0].value + ' </bg:kadastraleGemeentecode>\n';
-            if (this.fields[1] && this.fields[1].value && this.fields[1].value.length > 0) {
-                c2 = '                    <bg:kadastraleSectie>' + this.fields[1].value + ' </bg:kadastraleSectie>\n';
-            } else {
-                c2 = '';
-            }
-            if (this.fields[2] && this.fields[2].value && this.fields[2].value.length > 0) {
-                c3 = '                    <bg:kadastraalPerceelnummer>' + this.fields[2].value + ' </bg:kadastraalPerceelnummer>\n';
-            } else {
-                c3 = '';
-            }
-            if (this.fields[3] && this.fields[3].value || this.fields[3].value.length > 0) {
-                c4 = '                    <bg:apr.appartementsIndex>' + this.fields[3].value + ' </bg:apr.appartementsIndex>\n';
-            } else {
-                c4 = '';
-            }
-            c5 = '                </bg:kadastraleAanduiding>\n' +
-                '            </woz:gerelateerde>\n' +
-                '        </woz:omvat>\n' +
-                '    </woz:gelijk>\n';
-
-            criteria = c1 + c2 + c3 + c4 + c5;
-        } else {
-            // vanaf en t/m
-            c1 = '    <woz:vanaf stuf:entiteittype="SWO">\n' +
-                '        <woz:omvat stuf:entiteittype="SWOKOZ">\n' +
-                '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
-                '                <bg:kadastraleAanduiding>\n' +
-                '                    <bg:kadastraleGemeentecode>' + this.fields[0].value + ' </bg:kadastraleGemeentecode>\n';
-
-            if (this.fields[1] && this.fields[1].value && this.fields[1].value.length > 0) {
-                c2 = '                    <bg:kadastraleSectie>' + this.fields[1].value + ' </bg:kadastraleSectie>\n';
-            } else {
-                c2 = '';
-            }
-            if (this.fields[2] && this.fields[2].value && this.fields[2].value.length > 0) {
-                c3 = '                    <bg:kadastraalPerceelnummer>' + this.fields[2].value + ' </bg:kadastraalPerceelnummer>\n';
-            } else {
-                c3 = '';
-            }
-            if (this.fields[3] && this.fields[3].value && this.fields[3].value.length > 0) {
-                c4 = '                    <bg:apr.appartementsIndex>' + this.fields[3].value + ' </bg:apr.appartementsIndex>\n';
-            } else {
-                c4 = '';
-            }
-
-            c5 = '                </bg:kadastraleAanduiding>\n' +
-                '            </woz:gerelateerde>\n' +
-                '        </woz:omvat>\n' +
-                '    </woz:vanaf>\n';
-
-            c6 = '    <woz:totEnMet stuf:entiteittype="SWO">\n' +
-                '        <woz:omvat stuf:entiteittype="SWOKOZ">\n' +
-                '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
-                '                <bg:kadastraleAanduiding>\n' +
-                '                    <bg:kadastraleGemeentecode>' + this.fields[0].maxvalue + ' </bg:kadastraleGemeentecode>\n';
-            if (this.fields[1] && this.fields[1].maxvalue && this.fields[1].maxvalue.length > 0) {
-                c7 = '                    <bg:kadastraleSectie>' + this.fields[1].maxvalue + ' </bg:kadastraleSectie>\n';
-            } else {
-                c7 = '';
-            }
-            if (this.fields[2] && this.fields[2].maxvalue && this.fields[2].maxvalue.length > 0) {
-                c8 = '                    <bg:kadastraalPerceelnummer>' + this.fields[2].maxvalue + ' </bg:kadastraalPerceelnummer>\n';
-            } else {
-                c8 = '';
-            }
-            if (this.fields[3] && this.fields[3].maxvalue && this.fields[3].maxvalue.length > 0) {
-                c9 = '                    <bg:apr.appartementsIndex>' + this.fields[3].maxvalue + ' </bg:apr.appartementsIndex>\n';
-            } else {
-                c9 = '';
-            }
-            c10 = '                </bg:kadastraleAanduiding>\n' +
-                '            </woz:gerelateerde>\n' +
-                '        </woz:omvat>\n' +
-                '    </woz:totEnMet>\n';
-            criteria = c1 + c2 + c3 + c4 + c5 + c6 + c7 + c8 + c9 + c10;
+        if (gelijk.length > 0) {
+            c1 = gelijkBegin + gelijk + gelijkEind;
         }
+        if ((vanaf.length > 0) && (tm.length > 0)) {
+            c2 = vanafBegin + vanaf + vanafEind + tmBegin + tm + tmEind;
+        }
+        console.log('c1: ' + c1 + '\nc2: ' + c2 + '\ncriteria: ' + criteria);
+        criteria = c1 + c2;
         return criteria;
     }
 
@@ -600,6 +510,7 @@ export class SWOBuilder {
         }
         return criteria;
     }
+
     private getOmvat() {
         var t: string;
         if (this.omvat) {

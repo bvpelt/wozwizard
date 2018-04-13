@@ -1,11 +1,3 @@
-<!--
-<div>
-  selected sortering: {{sortering}}
-</div>
-<div>
-  data: {{entiteitSortering}}
-</div>
--->
 <div>
     <select id="selectedSortering" name="selectedSortering" [(ngModel)]="selectedSortering.id"
             (change)="onSelect($event.target.value)">
@@ -18,8 +10,8 @@
     <div *ngIf="selectedSortering.id">selected: {{selectedSortering.id}} name: {{selectedSortering.name}}</div>
     -->
 </div>
-<div>
 
+<div>
     <fieldset id="inputfields" *ngIf="fields && fields.length">
         <legend>Criteria voor sortering {{selectedSortering.id}}</legend>
         <p *ngFor="let f of fields">
@@ -44,6 +36,7 @@
         </p>
     </fieldset>
 </div>
+
 <div>
   <pre lang="xml" onload="makeText()">
 {{xmlString}}

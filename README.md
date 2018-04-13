@@ -2,6 +2,13 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
 
+## Getting started
+- Install npm
+- Install angular cli global ```npm install -g @angular/cli```
+- Download github project in a source directory
+- In that source directory npm install to get all needed dependencies
+- Start the Development server
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -27,7 +34,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 
-# Setup project
+# Setup Development project
 To setup the project from scratch
 ```
 cd Develop/wozwizard/
@@ -55,6 +62,7 @@ ng serve
 ```
 
 # References
+- see https://angular.io/tutorial/toh-pt0 angular tutorial
 - see https://webpack.js.org/guides/getting-started/
 - see https://angular.io/guide/webpack
 - see https://www.tektutorialshub.com/installing-and-getting-started-with-angular-2/
@@ -66,6 +74,7 @@ ng serve
 
 
 SWO:
+```
 Sortering 1: wozObjectNummer
 Sortering 2: omvat/gerelateerde/kadastraleIdentificatie
 Sortering 3: omvat/gerelateerde/kadastraleAanduiding/kadastraleGemeenteCode, omvat/gerelateerde/kadastraleAanduiding/kadastraleSectie, omvat/gerelateerde/kadastraleAanduiding/perceelnummer
@@ -74,7 +83,8 @@ Sortering 5: omvat/gerelateerde/kadastraleAanduiding/kadastraleGemeenteCode, omv
 Sortering 6: omvat/gerelateerde/kadastraleAanduiding/kadastraleGemeenteCode, omvat/gerelateerde/kadastraleAanduiding/kadastraleSectie, omvat/gerelateerde/kadastraleAanduiding/perceelnummer, omvat/gerelateerde/kadastraleAanduiding/appartementsindex
 Sortering 7: ligtIn/gerelateerde/betrokkenWaterschap
 Bij de sortering 4, 5 en 6 dienen uitsluitend gehele percelen, deelpercelen c.q. appartementsrechten in de sortering te worden opgenomen. Bij sortering 3 worden alle kadastrale onroerende zaken in de sortering opgenomen.
-
+```
+```javascript
 SWOSort {
        [
         { “sortering”: “1”, [“wozObjectNummer”]},
@@ -86,9 +96,10 @@ SWOSort {
         { “sortering”: “7”, [“betrokkenWaterschap” ]}
 ]
 }
-
+```
 
 WOZ:
+```
 Sortering 1: wozObjectNummer
 Sortering 2: ontleentAanduidingAan/gerelateerde/identificatie
 Sortering 3: aanduidingWOZobject/aoa.identificatie
@@ -113,8 +124,8 @@ Sortering 25: heeftPand/gerelateerde/identificatie
 Sortering 26: heeffAlsAanduiding/gerelateerde/identificatie
 Sortering 27: verantwoordelijkeGemeente/gemeenteCode
 Sortering 28: ligtIn/gerelateerde/betrokkenWaterschap
-
-
+```
+```javascript
 WOZSort {
        [
         { “sortering”:  “1”, [“wozObjectNummer”]},
@@ -143,19 +154,19 @@ WOZSort {
         { “sortering”: “28”, [“betrokkenWaterschap” ]}
 ]
 }
-
+```
 
 WRD:
-
+```
 Sortering 1: isVoor/gerelateerde/wozObjectnummer, waardepeildatum (DESC), toestandspeildatum (DESC)
 Sortering 2: isVoor/gerelateerde/aanduidingWOZObject/aoa.postcode, isVoor/gerelateerde/aanduidingWOZObject/aoa.huisnummer, aanduidingWOZobject/huisnummerletter, aanduidingWOZobject/huisnummertoevoeging, waardepeildatum (DESC), toestandspeildatum (DESC)
 Sortering 3: isVoor/gerelateerde/aanduidingWOZObject/wpl.woonplaatsnaam, isVoor/gerelateerde/aanduidingWOZObject/gor.openbareruimteNaam, isVoor/gerelateerde/aanduidingWOZObject/aoa.huisnummer, aanduidingWOZobject/aoa.huisnummerletter, aanduidingWOZobject/aoa.huisnummertoevoeging, waardepeildatum (DESC), toestandspeildatum (DESC)
 Sortering 4: isVoor/gerelateerde/aanduidingWOZObject/wpl.woonplaatsnaam, isVoor/gerelateerde/aanduidingWOZObject/locatieOmschrijving, isVoor/gerelateerde/aanduidingWOZObject/gor.openbareruimtenaam, isVoor/gerelateerde/aanduidingWOZObject/aoa.huisnummer, aanduidingWOZobject/aoa.huisletter, aanduidingWOZobject/aoa.huisnummertoevoeging, waardepeildatum (DESC), toestandspeildatum (DESC)
 Sortering 5: isVoor/gerelateerde/verantwoordelijkeGemeente/gemeenteCode
 Sortering 6: isVoor/gerelateerde/ligtIn/gerelateerde/betrokkenWaterschap
+```
 
-
-
+```javascript
 WRDSort {
        [
         { “sortering”: “1”, [“wozObjectNummer”,    “waardepeildatum”,        “toestandspeildatum” ]},
@@ -166,7 +177,7 @@ WRDSort {
         { “sortering”: “6”, [“betrokkenWaterschap” ]}
 ]
 }
-
+```
 
 
 
