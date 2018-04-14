@@ -164,6 +164,15 @@ export class SorteringenComponent implements OnInit {
                         case 'gor.openbareRuimteNaam':
                             pattern = '.{0,35}';
                             break;
+                        case 'huisnummer':
+                            pattern = '\\d{1,5}';
+                            break;
+                        case 'huisnummertoevoeging':
+                            pattern = '(bis|[a-zA-Z])';
+                            break;
+                        case 'huisletter':
+                            pattern = '[a-zA-Z]{1}';
+                            break;
                         case 'kadastraleIdentificatie':
                             pattern = '\\d{12}';
                             break;
@@ -178,6 +187,9 @@ export class SorteringenComponent implements OnInit {
                             break;
                         case 'perceelnummer':
                             pattern = '\\d{5}';
+                            break;
+                        case 'postcode':
+                            pattern = '\\d{4}[A-Z]{2}';
                             break;
                         case 'wpl.woonplaatsNaam':
                             pattern =  '.{0,35}';
