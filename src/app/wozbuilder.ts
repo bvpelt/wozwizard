@@ -162,6 +162,7 @@ export class WOZBuilder {
                     criteria = this.makeCriteriaAanduidingWOZObject03();
                     break;
                 case  6: // ['wpl.woonplaatsNaam', 'gor.openbareRuimteNaam', 'locatieOmschrijving']),
+                    criteria = this.makeCriteriaAanduidingWOZObject04();
                     break;
                 case  7: // ['kadastraleIdentificatie']),
                     criteria = this.makeCriteriaKadastraleIdentificatie();
@@ -173,12 +174,16 @@ export class WOZBuilder {
                     criteria = this.makeCriteriaKadastraleAanduiding01();
                     break;
                 case 10: // ['kadastraleGemeenteCode', 'kadastraleSectie', 'perceelnummer', 'kdp.deelperceelNummer']),
+                    criteria = this.makeCriteriaKadastraleAanduiding02();
                     break;
                 case 11: // ['kadastraleGemeenteCode', 'kadastraleSectie', 'perceelnummer', 'apr.appartementsindex']),
+                    criteria = this.makeCriteriaKadastraleAanduiding03();
                     break;
                 case 12: // ['bsVesNummerOfId', 'aanduidingEigenaarGebruiker', 'wozObjectnummer']),
+                    criteria = this.makeCriteriaSubject01();
                     break;
                 case 13: // ['naam', 'aanduidingEigenaarGebruiker', 'wozObjectnummer']),
+                    criteria = this.makeCriteriaSubject02();
                     break;
                 case 14: // ['postcode', 'huisnummer', 'huisletter', 'huisnummertoevoeging', 'aanduidingEigenaarGebruiker', 'wozObjectnummer']),
                     break;
@@ -684,10 +689,10 @@ export class WOZBuilder {
         } else {
             // vanaf en t/m
             criteria = '    <woz:vanaf stuf:entiteittype="WOZ">\n' +
-                '        <woz:wozObjectNummer>' + this.fields[0].value + ' </woz:wozObjectNummer>\n' +
+                '        <woz:wozObjectNummer>' + this.fields[0].value + '</woz:wozObjectNummer>\n' +
                 '    </woz:vanaf>\n' +
                 '    <woz:totEnMet stuf:entiteittype="WOZ">\n' +
-                '        <woz:wozObjectNummer>' + this.fields[0].maxvalue + ' </woz:wozObjectNummer>\n' +
+                '        <woz:wozObjectNummer>' + this.fields[0].maxvalue + '</woz:wozObjectNummer>\n' +
                 '    </woz:totEnMet>\n';
         }
         return criteria;
@@ -984,6 +989,112 @@ export class WOZBuilder {
         return criteria;
     }
 
+    // ['wpl.woonplaatsNaam', 'gor.openbareRuimteNaam', 'locatieOmschrijving']),
+
+    /*
+  <woz:gelijk stuf:entiteittype="WOZ">
+      <woz:wozObjectNummer>122334455667</woz:wozObjectNummer>
+      <woz:aanduidingWOZobject>
+          <bg:aoa.identificatie>0000000122334456</bg:aoa.identificatie>
+          <bg:wpl.woonplaatsNaam>
+          <bg:aoa.postcode>9999AA</bg:aoa.postcode>
+          <bg:gor.openbareRuimteNaam>
+          <bg:aoa.huisnummer>1</bg:aoa.huisnummer>
+          <bg:aoa.huisletter>A</bg:aoa.huisletter>
+          <bg:aoa.huisnummertoevoeging>
+          <bg:locatieOmschrijving>
+      </woz:aanduidingWOZobject>
+  </woz:gelijk>
+   */
+    // ['wpl.woonplaatsNaam', 'gor.openbareRuimteNaam', 'locatieOmschrijving']),
+    private makeCriteriaAanduidingWOZObject04() {
+        var criteria: string;
+
+        var omvatkadaand = '       <woz:aanduidingWOZobject>\n';
+        var omvataand = '       </woz:aanduidingWOZobject>\n';
+
+        var gelijkBegin: string = '   <woz:gelijk stuf:entiteittype="WOZ">\n' + omvatkadaand;
+        var gelijkEind: string = omvataand + '    </woz:gelijk>\n';
+
+        var vanafBegin: string = '   <woz:vanaf stuf:entiteittype="WOZ">\n' + omvatkadaand;
+        var vanafEind: string = omvataand + '    </woz:vanaf>\n';
+
+        var tmBegin: string = '   <woz:totEnMet stuf:entiteittype="WOZ">\n' + omvatkadaand;
+        var tmEind: string = omvataand + '    </woz:totEnMet>\n';
+
+        var gelijk: string = '';
+        var vanaf: string = '';
+        var tm: string = '';
+
+        // Voor elk veld
+        // bepaal of
+        // - alleen field.value is ingevuld, dan toevoegen bij gelijk
+        // - field.value en field.maxvalue zijn ingevuld, dan toevoegen bij vanaf en t/m
+        //
+        for (var i = 0; this.fields && i < this.fields.length; i++) {
+            if (this.fields[i] && this.fields[i].value && this.fields[i].value.length > 0) {
+                switch (i) {
+                    case 0: // wpl.woonplaatsNaam
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '          <bg:wpl.woonplaatsNaam>' +
+                                this.fields[i].value +
+                                '</bg:wpl.woonplaatsNaam>\n';
+                            tm += '          <bg:wpl.woonplaatsNaam>' +
+                                this.fields[i].maxvalue +
+                                '</bg:wpl.woonplaatsNaam>\n';
+                        } else {
+                            gelijk += '          <bg:wpl.woonplaatsNaam>' +
+                                this.fields[i].value +
+                                '</bg:wpl.woonplaatsNaam>\n';
+                        }
+                        break;
+                    case 1: // gor.openbareRuimteNaam
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '          <bg:gor.openbareRuimteNaam>' +
+                                this.fields[i].value +
+                                '</bg:gor.openbareRuimteNaam>\n';
+                            tm += '          <bg:gor.openbareRuimteNaam>' +
+                                this.fields[i].maxvalue +
+                                '</bg:gor.openbareRuimteNaam>\n';
+                        } else {
+                            gelijk += '          <bg:gor.openbareRuimteNaam>' +
+                                this.fields[i].value +
+                                '</bg:gor.openbareRuimteNaam>\n';
+                        }
+                        break;
+                    case 2: // locatieOmschrijving
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '          <bg:locatieOmschrijving>' +
+                                this.fields[i].value +
+                                '</bg:locatieOmschrijving>\n';
+                            tm += '          <bg:locatieOmschrijving>' +
+                                this.fields[i].maxvalue +
+                                '</bg:locatieOmschrijving>\n';
+                        } else {
+                            gelijk += '          <bg:locatieOmschrijving>' +
+                                this.fields[i].value +
+                                '</bg:locatieOmschrijving>\n';
+                        }
+                        break;
+                    default:
+                }
+            }
+        }
+
+        var c1: string = '';
+        var c2: string = '';
+
+        if (gelijk.length > 0) {
+            c1 = gelijkBegin + gelijk + gelijkEind;
+        }
+        if ((vanaf.length > 0) && (tm.length > 0)) {
+            c2 = vanafBegin + vanaf + vanafEind + tmBegin + tm + tmEind;
+        }
+        console.log('c1: ' + c1 + '\nc2: ' + c2 + '\ncriteria: ' + criteria);
+        criteria = c1 + c2;
+        return criteria;
+    }
+
     private makeCriteriaKadastraleIdentificatie() {
         var criteria: string;
 
@@ -992,7 +1103,7 @@ export class WOZBuilder {
             criteria = '    <woz:gelijk stuf:entiteittype="WOZ">\n' +
                 '        <woz:bevatKadastraleObjecten stuf:entiteittype="WOZKOZ">\n' +
                 '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
-                '                <bg:kadastraleIdentificatie>' + this.fields[0].value + ' </bg:kadastraleIdentificatie>\n' +
+                '                <bg:kadastraleIdentificatie>' + this.fields[0].value + '</bg:kadastraleIdentificatie>\n' +
                 '            </woz:gerelateerde>\n' +
                 '        </woz:bevatKadastraleObjecten>\n' +
                 '    </woz:gelijk>\n';
@@ -1002,14 +1113,14 @@ export class WOZBuilder {
             criteria = '    <woz:vanaf stuf:entiteittype="WOZ">\n' +
                 '        <woz:bevatKadastraleObjecten stuf:entiteittype="WOZKOZ">\n' +
                 '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
-                '                <bg:kadastraleIdentificatie>' + this.fields[0].value + ' </bg:kadastraleIdentificatie>\n' +
+                '                <bg:kadastraleIdentificatie>' + this.fields[0].value + '</bg:kadastraleIdentificatie>\n' +
                 '            </woz:gerelateerde>\n' +
                 '        </woz:bevatKadastraleObjecten>\n' +
                 '    </woz:vanaf>\n' +
                 '    <woz:totEnMet stuf:entiteittype="WOZ">\n' +
                 '        <woz:bevatKadastraleObjecten stuf:entiteittype="WOZKOZ">\n' +
                 '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
-                '                <bg:kadastraleIdentificatie>' + this.fields[0].maxvalue + ' </bg:kadastraleIdentificatie>\n' +
+                '                <bg:kadastraleIdentificatie>' + this.fields[0].maxvalue + '</bg:kadastraleIdentificatie>\n' +
                 '            </woz:gerelateerde>\n' +
                 '        </woz:bevatKadastraleObjecten>\n' +
                 '    </woz:totEnMet>\n';
@@ -1054,39 +1165,39 @@ export class WOZBuilder {
                                 this.fields[i].value +
                                 '</bg:kadastraleGemeentecode>\n';
                             tm += '                    <bg:kadastraleGemeentecode>' +
-                                this.fields[0].maxvalue +
-                                ' </bg:kadastraleGemeentecode>\n';
+                                this.fields[i].maxvalue +
+                                '</bg:kadastraleGemeentecode>\n';
                         } else {
                             gelijk += '                    <bg:kadastraleGemeentecode>' +
                                 this.fields[i].value +
-                                ' </bg:kadastraleGemeentecode>\n';
+                                '</bg:kadastraleGemeentecode>\n';
                         }
                         break;
                     case 1: // kadsectie
                         if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
                             vanaf += '                    <bg:kadastraleSectie>' +
                                 this.fields[i].value +
-                                ' </bg:kadastraleSectie>\n';
+                                '</bg:kadastraleSectie>\n';
                             tm += '                    <bg:kadastraleSectie>' +
                                 this.fields[i].maxvalue +
-                                ' </bg:kadastraleSectie>\n';
+                                '</bg:kadastraleSectie>\n';
                         } else {
                             gelijk += '                    <bg:kadastraleSectie>' +
                                 this.fields[i].value +
-                                ' </bg:kadastraleSectie>\n';
+                                '</bg:kadastraleSectie>\n';
                         }
 
                         break;
                     case 2: // kadperceel
                         if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
                             vanaf += '                    <bg:kadastraalPerceelnummer>' +
-                                this.fields[i].value + ' </bg:kadastraalPerceelnummer>\n';
+                                this.fields[i].value + '</bg:kadastraalPerceelnummer>\n';
                             tm += '                    <bg:kadastraalPerceelnummer>' +
-                                this.fields[i].maxvalue + ' </bg:kadastraalPerceelnummer>\n';
+                                this.fields[i].maxvalue + '</bg:kadastraalPerceelnummer>\n';
                         } else {
                             gelijk += '                    <bg:kadastraalPerceelnummer>' +
                                 this.fields[i].value +
-                                ' </bg:kadastraalPerceelnummer>\n';
+                                '</bg:kadastraalPerceelnummer>\n';
                         }
                         break;
                     default:
@@ -1107,4 +1218,478 @@ export class WOZBuilder {
         criteria = c1 + c2;
         return criteria;
     }
+
+    // ['kadastraleGemeenteCode', 'kadastraleSectie', 'perceelnummer', 'kdp.deelperceelNummer']),
+    private makeCriteriaKadastraleAanduiding02() {
+        var criteria: string;
+
+        var omvatkadaand = '        <woz:bevatKadastraleObjecten stuf:entiteittype="WOZKOZ">\n' +
+            '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
+            '                <bg:kadastraleAanduiding>\n';
+        var omvataand = '                </bg:kadastraleAanduiding>\n' +
+            '            </woz:gerelateerde>\n' +
+            '        </woz:omvat>\n';
+
+        var gelijkBegin: string = '    <woz:gelijk stuf:entiteittype="WOZ">\n' + omvatkadaand;
+        var gelijkEind: string = omvataand + '    </woz:gelijk>\n';
+
+        var vanafBegin: string = '    <woz:vanaf stuf:entiteittype="WOZ">\n' + omvatkadaand;
+        var vanafEind: string = omvataand + '    </woz:vanaf>\n';
+
+        var tmBegin: string = '    <woz:totEnMet stuf:entiteittype="WOZ">\n' + omvatkadaand;
+        var tmEind: string = omvataand + '    </woz:totEnMet>\n';
+
+        var gelijk: string = '';
+        var vanaf: string = '';
+        var tm: string = '';
+
+        // Voor elk veld
+        // bepaal of
+        // - alleen field.value is ingevuld, dan toevoegen bij gelijk
+        // - field.value en field.maxvalue zijn ingevuld, dan toevoegen bij vanaf en t/m
+        //
+        for (var i = 0; this.fields && i < this.fields.length; i++) {
+            if (this.fields[i] && this.fields[i].value && this.fields[i].value.length > 0) {
+                switch (i) {
+                    case 0: //kadgemcode
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '                    <bg:kadastraleGemeentecode>' +
+                                this.fields[i].value +
+                                '</bg:kadastraleGemeentecode>\n';
+                            tm += '                    <bg:kadastraleGemeentecode>' +
+                                this.fields[i].maxvalue +
+                                '</bg:kadastraleGemeentecode>\n';
+                        } else {
+                            gelijk += '                    <bg:kadastraleGemeentecode>' +
+                                this.fields[i].value +
+                                '</bg:kadastraleGemeentecode>\n';
+                        }
+                        break;
+                    case 1: // kadsectie
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '                    <bg:kadastraleSectie>' +
+                                this.fields[i].value +
+                                '</bg:kadastraleSectie>\n';
+                            tm += '                    <bg:kadastraleSectie>' +
+                                this.fields[i].maxvalue +
+                                '</bg:kadastraleSectie>\n';
+                        } else {
+                            gelijk += '                    <bg:kadastraleSectie>' +
+                                this.fields[i].value +
+                                '</bg:kadastraleSectie>\n';
+                        }
+
+                        break;
+                    case 2: // kadperceel
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '                    <bg:kadastraalPerceelnummer>' +
+                                this.fields[i].value + '</bg:kadastraalPerceelnummer>\n';
+                            tm += '                    <bg:kadastraalPerceelnummer>' +
+                                this.fields[i].maxvalue + '</bg:kadastraalPerceelnummer>\n';
+                        } else {
+                            gelijk += '                    <bg:kadastraalPerceelnummer>' +
+                                this.fields[i].value +
+                                '</bg:kadastraalPerceelnummer>\n';
+                        }
+                        break;
+                    case 3: // kdp.deelperceelNummer
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '                    <bg:kdp.deelperceelNummer>' +
+                                this.fields[i].value + '</bg:kdp.deelperceelNummer>\n';
+                            tm += '                    <bg:kdp.deelperceelNummer>' +
+                                this.fields[i].maxvalue + '</bg:kdp.deelperceelNummer>\n';
+                        } else {
+                            gelijk += '                    <bg:kdp.deelperceelNummer>' +
+                                this.fields[i].value +
+                                '</bg:kdp.deelperceelNummer>\n';
+                        }
+                        break;
+                    default:
+                }
+            }
+        }
+
+        var c1: string = '';
+        var c2: string = '';
+
+        if (gelijk.length > 0) {
+            c1 = gelijkBegin + gelijk + gelijkEind;
+        }
+        if ((vanaf.length > 0) && (tm.length > 0)) {
+            c2 = vanafBegin + vanaf + vanafEind + tmBegin + tm + tmEind;
+        }
+        console.log('c1: ' + c1 + '\nc2: ' + c2 + '\ncriteria: ' + criteria);
+        criteria = c1 + c2;
+        return criteria;
+    }
+
+
+    /*
+       <woz:bevatKadastraleObjecten stuf:entiteittype="WOZKOZ">
+           <woz:gerelateerde stuf:entiteittype="KOZ">
+               <bg:kadastraleIdentificatie>034000000012345</bg:kadastraleIdentificatie>
+               <bg:kadastraleAanduiding>
+                   <bg:kadastraleGemeentecode>
+                   <bg:kadastraleSectie>
+                   <bg:kadastraalPerceelnummer>
+                   <bg:apr.appartementsindex>
+               </bg:kadastraleAanduiding>
+           </woz:gerelateerde>
+       </woz:bevatKadastraleObjecten>
+
+    */
+    // ['kadastraleGemeenteCode', 'kadastraleSectie', 'perceelnummer', 'apr.appartementsindex']),
+    private makeCriteriaKadastraleAanduiding03() {
+        var criteria: string;
+
+        var omvatkadaand = '        <woz:bevatKadastraleObjecten stuf:entiteittype="WOZKOZ">\n' +
+            '            <woz:gerelateerde stuf:entiteittype="KOZ">\n' +
+            '                <bg:kadastraleAanduiding>\n';
+        var omvataand = '                </bg:kadastraleAanduiding>\n' +
+            '            </woz:gerelateerde>\n' +
+            '        </woz:omvat>\n';
+
+        var gelijkBegin: string = '    <woz:gelijk stuf:entiteittype="WOZ">\n' + omvatkadaand;
+        var gelijkEind: string = omvataand + '    </woz:gelijk>\n';
+
+        var vanafBegin: string = '    <woz:vanaf stuf:entiteittype="WOZ">\n' + omvatkadaand;
+        var vanafEind: string = omvataand + '    </woz:vanaf>\n';
+
+        var tmBegin: string = '    <woz:totEnMet stuf:entiteittype="WOZ">\n' + omvatkadaand;
+        var tmEind: string = omvataand + '    </woz:totEnMet>\n';
+
+        var gelijk: string = '';
+        var vanaf: string = '';
+        var tm: string = '';
+
+        // Voor elk veld
+        // bepaal of
+        // - alleen field.value is ingevuld, dan toevoegen bij gelijk
+        // - field.value en field.maxvalue zijn ingevuld, dan toevoegen bij vanaf en t/m
+        //
+        for (var i = 0; this.fields && i < this.fields.length; i++) {
+            if (this.fields[i] && this.fields[i].value && this.fields[i].value.length > 0) {
+                switch (i) {
+                    case 0: //kadgemcode
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '                    <bg:kadastraleGemeentecode>' +
+                                this.fields[i].value +
+                                '</bg:kadastraleGemeentecode>\n';
+                            tm += '                    <bg:kadastraleGemeentecode>' +
+                                this.fields[i].maxvalue +
+                                '</bg:kadastraleGemeentecode>\n';
+                        } else {
+                            gelijk += '                    <bg:kadastraleGemeentecode>' +
+                                this.fields[i].value +
+                                '</bg:kadastraleGemeentecode>\n';
+                        }
+                        break;
+                    case 1: // kadsectie
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '                    <bg:kadastraleSectie>' +
+                                this.fields[i].value +
+                                '</bg:kadastraleSectie>\n';
+                            tm += '                    <bg:kadastraleSectie>' +
+                                this.fields[i].maxvalue +
+                                '</bg:kadastraleSectie>\n';
+                        } else {
+                            gelijk += '                    <bg:kadastraleSectie>' +
+                                this.fields[i].value +
+                                '</bg:kadastraleSectie>\n';
+                        }
+
+                        break;
+                    case 2: // kadperceel
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '                    <bg:kadastraalPerceelnummer>' +
+                                this.fields[i].value + '</bg:kadastraalPerceelnummer>\n';
+                            tm += '                    <bg:kadastraalPerceelnummer>' +
+                                this.fields[i].maxvalue + '</bg:kadastraalPerceelnummer>\n';
+                        } else {
+                            gelijk += '                    <bg:kadastraalPerceelnummer>' +
+                                this.fields[i].value +
+                                '</bg:kadastraalPerceelnummer>\n';
+                        }
+                        break;
+                    case 3: // apr.appartementsindex
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '                    <bg:apr.appartementsindex>' +
+                                this.fields[i].value + '</bg:apr.appartementsindex>\n';
+                            tm += '                    <bg:apr.appartementsindex>' +
+                                this.fields[i].maxvalue + '</bg:apr.appartementsindex>\n';
+                        } else {
+                            gelijk += '                    <bg:apr.appartementsindex>' +
+                                this.fields[i].value +
+                                '</bg:apr.appartementsindex>\n';
+                        }
+                        break;
+                    default:
+                }
+            }
+        }
+
+        var c1: string = '';
+        var c2: string = '';
+
+        if (gelijk.length > 0) {
+            c1 = gelijkBegin + gelijk + gelijkEind;
+        }
+        if ((vanaf.length > 0) && (tm.length > 0)) {
+            c2 = vanafBegin + vanaf + vanafEind + tmBegin + tm + tmEind;
+        }
+        console.log('c1: ' + c1 + '\nc2: ' + c2 + '\ncriteria: ' + criteria);
+        criteria = c1 + c2;
+        return criteria;
+    }
+
+    // ['bsVesNummerOfId', 'aanduidingEigenaarGebruiker', 'wozObjectnummer']),
+    private makeCriteriaSubject01() {
+        var criteria: string;
+
+        var belangHebbende01 = '        <woz:heeftBelanghebbende stuf:entiteittype="WOZSUB">\n';
+        var belangHebbende02 = '        </woz:heeftBelanghebbende>\n';
+
+        var gelijkBegin: string = '    <woz:gelijk stuf:entiteittype="WOZ">\n';
+        var gelijkEind: string = '    </woz:gelijk>\n';
+
+        var vanafBegin: string = '    <woz:vanaf stuf:entiteittype="WOZ">\n';
+        var vanafEind: string = '    </woz:vanaf>\n';
+
+        var tmBegin: string = '    <woz:totEnMet stuf:entiteittype="WOZ">\n';
+        var tmEind: string = '    </woz:totEnMet>\n';
+
+        var gelijk: string = '';
+        var vanaf: string = '';
+        var tm: string = '';
+
+        var gelijkb: string = '';
+        var vanafb: string = '';
+        var tmb: string = '';
+
+        var gelijkw: string = '';
+        var vanafw: string = '';
+        var tmw: string = '';
+
+        // Voor elk veld
+        // bepaal of
+        // - alleen field.value is ingevuld, dan toevoegen bij gelijk
+        // - field.value en field.maxvalue zijn ingevuld, dan toevoegen bij vanaf en t/m
+        //
+        for (var i = 0; this.fields && i < this.fields.length; i++) {
+            if (this.fields[i] && this.fields[i].value && this.fields[i].value.length > 0) {
+                switch (i) {
+                    case 0: // bsVesNummerOfId
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafb += '            <woz:gerelateerde stuf:entiteittype="SUB">\n' +
+                                '                <woz:bsVesNummerOfId>' +
+                                this.fields[i].value +
+                                '</woz:bsVesNummerOfId>\n' +
+                                '            </woz:gerelateerde>\n';
+                            tmb += '            <woz:gerelateerde stuf:entiteittype="SUB">\n' +
+                                '                <woz:bsVesNummerOfId>' +
+                                this.fields[i].maxvalue +
+                                '</woz:bsVesNummerOfId>\n' +
+                                '            </woz:gerelateerde>\n';
+                        } else {
+                            gelijkb += '            <woz:gerelateerde stuf:entiteittype="SUB">\n' +
+                                '                <woz:bsVesNummerOfId>' +
+                                this.fields[i].value +
+                                '</woz:bsVesNummerOfId>\n' +
+                                '            </woz:gerelateerde>\n';
+                        }
+                        break;
+                    case 1: // aanduidingEigenaarGebruiker
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafb += '            <woz:aanduidingEigenaarGebruiker>' +
+                                this.fields[i].value +
+                                '</woz:aanduidingEigenaarGebruiker>\n';
+                            tmb += '            <woz:aanduidingEigenaarGebruiker>' +
+                                this.fields[i].maxvalue +
+                                '</woz:aanduidingEigenaarGebruiker>\n';
+                        } else {
+                            gelijkb += '            <woz:aanduidingEigenaarGebruiker>' +
+                                this.fields[i].value +
+                                '</woz:aanduidingEigenaarGebruiker>\n';
+                        }
+                        break;
+                    case 2: // wozObjectnummer
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafw += '        <woz:wozObjectNummer>' +
+                                this.fields[i].value +
+                                '</woz:wozObjectNummer>\n';
+                            tmw += '        <woz:wozObjectNummer>' +
+                                this.fields[i].maxvalue +
+                                '</woz:wozObjectNummer>\n';
+                        } else {
+                            gelijkw += '        <woz:wozObjectNummer>' +
+                                this.fields[i].value +
+                                '</woz:wozObjectNummer>\n';
+                        }
+                        break;
+                    default:
+                }
+            }
+        }
+        var c1: string = '';
+        var c2: string = '';
+
+        var cb0: string = '';
+        var cb1: string = '';
+        var cb2: string = '';
+
+        // belanghebbende criteria benoemd voor gelijk
+        if (gelijkb.length > 0) {
+            cb0 = belangHebbende01 + gelijkb + belangHebbende02;
+        }
+
+        // belanghebbende criteria benoemd voor vanaf en t/m
+        if ((vanafb.length > 0) && (tmb.length > 0)) {
+            cb1 = belangHebbende01 + vanafb + belangHebbende02;
+            cb2 = belangHebbende01 + tmb + belangHebbende02;
+        }
+
+        if ((cb0.length > 0) || (gelijkw.length > 0)) {
+            c1 = gelijkBegin + gelijkw + cb0 + gelijkEind;
+        }
+        if (((cb1.length > 0 ) && (cb2.length > 0)) || ((vanafw.length > 0) && ((tmw.length > 0)))) {
+            c2 = vanafBegin + vanafw + cb1 + vanafEind + tmBegin + tmw + cb2 + tmEind;
+        }
+        console.log('c1: ' + c1 + '\nc2: ' + c2 + '\ncriteria: ' + criteria);
+        criteria = c1 + c2;
+        return criteria;
+    }
+    /*
+           <woz:wozObjectNummer>122334455667</woz:wozObjectNummer>
+           <woz:heeftBelanghebbende stuf:entiteittype="WOZSUB">
+               <woz:gerelateerde stuf:entiteittype="SUB">
+                   <woz:naam>
+                   <woz:bsVesNummerOfId>
+                   <woz:adresNederland>
+                       <bg:postcode>9999AA</bg:postcode>
+                       <bg:aoa.huisnummer>1</bg:aoa.huisnummer>
+                       <bg:aoa.huisletter>a</bg:aoa.huisletter>
+                       <bg:aoa.huisnummertoevoeging>
+                   </woz:adresNederland>
+               </woz:gerelateerde>
+               <woz:aanduidingEigenaarGebruiker>B</woz:aanduidingEigenaarGebruiker>
+           </woz:heeftBelanghebbende>
+        */
+
+    // ['naam', 'aanduidingEigenaarGebruiker', 'wozObjectnummer']),
+    private makeCriteriaSubject02() {
+        var criteria: string;
+
+        var belangHebbende01 = '        <woz:heeftBelanghebbende stuf:entiteittype="WOZSUB">\n';
+        var belangHebbende02 = '        </woz:heeftBelanghebbende>\n';
+
+        var gelijkBegin: string = '    <woz:gelijk stuf:entiteittype="WOZ">\n';
+        var gelijkEind: string = '    </woz:gelijk>\n';
+
+        var vanafBegin: string = '    <woz:vanaf stuf:entiteittype="WOZ">\n';
+        var vanafEind: string = '    </woz:vanaf>\n';
+
+        var tmBegin: string = '    <woz:totEnMet stuf:entiteittype="WOZ">\n';
+        var tmEind: string = '    </woz:totEnMet>\n';
+
+        var gelijk: string = '';
+        var vanaf: string = '';
+        var tm: string = '';
+
+        var gelijkb: string = '';
+        var vanafb: string = '';
+        var tmb: string = '';
+
+        var gelijkw: string = '';
+        var vanafw: string = '';
+        var tmw: string = '';
+
+        // Voor elk veld
+        // bepaal of
+        // - alleen field.value is ingevuld, dan toevoegen bij gelijk
+        // - field.value en field.maxvalue zijn ingevuld, dan toevoegen bij vanaf en t/m
+        //
+        for (var i = 0; this.fields && i < this.fields.length; i++) {
+            if (this.fields[i] && this.fields[i].value && this.fields[i].value.length > 0) {
+                switch (i) {
+                    case 0: // naam
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafb += '            <woz:gerelateerde stuf:entiteittype="SUB">\n' +
+                                '                <woz:naam>' +
+                                this.fields[i].value +
+                                '</woz:naam>\n' +
+                                '            </woz:gerelateerde>\n';
+                            tmb += '            <woz:gerelateerde stuf:entiteittype="SUB">\n' +
+                                '                <woz:naam>' +
+                                this.fields[i].maxvalue +
+                                '</woz:naam>\n' +
+                                '            </woz:gerelateerde>\n';
+                        } else {
+                            gelijkb += '            <woz:gerelateerde stuf:entiteittype="SUB">\n' +
+                                '                <woz:naam>' +
+                                this.fields[i].value +
+                                '</woz:naam>\n' +
+                                '            </woz:gerelateerde>\n';
+                        }
+                        break;
+                    case 1: // aanduidingEigenaarGebruiker
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafb += '            <woz:aanduidingEigenaarGebruiker>' +
+                                this.fields[i].value +
+                                '</woz:aanduidingEigenaarGebruiker>\n';
+                            tmb += '            <woz:aanduidingEigenaarGebruiker>' +
+                                this.fields[i].maxvalue +
+                                '</woz:aanduidingEigenaarGebruiker>\n';
+                        } else {
+                            gelijkb += '            <woz:aanduidingEigenaarGebruiker>' +
+                                this.fields[i].value +
+                                '</woz:aanduidingEigenaarGebruiker>\n';
+                        }
+                        break;
+                    case 2: // wozObjectnummer
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafw += '        <woz:wozObjectNummer>' +
+                                this.fields[i].value +
+                                '</woz:wozObjectNummer>\n';
+                            tmw += '        <woz:wozObjectNummer>' +
+                                this.fields[i].maxvalue +
+                                '</woz:wozObjectNummer>\n';
+                        } else {
+                            gelijkw += '        <woz:wozObjectNummer>' +
+                                this.fields[i].value +
+                                '</woz:wozObjectNummer>\n';
+                        }
+                        break;
+                    default:
+                }
+            }
+        }
+        var c1: string = '';
+        var c2: string = '';
+
+        var cb0: string = '';
+        var cb1: string = '';
+        var cb2: string = '';
+
+        // belanghebbende criteria benoemd voor gelijk
+        if (gelijkb.length > 0) {
+            cb0 = belangHebbende01 + gelijkb + belangHebbende02;
+        }
+
+        // belanghebbende criteria benoemd voor vanaf en t/m
+        if ((vanafb.length > 0) && (tmb.length > 0)) {
+            cb1 = belangHebbende01 + vanafb + belangHebbende02;
+            cb2 = belangHebbende01 + tmb + belangHebbende02;
+        }
+
+        if ((cb0.length > 0) || (gelijkw.length > 0)) {
+            c1 = gelijkBegin + gelijkw + cb0 + gelijkEind;
+        }
+        if (((cb1.length > 0 ) && (cb2.length > 0)) || ((vanafw.length > 0) && ((tmw.length > 0)))) {
+            c2 = vanafBegin + vanafw + cb1 + vanafEind + tmBegin + tmw + cb2 + tmEind;
+        }
+        console.log('c1: ' + c1 + '\nc2: ' + c2 + '\ncriteria: ' + criteria);
+        criteria = c1 + c2;
+        return criteria;
+    }
+
 }

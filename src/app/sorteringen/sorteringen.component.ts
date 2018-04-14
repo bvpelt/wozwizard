@@ -30,18 +30,18 @@ const wozdata = [
     new Sortering(9, ['kadastraleGemeenteCode', 'kadastraleSectie', 'perceelnummer']),
     new Sortering(10, ['kadastraleGemeenteCode', 'kadastraleSectie', 'perceelnummer', 'kdp.deelperceelNummer']),
     new Sortering(11, ['kadastraleGemeenteCode', 'kadastraleSectie', 'perceelnummer', 'apr.appartementsindex']),
-    new Sortering(12, ['bsVesNummerOfId', 'aanduidingEigenaarGebruiker', 'wozObjectnummer']),
-    new Sortering(13, ['naam', 'aanduidingEigenaarGebruiker', 'wozObjectnummer']),
+    new Sortering(12, ['bsVesNummerOfId', 'aanduidingEigenaarGebruiker', 'wozObjectNummer']),
+    new Sortering(13, ['naam', 'aanduidingEigenaarGebruiker', 'wozObjectNummer']),
     new Sortering(14, ['postcode', 'huisnummer', 'huisletter', 'huisnummertoevoeging',
-        'aanduidingEigenaarGebruiker', 'wozObjectnummer']),
-    new Sortering(15, ['postcode', 'postadresnummer', 'aanduidingEigenaarGebruiker', 'wozObjectnummer']),
+        'aanduidingEigenaarGebruiker', 'wozObjectNummer']),
+    new Sortering(15, ['postcode', 'postadresnummer', 'aanduidingEigenaarGebruiker', 'wozObjectNummer']),
     new Sortering(16, ['landnaam', 'sub.adresBuitenland1', 'sub.adresBuitenland2', 'sub.adresBuitenland3',
-        'aanduidingEigenaarGebruiker', 'wozObjectnummer']),
+        'aanduidingEigenaarGebruiker', 'wozObjectNummer']),
     new Sortering(17, ['landcode', 'sub.adresBuitenland1', 'sub.adresBuitenland2', 'sub.adresBuitenland3',
-        'aanduidingEigenaarGebruiker', 'wozObjectnummer']),
+        'aanduidingEigenaarGebruiker', 'wozObjectNummer']),
     new Sortering(18, ['gebruikscode', 'wpl.woonplaatsnaam', 'gor.openbareruimteNaam', 'aoa.huisnummer',
         'aoa.huisletter', 'aoa.huisnummertoevoeging']),
-    new Sortering(20, ['wozObjectnummer', 'wozObjectnummer']),
+    new Sortering(20, ['wozObjectnummer', 'wozObjectNummer']),
     new Sortering(24, ['identificatie isVerbondenMet']),
     new Sortering(25, ['identificatie heeftPand']),
     new Sortering(26, ['identificatie heeftAlsAanduiding']),
@@ -137,14 +137,20 @@ export class SorteringenComponent implements OnInit {
                 for (var j = 0; j < this.entiteitSortering[i].name.length; j++) {
                     var pattern: string = '';
                     switch (this.entiteitSortering[i].name[j]) {
+                        case 'aanduidingEigenaarGebruiker':
+                            pattern = '(E|G|B|M)';
+                            break;
                         case 'aoa.huisletter':
-                            pattern = '[A-Za-z]';
+                            pattern = '[A-Za-z]{1}';
                             break;
                         case 'aoa.huisnummer':
                             pattern = '\\d{5}';
                             break;
                         case 'aoa.huisnummertoevoeging':
                             pattern = '(bis|[a-zA-Z])';
+                            break;
+                        case 'aoa.identificatie':
+                            pattern = '\\d{16}';
                             break;
                         case 'aoa.postcode':
                             pattern = '\\d{4}[A-Z]{2}';
@@ -156,7 +162,7 @@ export class SorteringenComponent implements OnInit {
                             pattern = '\\d{5}';
                             break;
                         case 'gor.openbareRuimteNaam':
-                            pattern = '.{0..35}';
+                            pattern = '.{0,35}';
                             break;
                         case 'kadastraleIdentificatie':
                             pattern = '\\d{12}';
@@ -174,7 +180,7 @@ export class SorteringenComponent implements OnInit {
                             pattern = '\\d{5}';
                             break;
                         case 'wpl.woonplaatsNaam':
-                            pattern =  '.{0..35}';
+                            pattern =  '.{0,35}';
                             break;
                         case 'wozObjectNummer':
                             pattern = '\\d{12}';
