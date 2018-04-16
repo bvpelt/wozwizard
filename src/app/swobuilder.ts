@@ -227,7 +227,7 @@ export class SWOBuilder {
                                 this.fields[i].value +
                                 '</bg:kadastraleGemeentecode>\n';
                             tm += '                    <bg:kadastraleGemeentecode>' +
-                                this.fields[0].maxvalue +
+                                this.fields[i].maxvalue +
                                 '</bg:kadastraleGemeentecode>\n';
                         } else {
                             gelijk += '                    <bg:kadastraleGemeentecode>' +

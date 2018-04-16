@@ -4,11 +4,14 @@ import {Keyvalue} from './keyvalue';
 
 export class WRDBuilder {
     public xmlString: string = this.makeText();
+
+    private sortering: Sortering;
+    private fields: Array<Keyvalue>;
+
     private isVoor: boolean = false;
     private wordtVerdeeldNaar: boolean = false;
     private isBeschiktVoor: boolean = false;
     private xmlString01: string = '<?xml version="1.0" encoding="UTF-8"?>\n' +
-
         '<lv:wrdLv01-lvwoz xmlns:stuf="http://www.egem.nl/StUF/StUF0301" xmlns:bg="http://www.egem.nl/StUF/sector/bg/0310"\n' +
         '                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"\n' +
         '                  xmlns:woz="http://www.stufstandaarden.nl/sectormodel/woz0313"\n' +
@@ -17,16 +20,16 @@ export class WRDBuilder {
         '    <woz:stuurgegevens>\n' +
         '        <stuf:berichtcode>Lv01</stuf:berichtcode>\n' +
         '        <stuf:zender>\n' +
-        '            <stuf:organisatie>o</stuf:organisatie>\n' +
+        '            <stuf:organisatie>0</stuf:organisatie>\n' +
         '            <stuf:applicatie>app</stuf:applicatie>\n' +
-        '            <stuf:administratie>a</stuf:administratie>\n' +
-        '            <stuf:gebruiker>g</stuf:gebruiker>\n' +
+        '            <stuf:administratie>ac</stuf:administratie>\n' +
+        '            <stuf:gebruiker>b</stuf:gebruiker>\n' +
         '        </stuf:zender>\n' +
         '        <stuf:ontvanger>\n' +
-        '            <stuf:organisatie>o</stuf:organisatie>\n' +
-        '            <stuf:applicatie>app</stuf:applicatie>\n' +
-        '            <stuf:administratie>a</stuf:administratie>\n' +
-        '            <stuf:gebruiker>g</stuf:gebruiker>\n' +
+        '          <stuf:organisatie>00000001802327497000</stuf:organisatie>\n' +
+        '          <stuf:applicatie>LVWOZ</stuf:applicatie>\n' +
+        '          <stuf:administratie>P</stuf:administratie>\n' +
+        '          <stuf:gebruiker>systeem</stuf:gebruiker>\n' +
         '        </stuf:ontvanger>\n' +
         '        <stuf:referentienummer>ref</stuf:referentienummer>\n' +
         '        <stuf:tijdstipBericht>20180301153000000</stuf:tijdstipBericht>\n' +
@@ -38,7 +41,9 @@ export class WRDBuilder {
         '        <stuf:maximumAantal>15</stuf:maximumAantal>\n' +
         '        <stuf:indicatorAfnemerIndicatie>false</stuf:indicatorAfnemerIndicatie>\n' +
         '        <stuf:indicatorAantal>false</stuf:indicatorAantal>\n' +
-        '    </woz:parameters>\n' +
+        '    </woz:parameters>\n';
+
+    /*
         '    <woz:gelijk stuf:entiteittype="WRD">\n' +
         '        <woz:waardepeildatum>20180101</woz:waardepeildatum>\n' +
         '        <woz:toestandspeildatum>20180101</woz:toestandspeildatum>\n' +
@@ -101,8 +106,10 @@ export class WRDBuilder {
         '                </woz:verantwoordelijkeGemeente>\n' +
         '            </woz:gerelateerde>\n' +
         '        </woz:isVoor>\n' +
-        '    </woz:totEnMet>\n' +
-        '    <woz:scope>\n' +
+        '    </woz:totEnMet>\n';
+        */
+
+    private xmlString02: string = '    <woz:scope>\n' +
         '        <woz:object stuf:entiteittype="WRD">\n' +
         '            <woz:waardepeildatum xsi:nil="true"/>\n' +
         '            <woz:toestandspeildatum xsi:nil="true"/>\n' +
@@ -116,11 +123,14 @@ export class WRDBuilder {
         '                <stuf:eindGeldigheid xsi:nil="true"/>\n' +
         '            </stuf:tijdvakGeldigheid>\n' +
         '            <stuf:tijdstipRegistratie xsi:nil="true"/>\n';
-    private xmlString02: string = '        </woz:object>\n' +
+    private xmlString03: string = '        </woz:object>\n' +
         '    </woz:scope>\n' +
         '</lv:wrdLv01-lvwoz>\n';
 
     constructor(cb: Checkbox [], sortering: Sortering, fields: Array<Keyvalue>) {
+        this.sortering = sortering;
+        this.fields = fields;
+
         this.isVoor = false;
         this.wordtVerdeeldNaar = false;
         this.isBeschiktVoor = false;
@@ -144,12 +154,173 @@ export class WRDBuilder {
 
     public makeText() {
         //console.log('wozbuilder - ontleentAanduidingAan: ' + this.ontleentAanduidingAan);
+
+        var criteria: string = '';
+
+        if (this.sortering) {
+            switch (this.sortering.id) {
+                case 1: { // 'wozObjectNummer', 'waardepeildatum', 'toestandspeildatum'
+                    criteria = this.makeCriteriaWrdObjectNummer();
+                    break;
+                }
+                case 2: { // 'aoa.postcode', 'aoa.huisnummer', 'huisnummerletter', 'huisnummertoevoeging', 'waardepeildatum', 'toestandspeildatum'
+
+                    break;
+                }
+                case 3: { // 'wpl.woonplaatsnaam', 'gor.openbareruimteNaam', 'aoa.huisnummer', 'aoa.huisnummerletter', 'aoa.huisnummertoevoeging', 'waardepeildatum', 'toestandspeildatum'
+
+                    break;
+                }
+                case 4: { // 'wpl.woonplaatsnaam', 'locatieOmschrijving', 'gor.openbareruimtenaam', 'aoa.huisnummer', 'aoa.huisletter', 'aoa.huisnummertoevoeging', 'waardepeildatum', 'toestandspeildatum'
+
+                    break;
+                }
+                case 5: { // 'gemeenteCode'
+
+                    break;
+                }
+                case 6: { // 'betrokkenWaterschap'
+
+                    break;
+                }
+                default:
+            }
+        }
+
         this.xmlString = this.xmlString01 +
+            criteria +
+            this.xmlString02 +
             this.getIsVoor() +
             this.getWordtVerdeeldNaar() +
             this.getIsBeschiktVoor() +
-            this.xmlString02;
+            this.xmlString03;
         return this.xmlString;
+    }
+
+    /*
+            '    <woz:gelijk stuf:entiteittype="WRD">\n'
+            '        <woz:waardepeildatum>20180101</woz:waardepeildatum>\n'
+            '        <woz:toestandspeildatum>20180101</woz:toestandspeildatum>\n'
+            '        <woz:isVoor stuf:entiteittype="WRDWOZ">\n'
+            '            <woz:gerelateerde stuf:entiteittype="WOZ">\n'
+            '                <woz:wozObjectNummer>123456789012</woz:wozObjectNummer>\n'
+            '                <woz:aanduidingWOZobject>\n'
+            '                    <bg:wpl.woonplaatsNaam/>\n'
+            '                    <bg:aoa.postcode>9999AA</bg:aoa.postcode>\n'
+            '                    <bg:gor.openbareRuimteNaam/>\n'
+            '                    <bg:aoa.huisnummer>2</bg:aoa.huisnummer>\n'
+            '                    <bg:aoa.huisletter>a</bg:aoa.huisletter>\n'
+            '                    <bg:aoa.huisnummertoevoeging/>\n'
+            '                    <bg:locatieOmschrijving/>\n'
+            '                </woz:aanduidingWOZobject>\n'
+            '                <woz:verantwoordelijkeGemeente>\n'
+            '                    <bg:gemeenteCode>0340</bg:gemeenteCode>\n'
+            '                </woz:verantwoordelijkeGemeente>\n'
+            '            </woz:gerelateerde>\n'
+            '        </woz:isVoor>\n'
+            '    </woz:gelijk>\n'
+     */
+
+    // 'wozObjectNummer', 'waardepeildatum', 'toestandspeildatum'
+    private makeCriteriaWrdObjectNummer() {
+        var criteria: string = '';
+
+
+        var gelijkBegin: string = '    <woz:gelijk stuf:entiteittype="WRD">\n';
+        var gelijkEind: string = '    </woz:gelijk>\n';
+
+        var vanafBegin: string = '    <woz:vanaf stuf:entiteittype="WRD">\n';
+        var vanafEind: string = '    </woz:vanaf>\n';
+
+        var tmBegin: string = '    <woz:totEnMet stuf:entiteittype="WRD">\n';
+        var tmEind: string = '    </woz:totEnMet>\n';
+
+        var vanaf: string = '';
+        var tm: string = '';
+        var gelijk: string = '';
+
+        var vanafw: string = '';
+        var tmw: string = '';
+        var gelijkw: string = '';
+
+        var prew: string = '        <woz:isVoor stuf:entiteittype="WRDWOZ">\n' +
+            '            <woz:gerelateerde stuf:entiteittype="WOZ">\n';
+        var postw: string = '            </woz:gerelateerde>\n' +
+            '        </woz:isVoor>\n';
+
+        // Voor elk veld
+        // bepaal of
+        // - alleen field.value is ingevuld, dan toevoegen bij gelijk
+        // - field.value en field.maxvalue zijn ingevuld, dan toevoegen bij vanaf en t/m
+        //
+        for (var i = 0; this.fields && i < this.fields.length; i++) {
+            if (this.fields[i] && this.fields[i].value && this.fields[i].value.length > 0) {
+                switch (i) {
+                    case 0: //wozObjectNummer
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafw += '                <woz:wozObjectNummer>' +
+                                this.fields[i].value +
+                                '</woz:wozObjectNummer>\n';
+                            tmw += '                <woz:wozObjectNummer>' +
+                                this.fields[i].maxvalue +
+                                '</woz:wozObjectNummer>\n';
+                        } else {
+                            gelijkw += '                <woz:wozObjectNummer>' +
+                                this.fields[i].value +
+                                '</woz:wozObjectNummer>\n';
+                        }
+                        break;
+                    case 1: // waardepeildatum
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '        <woz:waardepeildatum>' +
+                                this.fields[i].value +
+                                '</woz:waardepeildatum>\n';
+                            tm += '        <woz:waardepeildatum>' +
+                                this.fields[i].maxvalue +
+                                '</woz:waardepeildatum>\n';
+                        } else {
+                            gelijk += '        <woz:waardepeildatum>' +
+                                this.fields[i].value +
+                                '</woz:waardepeildatum>\n';
+                        }
+
+                        break;
+                    case 2: // toestandspeildatum
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '        <woz:toestandspeildatum>' +
+                                this.fields[i].value + '</woz:toestandspeildatum>\n';
+                            tm += '        <woz:toestandspeildatum>' +
+                                this.fields[i].maxvalue + '</woz:toestandspeildatum>\n';
+                        } else {
+                            gelijk += '        <woz:toestandspeildatum>' +
+                                this.fields[i].value +
+                                '</woz:toestandspeildatum>\n';
+                        }
+                        break;
+                    default:
+                }
+            }
+        }
+
+        var cwoz01: string = '';
+        var cwoz02: string = '';
+        var cwoz03: string = '';
+
+        if (gelijkw.length > 0) {
+            cwoz01 = prew + gelijkw + postw;
+        }
+        if (vanafw.length > 0 && tmw.length > 0) {
+            cwoz02 = prew + vanafw + postw;
+            cwoz03 = prew + tmw + postw;
+        }
+
+        if (cwoz01.length > 0 || gelijk.length > 0) {
+            criteria += gelijkBegin + gelijk + cwoz01 + gelijkEind;
+        }
+        if ((cwoz02.length > 0 && cwoz03.length > 0) || ((vanaf.length > 0 && tm.length > 0))) {
+            criteria += vanafBegin + vanaf + cwoz02 + vanafEind + tmBegin + tm + cwoz03 + tmEind;
+        }
+        return criteria;
     }
 
     private getIsVoor() {

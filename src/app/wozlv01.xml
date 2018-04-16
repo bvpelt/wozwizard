@@ -93,6 +93,8 @@
                     <bg:aoa.huisnummer>1</bg:aoa.huisnummer>
                     <bg:aoa.huisletter>a</bg:aoa.huisletter>
                     <bg:aoa.huisnummertoevoeging/>
+                    <bg:sub.postadresType></bg:sub.postadresType>
+                    <bg:sub.postadresNummer></bg:sub.postadresNummer>
                 </woz:adresNederland>
             </woz:gerelateerde>
             <woz:aanduidingEigenaarGebruiker>B</woz:aanduidingEigenaarGebruiker>

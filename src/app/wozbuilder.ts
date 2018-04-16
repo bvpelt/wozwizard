@@ -43,7 +43,7 @@ export class WOZBuilder {
         '      <stuf:organisatie>00000001802327497000</stuf:organisatie>\n' +
         '      <stuf:applicatie>LVWOZ</stuf:applicatie>\n' +
         '      <stuf:administratie>P</stuf:administratie>\n' +
-        '      <stuf:gebruiker>systeem</stuf:gebruiker>\n' +
+        /* '      <stuf:gebruiker>systeem</stuf:gebruiker>\n' + */
         '    </stuf:ontvanger>\n' +
         '    <stuf:referentienummer>refnr</stuf:referentienummer>\n' +
         '    <stuf:tijdstipBericht>20180301120000000</stuf:tijdstipBericht>\n' +
@@ -189,12 +189,16 @@ export class WOZBuilder {
                     criteria = this.makeCriteriaSubject03();
                     break;
                 case 15: // ['postcode', 'postadresnummer', 'aanduidingEigenaarGebruiker', 'wozObjectnummer']),
+                    criteria = this.makeCriteriaSubject04();
                     break;
                 case 16: // ['landnaam', 'sub.adresBuitenland1', 'sub.adresBuitenland2', 'sub.adresBuitenland3', 'aanduidingEigenaarGebruiker', 'wozObjectnummer']),
+                    criteria = this.makeCriteriaSubject05();
                     break;
                 case 17: // ['landcode', 'sub.adresBuitenland1', 'sub.adresBuitenland2', 'sub.adresBuitenland3', 'aanduidingEigenaarGebruiker', 'wozObjectnummer']),
+                    criteria = this.makeCriteriaSubject06();
                     break;
                 case 18: // ['gebruikscode', 'wpl.woonplaatsnaam', 'gor.openbareruimteNaam', 'aoa.huisnummer', 'aoa.huisletter', 'aoa.huisnummertoevoeging']),
+                    criteria = this.makeCriteriaAanduidingWOZObject05();
                     break;
                 case 20: // ['wozObjectnummer', 'wozObjectnummer']),
                     break;
@@ -746,11 +750,11 @@ export class WOZBuilder {
             criteria = '    <woz:vanaf stuf:entiteittype="WOZ">\n' +
                 '        <woz:aanduidingWOZobject>\n' +
                 '            <bg:aoa.identificatie>' + this.fields[0].value + '</bg:aoa.identificatie>\n' +
-                '        </woz:aanduidingWOZobject>\n'  +
+                '        </woz:aanduidingWOZobject>\n' +
                 '    </woz:vanaf>\n' +
                 '    <woz:totEnMet stuf:entiteittype="WOZ">\n' +
                 '        <woz:aanduidingWOZobject>\n' +
-                '            <bg:aoa.identificatie>' + this.fields[0].maxvalue +'</bg:aoa.identificatie>\n' +
+                '            <bg:aoa.identificatie>' + this.fields[0].maxvalue + '</bg:aoa.identificatie>\n' +
                 '        </woz:aanduidingWOZobject>\n' +
                 '    </woz:totEnMet>\n';
         }
@@ -858,22 +862,6 @@ export class WOZBuilder {
         return criteria;
     }
 
-
-    /*
-  <woz:gelijk stuf:entiteittype="WOZ">
-      <woz:wozObjectNummer>122334455667</woz:wozObjectNummer>
-      <woz:aanduidingWOZobject>
-          <bg:aoa.identificatie>0000000122334456</bg:aoa.identificatie>
-          <bg:wpl.woonplaatsNaam>
-          <bg:aoa.postcode>9999AA</bg:aoa.postcode>
-          <bg:gor.openbareRuimteNaam>
-          <bg:aoa.huisnummer>1</bg:aoa.huisnummer>
-          <bg:aoa.huisletter>A</bg:aoa.huisletter>
-          <bg:aoa.huisnummertoevoeging>
-          <bg:locatieOmschrijving/>
-      </woz:aanduidingWOZobject>
-  </woz:gelijk>
-   */
     // ['wpl.woonplaatsNaam', 'gor.openbareRuimteNaam', 'aoa.huisnummer', 'aoa.huisletter',
     //         'aoa.huisnummertoevoeging']
     private makeCriteriaAanduidingWOZObject03() {
@@ -991,23 +979,6 @@ export class WOZBuilder {
     }
 
     // ['wpl.woonplaatsNaam', 'gor.openbareRuimteNaam', 'locatieOmschrijving']),
-
-    /*
-  <woz:gelijk stuf:entiteittype="WOZ">
-      <woz:wozObjectNummer>122334455667</woz:wozObjectNummer>
-      <woz:aanduidingWOZobject>
-          <bg:aoa.identificatie>0000000122334456</bg:aoa.identificatie>
-          <bg:wpl.woonplaatsNaam>
-          <bg:aoa.postcode>9999AA</bg:aoa.postcode>
-          <bg:gor.openbareRuimteNaam>
-          <bg:aoa.huisnummer>1</bg:aoa.huisnummer>
-          <bg:aoa.huisletter>A</bg:aoa.huisletter>
-          <bg:aoa.huisnummertoevoeging>
-          <bg:locatieOmschrijving>
-      </woz:aanduidingWOZobject>
-  </woz:gelijk>
-   */
-    // ['wpl.woonplaatsNaam', 'gor.openbareRuimteNaam', 'locatieOmschrijving']),
     private makeCriteriaAanduidingWOZObject04() {
         var criteria: string;
 
@@ -1092,6 +1063,171 @@ export class WOZBuilder {
             c2 = vanafBegin + vanaf + vanafEind + tmBegin + tm + tmEind;
         }
         console.log('c1: ' + c1 + '\nc2: ' + c2 + '\ncriteria: ' + criteria);
+        criteria = c1 + c2;
+        return criteria;
+    }
+
+
+    /*
+  <woz:gelijk stuf:entiteittype="WOZ">
+      <woz:wozObjectNummer>122334455667</woz:wozObjectNummer>
+      <woz:gebruikscode>10</woz:gebruikscode>
+      <woz:aanduidingWOZobject>
+          <bg:aoa.identificatie>0000000122334456</bg:aoa.identificatie>
+          <bg:wpl.woonplaatsNaam>
+          <bg:aoa.postcode>9999AA</bg:aoa.postcode>
+          <bg:gor.openbareRuimteNaam>
+          <bg:aoa.huisnummer>1</bg:aoa.huisnummer>
+          <bg:aoa.huisletter>A</bg:aoa.huisletter>
+          <bg:aoa.huisnummertoevoeging>
+          <bg:locatieOmschrijving>
+      </woz:aanduidingWOZobject>
+  </woz:gelijk>
+  */
+
+    // ['gebruikscode', 'wpl.woonplaatsnaam', 'gor.openbareruimteNaam', 'aoa.huisnummer', 'aoa.huisletter', 'aoa.huisnummertoevoeging']),
+    private makeCriteriaAanduidingWOZObject05() {
+        var criteria: string;
+
+        var omvatkadaand = '       <woz:aanduidingWOZobject>\n';
+        var omvataand = '       </woz:aanduidingWOZobject>\n';
+
+        var gelijkBegin: string = '   <woz:gelijk stuf:entiteittype="WOZ">\n';
+        var gelijkEind: string = '    </woz:gelijk>\n';
+
+        var vanafBegin: string = '   <woz:vanaf stuf:entiteittype="WOZ">\n';
+        var vanafEind: string = '    </woz:vanaf>\n';
+
+        var tmBegin: string = '   <woz:totEnMet stuf:entiteittype="WOZ">\n';
+        var tmEind: string = '    </woz:totEnMet>\n';
+
+        var gelijk: string = '';
+        var vanaf: string = '';
+        var tm: string = '';
+
+        var gelijka: string = '';
+        var vanafa: string = '';
+        var tma: string = '';
+
+        // Voor elk veld
+        // bepaal of
+        // - alleen field.value is ingevuld, dan toevoegen bij gelijk
+        // - field.value en field.maxvalue zijn ingevuld, dan toevoegen bij vanaf en t/m
+        //
+        for (var i = 0; this.fields && i < this.fields.length; i++) {
+            if (this.fields[i] && this.fields[i].value && this.fields[i].value.length > 0) {
+                switch (i) {
+                    case 0: //gebruikscode
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '       <woz:gebruikscode>' +
+                                this.fields[i].value +
+                                '</woz:gebruikscode>\n';
+                            tm += '       <woz:gebruikscode>' +
+                                this.fields[i].maxvalue +
+                                '</woz:gebruikscode>\n';
+                        } else {
+                            gelijk += '       <woz:gebruikscode>' +
+                                this.fields[i].value +
+                                '</woz:gebruikscode>\n';
+                        }
+                        break;
+                    case 1: // wpl.woonplaatsNaam
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafa += '          <bg:wpl.woonplaatsNaam>' +
+                                this.fields[i].value +
+                                '</bg:wpl.woonplaatsNaam>\n';
+                            tma += '          <bg:wpl.woonplaatsNaam>' +
+                                this.fields[i].maxvalue +
+                                '</bg:wpl.woonplaatsNaam>\n';
+                        } else {
+                            gelijka += '          <bg:wpl.woonplaatsNaam>' +
+                                this.fields[i].value +
+                                '</bg:wpl.woonplaatsNaam>\n';
+                        }
+                        break;
+                    case 2: // gor.openbareRuimteNaam
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafa += '          <bg:gor.openbareRuimteNaam>' +
+                                this.fields[i].value +
+                                '</bg:gor.openbareRuimteNaam>\n';
+                            tma += '          <bg:gor.openbareRuimteNaam>' +
+                                this.fields[i].maxvalue +
+                                '</bg:gor.openbareRuimteNaam>\n';
+                        } else {
+                            gelijka += '          <bg:gor.openbareRuimteNaam>' +
+                                this.fields[i].value +
+                                '</bg:gor.openbareRuimteNaam>\n';
+                        }
+                        break;
+                    case 3: // aoa.huisnummer
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafa += '           <bg:aoa.huisnummer>' +
+                                this.fields[i].value +
+                                '</bg:aoa.huisnummer>\n';
+                            tma += '           <bg:aoa.huisnummer>' +
+                                this.fields[i].maxvalue +
+                                '</bg:aoa.huisnummer>\n';
+                        } else {
+                            gelijka += '           <bg:aoa.huisnummer>' +
+                                this.fields[i].value +
+                                '</bg:aoa.huisnummer>\n';
+                        }
+                        break;
+                    case 4: // aoa.huisletter
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafa += '           <bg:aoa.huisletter>' +
+                                this.fields[i].value + '</bg:aoa.huisletter>\n';
+                            tma += '           <bg:aoa.huisletter>' +
+                                this.fields[i].maxvalue + '</bg:aoa.huisletter>\n';
+                        } else {
+                            gelijka += '           <bg:aoa.huisletter>' +
+                                this.fields[i].value +
+                                '</bg:aoa.huisletter>\n';
+                        }
+                        break;
+                    case 5: // aoa.huisnummertoevoeging
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafa += '           <bg:aoa.huisnummertoevoeging>' +
+                                this.fields[i].value +
+                                '</bg:aoa.huisnummertoevoeging>\n';
+                            tma += '           <bg:aoa.huisnummertoevoeging>' +
+                                this.fields[i].maxvalue +
+                                '</bg:aoa.huisnummertoevoeging>\n';
+                        } else {
+                            gelijka += '           <bg:aoa.huisnummertoevoeging>' +
+                                this.fields[i].value +
+                                '</bg:aoa.huisnummertoevoeging>\n';
+                        }
+                        break;
+                    default:
+                }
+            }
+        }
+
+        var c1: string = '';
+        var c2: string = '';
+
+        var adres01: string = '';
+        var adres02: string = ''; // vanaf
+        var adres03: string = ''; // tm
+
+
+        if (gelijka.length > 0) {
+            adres01 = omvatkadaand + gelijka + omvataand;
+        }
+        if ((vanafa.length > 0) && (tma.length > 0)) {
+            adres02 = omvataand + vanafa + omvataand;
+            adres03 = omvataand + tma + omvataand;
+        }
+        if (gelijk.length > 0 || adres01.length > 0) {
+            c1 = gelijkBegin + gelijk + adres01 + gelijkEind;
+        }
+        if (vanaf.length > 0 || adres02.length > 0) {
+            c2 = vanafBegin + vanaf + adres02 + vanafEind + tmBegin + tm + adres03 + tmEind;
+        }
+
+        console.log('c1: ' + c1 + '\nc2: ' + c2 + '\ncriteria: ' + criteria);
+
         criteria = c1 + c2;
         return criteria;
     }
@@ -1339,6 +1475,7 @@ export class WOZBuilder {
        </woz:bevatKadastraleObjecten>
 
     */
+
     // ['kadastraleGemeenteCode', 'kadastraleSectie', 'perceelnummer', 'apr.appartementsindex']),
     private makeCriteriaKadastraleAanduiding03() {
         var criteria: string;
@@ -1552,13 +1689,14 @@ export class WOZBuilder {
         if ((cb0.length > 0) || (gelijkw.length > 0)) {
             c1 = gelijkBegin + gelijkw + cb0 + gelijkEind;
         }
-        if (((cb1.length > 0 ) && (cb2.length > 0)) || ((vanafw.length > 0) && ((tmw.length > 0)))) {
+        if (((cb1.length > 0) && (cb2.length > 0)) || ((vanafw.length > 0) && ((tmw.length > 0)))) {
             c2 = vanafBegin + vanafw + cb1 + vanafEind + tmBegin + tmw + cb2 + tmEind;
         }
         console.log('c1: ' + c1 + '\nc2: ' + c2 + '\ncriteria: ' + criteria);
         criteria = c1 + c2;
         return criteria;
     }
+
     /*
            <woz:wozObjectNummer>122334455667</woz:wozObjectNummer>
            <woz:heeftBelanghebbende stuf:entiteittype="WOZSUB">
@@ -1685,7 +1823,7 @@ export class WOZBuilder {
         if ((cb0.length > 0) || (gelijkw.length > 0)) {
             c1 = gelijkBegin + gelijkw + cb0 + gelijkEind;
         }
-        if (((cb1.length > 0 ) && (cb2.length > 0)) || ((vanafw.length > 0) && ((tmw.length > 0)))) {
+        if (((cb1.length > 0) && (cb2.length > 0)) || ((vanafw.length > 0) && ((tmw.length > 0)))) {
             c2 = vanafBegin + vanafw + cb1 + vanafEind + tmBegin + tmw + cb2 + tmEind;
         }
         console.log('c1: ' + c1 + '\nc2: ' + c2 + '\ncriteria: ' + criteria);
@@ -1693,23 +1831,6 @@ export class WOZBuilder {
         return criteria;
     }
 
-
-    /*
-           <woz:wozObjectNummer>122334455667</woz:wozObjectNummer>
-           <woz:heeftBelanghebbende stuf:entiteittype="WOZSUB">
-               <woz:gerelateerde stuf:entiteittype="SUB">
-                   <woz:naam>
-                   <woz:bsVesNummerOfId>
-                   <woz:adresNederland>
-                       <bg:postcode>9999AA</bg:postcode>
-                       <bg:aoa.huisnummer>1</bg:aoa.huisnummer>
-                       <bg:aoa.huisletter>a</bg:aoa.huisletter>
-                       <bg:aoa.huisnummertoevoeging>
-                   </woz:adresNederland>
-               </woz:gerelateerde>
-               <woz:aanduidingEigenaarGebruiker>B</woz:aanduidingEigenaarGebruiker>
-           </woz:heeftBelanghebbende>
-        */
     // ['postcode', 'huisnummer', 'huisletter', 'huisnummertoevoeging', 'aanduidingEigenaarGebruiker', 'wozObjectnummer']),
     private makeCriteriaSubject03() {
         var criteria: string;
@@ -1720,7 +1841,7 @@ export class WOZBuilder {
         var adresNederland01 = '               <woz:gerelateerde stuf:entiteittype="SUB">\n' +
             '                   <woz:adresNederland>\n';
         var adresNederland02 = '                   </woz:adresNederland>\n' +
-          '               </woz:gerelateerde>\n';
+            '               </woz:gerelateerde>\n';
 
         var gelijkBegin: string = '    <woz:gelijk stuf:entiteittype="WOZ">\n';
         var gelijkEind: string = '    </woz:gelijk>\n';
@@ -1883,7 +2004,7 @@ export class WOZBuilder {
         if ((cb0.length > 0) || (gelijkw.length > 0)) {
             c1 = gelijkBegin + gelijkw + cb0 + gelijkEind;
         }
-        if (((cb1.length > 0 ) && (cb2.length > 0)) || ((vanafw.length > 0) && ((tmw.length > 0)))) {
+        if (((cb1.length > 0) && (cb2.length > 0)) || ((vanafw.length > 0) && ((tmw.length > 0)))) {
             c2 = vanafBegin + vanafw + cb1 + vanafEind + tmBegin + tmw + cb2 + tmEind;
         }
         console.log('c1: ' + c1 + '\nc2: ' + c2 + '\ncriteria: ' + criteria);
@@ -1891,5 +2012,542 @@ export class WOZBuilder {
         return criteria;
     }
 
+    // ['postcode', 'postadresnummer', 'aanduidingEigenaarGebruiker', 'wozObjectnummer']),
+    private makeCriteriaSubject04() {
+        var criteria: string;
+
+        var belangHebbende01 = '        <woz:heeftBelanghebbende stuf:entiteittype="WOZSUB">\n';
+        var belangHebbende02 = '        </woz:heeftBelanghebbende>\n';
+
+        var adresNederland01 = '               <woz:gerelateerde stuf:entiteittype="SUB">\n' +
+            '                   <woz:adresNederland>\n';
+        var adresNederland02 = '                   </woz:adresNederland>\n' +
+            '               </woz:gerelateerde>\n';
+
+        var gelijkBegin: string = '    <woz:gelijk stuf:entiteittype="WOZ">\n';
+        var gelijkEind: string = '    </woz:gelijk>\n';
+
+        var vanafBegin: string = '    <woz:vanaf stuf:entiteittype="WOZ">\n';
+        var vanafEind: string = '    </woz:vanaf>\n';
+
+        var tmBegin: string = '    <woz:totEnMet stuf:entiteittype="WOZ">\n';
+        var tmEind: string = '    </woz:totEnMet>\n';
+
+        var gelijk: string = '';
+        var vanaf: string = '';
+        var tm: string = '';
+
+        var gelijkba: string = '';
+        var vanafba: string = '';
+        var tmba: string = '';
+
+        var gelijkb: string = '';
+        var vanafb: string = '';
+        var tmb: string = '';
+
+        var gelijkw: string = '';
+        var vanafw: string = '';
+        var tmw: string = '';
+
+        // Voor elk veld
+        // bepaal of
+        // - alleen field.value is ingevuld, dan toevoegen bij gelijk
+        // - field.value en field.maxvalue zijn ingevuld, dan toevoegen bij vanaf en t/m
+        //
+        for (var i = 0; this.fields && i < this.fields.length; i++) {
+            if (this.fields[i] && this.fields[i].value && this.fields[i].value.length > 0) {
+                switch (i) {
+                    case 0: // postcode
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafba += '                       <bg:postcode>' +
+                                this.fields[i].value +
+                                '</bg:postcode>\n';
+                            tmba += '                       <bg:postcode>' +
+                                this.fields[i].maxvalue +
+                                '</bg:postcode>\n';
+                        } else {
+                            gelijkba += '                       <bg:postcode>' +
+                                this.fields[i].value +
+                                '</bg:postcode>\n';
+                        }
+                        break;
+                    case 1: // postadresnummer
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafba += '                       <bg:sub.postadresNummer>' +
+                                this.fields[i].value +
+                                '</bg:sub.postadresNummer>\n';
+                            tmba += '                       <bg:sub.postadresNummer>' +
+                                this.fields[i].maxvalue +
+                                '</bg:sub.postadresNummer>\n';
+                        } else {
+                            gelijkba += '                       <bg:sub.postadresNummer>' +
+                                this.fields[i].value +
+                                '</bg:sub.postadresNummer>\n';
+                        }
+                        break;
+                    case 2: // aanduidingEigenaarGebruiker
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafb += '            <woz:aanduidingEigenaarGebruiker>' +
+                                this.fields[i].value +
+                                '</woz:aanduidingEigenaarGebruiker>\n';
+                            tmb += '            <woz:aanduidingEigenaarGebruiker>' +
+                                this.fields[i].maxvalue +
+                                '</woz:aanduidingEigenaarGebruiker>\n';
+                        } else {
+                            gelijkb += '            <woz:aanduidingEigenaarGebruiker>' +
+                                this.fields[i].value +
+                                '</woz:aanduidingEigenaarGebruiker>\n';
+                        }
+                        break;
+                    case 3: // wozObjectnummer
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafw += '        <woz:wozObjectNummer>' +
+                                this.fields[i].value +
+                                '</woz:wozObjectNummer>\n';
+                            tmw += '        <woz:wozObjectNummer>' +
+                                this.fields[i].maxvalue +
+                                '</woz:wozObjectNummer>\n';
+                        } else {
+                            gelijkw += '        <woz:wozObjectNummer>' +
+                                this.fields[i].value +
+                                '</woz:wozObjectNummer>\n';
+                        }
+                        break;
+                    default:
+                }
+            }
+        }
+        var c1: string = '';
+        var c2: string = '';
+
+        var cb0: string = '';
+        var cb1: string = '';
+        var cb2: string = '';
+
+        var cba0: string = '';
+        var cba1: string = '';
+        var cba2: string = '';
+
+        if (gelijkba.length > 0) {
+            cba0 = adresNederland01 + gelijkba + adresNederland02;
+        }
+
+        if ((vanafba.length > 0) && (tmba.length > 0)) {
+            cba1 = adresNederland01 + vanafba + adresNederland02;
+            cba2 = adresNederland01 + tmba + adresNederland02;
+        }
+
+        // belanghebbende criteria benoemd voor gelijk
+        if (gelijkb.length > 0) {
+            cb0 = belangHebbende01 + cba0 + gelijkb + belangHebbende02;
+        } else {
+            cb0 = belangHebbende01 + cba0 + belangHebbende02;
+        }
+
+        // belanghebbende criteria benoemd voor vanaf en t/m
+        if ((vanafb.length > 0) && (tmb.length > 0)) {
+            cb1 = belangHebbende01 + cba1 + vanafb + belangHebbende02;
+            cb2 = belangHebbende01 + cba2 + tmb + belangHebbende02;
+        } else if ((vanafb.length == 0) && (tmb.length == 0) && (cba1.length > 0) && (cba2.length > 0)) {
+            cb1 = belangHebbende01 + cba1 + belangHebbende02;
+            cb2 = belangHebbende01 + cba2 + belangHebbende02;
+        }
+
+        if ((cb0.length > 0) || (gelijkw.length > 0)) {
+            c1 = gelijkBegin + gelijkw + cb0 + gelijkEind;
+        }
+        if (((cb1.length > 0) && (cb2.length > 0)) || ((vanafw.length > 0) && ((tmw.length > 0)))) {
+            c2 = vanafBegin + vanafw + cb1 + vanafEind + tmBegin + tmw + cb2 + tmEind;
+        }
+        console.log('c1: ' + c1 + '\nc2: ' + c2 + '\ncriteria: ' + criteria);
+        criteria = c1 + c2;
+        return criteria;
+    }
+
+    // ['landnaam', 'sub.adresBuitenland1', 'sub.adresBuitenland2', 'sub.adresBuitenland3', 'aanduidingEigenaarGebruiker', 'wozObjectnummer']),
+    private makeCriteriaSubject05() {
+        var criteria: string;
+
+        var belangHebbende01 = '        <woz:heeftBelanghebbende stuf:entiteittype="WOZSUB">\n';
+        var belangHebbende02 = '        </woz:heeftBelanghebbende>\n';
+
+        var adresNederland01 = '               <woz:gerelateerde stuf:entiteittype="SUB">\n' +
+            '                   <woz:adresNederland>\n';
+        var adresNederland02 = '                   </woz:adresNederland>\n' +
+            '               </woz:gerelateerde>\n';
+
+        var gelijkBegin: string = '    <woz:gelijk stuf:entiteittype="WOZ">\n';
+        var gelijkEind: string = '    </woz:gelijk>\n';
+
+        var vanafBegin: string = '    <woz:vanaf stuf:entiteittype="WOZ">\n';
+        var vanafEind: string = '    </woz:vanaf>\n';
+
+        var tmBegin: string = '    <woz:totEnMet stuf:entiteittype="WOZ">\n';
+        var tmEind: string = '    </woz:totEnMet>\n';
+
+        var gelijk: string = '';
+        var vanaf: string = '';
+        var tm: string = '';
+
+        var gelijkba: string = '';
+        var vanafba: string = '';
+        var tmba: string = '';
+
+        var gelijkb: string = '';
+        var vanafb: string = '';
+        var tmb: string = '';
+
+        var gelijkw: string = '';
+        var vanafw: string = '';
+        var tmw: string = '';
+
+        // Voor elk veld
+        // bepaal of
+        // - alleen field.value is ingevuld, dan toevoegen bij gelijk
+        // - field.value en field.maxvalue zijn ingevuld, dan toevoegen bij vanaf en t/m
+        //
+        for (var i = 0; this.fields && i < this.fields.length; i++) {
+            if (this.fields[i] && this.fields[i].value && this.fields[i].value.length > 0) {
+                switch (i) {
+                    case 0: // landnaam
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafba += '                       <bg:lnd.landnaam>' +
+                                this.fields[i].value +
+                                '</bg:lnd.landnaam>\n';
+                            tmba += '                       <bg:lnd.landnaam>' +
+                                this.fields[i].maxvalue +
+                                '</bg:lnd.landnaam>\n';
+                        } else {
+                            gelijkba += '                       <bg:lnd.landnaam>' +
+                                this.fields[i].value +
+                                '</bg:lnd.landnaam>\n';
+                        }
+                        break;
+                    case 1: // sub.adresBuitenland1
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafba += '                       <bg:sub.adresBuitenland1>' +
+                                this.fields[i].value +
+                                '</bg:sub.adresBuitenland1>\n';
+                            tmba += '                       <bg:sub.adresBuitenland1>' +
+                                this.fields[i].maxvalue +
+                                '</bg:sub.adresBuitenland1>\n';
+                        } else {
+                            gelijkba += '                       <bg:sub.adresBuitenland1>' +
+                                this.fields[i].value +
+                                '</bg:sub.adresBuitenland1>\n';
+                        }
+                        break;
+                    case 2: // sub.adresBuitenland2
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafba += '                       <bg:sub.adresBuitenland2>' +
+                                this.fields[i].value +
+                                '</bg:sub.adresBuitenland2>\n';
+                            tmba += '                       <bg:sub.adresBuitenland2>' +
+                                this.fields[i].maxvalue +
+                                '</bg:sub.adresBuitenland2>\n';
+                        } else {
+                            gelijkba += '                       <bg:sub.adresBuitenland2>' +
+                                this.fields[i].value +
+                                '</bg:sub.adresBuitenland2>\n';
+                        }
+                        break;
+                    case 3: // sub.adresBuitenland3
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafba += '                       <bg:sub.adresBuitenland3>' +
+                                this.fields[i].value +
+                                '</bg:sub.adresBuitenland3>\n';
+                            tmba += '                       <bg:sub.adresBuitenland3>' +
+                                this.fields[i].maxvalue +
+                                '</bg:sub.adresBuitenland3>\n';
+                        } else {
+                            gelijkba += '                       <bg:sub.adresBuitenland3>' +
+                                this.fields[i].value +
+                                '</bg:sub.adresBuitenland3>\n';
+                        }
+                        break;
+                    case 4: // aanduidingEigenaarGebruiker
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafb += '            <woz:aanduidingEigenaarGebruiker>' +
+                                this.fields[i].value +
+                                '</bg:sub.adresBuitenland3>\n';
+                            tmb += '            <woz:aanduidingEigenaarGebruiker>' +
+                                this.fields[i].maxvalue +
+                                '</bg:sub.adresBuitenland3>\n';
+                        } else {
+                            gelijkb += '            <woz:aanduidingEigenaarGebruiker>' +
+                                this.fields[i].value +
+                                '</bg:sub.adresBuitenland3>\n';
+                        }
+                        break;
+                    case 5: // wozObjectnummer
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafw += '        <woz:wozObjectNummer>' +
+                                this.fields[i].value +
+                                '</woz:wozObjectNummer>\n';
+                            tmw += '        <woz:wozObjectNummer>' +
+                                this.fields[i].maxvalue +
+                                '</woz:wozObjectNummer>\n';
+                        } else {
+                            gelijkw += '        <woz:wozObjectNummer>' +
+                                this.fields[i].value +
+                                '</woz:wozObjectNummer>\n';
+                        }
+                        break;
+                    default:
+                }
+            }
+        }
+        var c1: string = '';
+        var c2: string = '';
+
+        var cb0: string = '';
+        var cb1: string = '';
+        var cb2: string = '';
+
+        var cba0: string = '';
+        var cba1: string = '';
+        var cba2: string = '';
+
+        if (gelijkba.length > 0) {
+            cba0 = adresNederland01 + gelijkba + adresNederland02;
+        }
+
+        if ((vanafba.length > 0) && (tmba.length > 0)) {
+            cba1 = adresNederland01 + vanafba + adresNederland02;
+            cba2 = adresNederland01 + tmba + adresNederland02;
+        }
+
+        // belanghebbende criteria benoemd voor gelijk
+        if (gelijkb.length > 0) {
+            cb0 = belangHebbende01 + cba0 + gelijkb + belangHebbende02;
+        } else {
+            cb0 = belangHebbende01 + cba0 + belangHebbende02;
+        }
+
+        // belanghebbende criteria benoemd voor vanaf en t/m
+        if ((vanafb.length > 0) && (tmb.length > 0)) {
+            cb1 = belangHebbende01 + cba1 + vanafb + belangHebbende02;
+            cb2 = belangHebbende01 + cba2 + tmb + belangHebbende02;
+        } else if ((vanafb.length == 0) && (tmb.length == 0) && (cba1.length > 0) && (cba2.length > 0)) {
+            cb1 = belangHebbende01 + cba1 + belangHebbende02;
+            cb2 = belangHebbende01 + cba2 + belangHebbende02;
+        }
+
+        if ((cb0.length > 0) || (gelijkw.length > 0)) {
+            c1 = gelijkBegin + gelijkw + cb0 + gelijkEind;
+        }
+        if (((cb1.length > 0) && (cb2.length > 0)) || ((vanafw.length > 0) && ((tmw.length > 0)))) {
+            c2 = vanafBegin + vanafw + cb1 + vanafEind + tmBegin + tmw + cb2 + tmEind;
+        }
+        console.log('c1: ' + c1 + '\nc2: ' + c2 + '\ncriteria: ' + criteria);
+        criteria = c1 + c2;
+        return criteria;
+    }
+
+    /*
+             <woz:wozObjectNummer>122334455667</woz:wozObjectNummer>
+             <woz:heeftBelanghebbende stuf:entiteittype="WOZSUB">
+                 <woz:gerelateerde stuf:entiteittype="SUB">
+                     <woz:naam>
+                     <woz:bsVesNummerOfId>
+                     <woz:adresNederland>
+                         <bg:postcode>9999AA</bg:postcode>
+                         <bg:aoa.huisnummer>1</bg:aoa.huisnummer>
+                         <bg:aoa.huisletter>a</bg:aoa.huisletter>
+                         <bg:aoa.huisnummertoevoeging>
+                         <bg:sub.postadresType>
+                         <bg:sub.postadresNummer>
+                     </woz:adresNederland>
+                     <woz:adresBuitenland>
+                         <bg:lnd.landcode>
+                         <bg:lnd.landnaam>
+                         <bg:sub.adresBuitenland1>
+                         <bg:sub.adresBuitenland2>
+                         <bg:sub.adresBuitenland3>
+                     <woz:adresBuitenland>
+                 </woz:gerelateerde>
+                 <woz:aanduidingEigenaarGebruiker>B</woz:aanduidingEigenaarGebruiker>
+             </woz:heeftBelanghebbende>
+          */
+
+    // ['landcode', 'sub.adresBuitenland1', 'sub.adresBuitenland2', 'sub.adresBuitenland3', 'aanduidingEigenaarGebruiker', 'wozObjectnummer']),
+    private makeCriteriaSubject06() {
+        var criteria: string;
+
+        var belangHebbende01 = '        <woz:heeftBelanghebbende stuf:entiteittype="WOZSUB">\n';
+        var belangHebbende02 = '        </woz:heeftBelanghebbende>\n';
+
+        var adresNederland01 = '               <woz:gerelateerde stuf:entiteittype="SUB">\n' +
+            '                   <woz:adresNederland>\n';
+        var adresNederland02 = '                   </woz:adresNederland>\n' +
+            '               </woz:gerelateerde>\n';
+
+        var gelijkBegin: string = '    <woz:gelijk stuf:entiteittype="WOZ">\n';
+        var gelijkEind: string = '    </woz:gelijk>\n';
+
+        var vanafBegin: string = '    <woz:vanaf stuf:entiteittype="WOZ">\n';
+        var vanafEind: string = '    </woz:vanaf>\n';
+
+        var tmBegin: string = '    <woz:totEnMet stuf:entiteittype="WOZ">\n';
+        var tmEind: string = '    </woz:totEnMet>\n';
+
+        var gelijk: string = '';
+        var vanaf: string = '';
+        var tm: string = '';
+
+        var gelijkba: string = '';
+        var vanafba: string = '';
+        var tmba: string = '';
+
+        var gelijkb: string = '';
+        var vanafb: string = '';
+        var tmb: string = '';
+
+        var gelijkw: string = '';
+        var vanafw: string = '';
+        var tmw: string = '';
+
+        // Voor elk veld
+        // bepaal of
+        // - alleen field.value is ingevuld, dan toevoegen bij gelijk
+        // - field.value en field.maxvalue zijn ingevuld, dan toevoegen bij vanaf en t/m
+        //
+        for (var i = 0; this.fields && i < this.fields.length; i++) {
+            if (this.fields[i] && this.fields[i].value && this.fields[i].value.length > 0) {
+                switch (i) {
+                    case 0: // landcode
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafba += '                       <bg:lnd.landcode>' +
+                                this.fields[i].value +
+                                '</bg:lnd.landcode>\n';
+                            tmba += '                       <bg:lnd.landcode>' +
+                                this.fields[i].maxvalue +
+                                '</bg:lnd.landcode>\n';
+                        } else {
+                            gelijkba += '                       <bg:lnd.landcode>' +
+                                this.fields[i].value +
+                                '</bg:lnd.landcode>\n';
+                        }
+                        break;
+                    case 1: // sub.adresBuitenland1
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafba += '                       <bg:sub.adresBuitenland1>' +
+                                this.fields[i].value +
+                                '</bg:sub.adresBuitenland1>\n';
+                            tmba += '                       <bg:sub.adresBuitenland1>' +
+                                this.fields[i].maxvalue +
+                                '</bg:sub.adresBuitenland1>\n';
+                        } else {
+                            gelijkba += '                       <bg:sub.adresBuitenland1>' +
+                                this.fields[i].value +
+                                '</bg:sub.adresBuitenland1>\n';
+                        }
+                        break;
+                    case 2: // sub.adresBuitenland2
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafba += '                       <bg:sub.adresBuitenland2>' +
+                                this.fields[i].value +
+                                '</bg:sub.adresBuitenland2>\n';
+                            tmba += '                       <bg:sub.adresBuitenland2>' +
+                                this.fields[i].maxvalue +
+                                '</bg:sub.adresBuitenland2>\n';
+                        } else {
+                            gelijkba += '                       <bg:sub.adresBuitenland2>' +
+                                this.fields[i].value +
+                                '</bg:sub.adresBuitenland2>\n';
+                        }
+                        break;
+                    case 3: // sub.adresBuitenland3
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafba += '                       <bg:sub.adresBuitenland3>' +
+                                this.fields[i].value +
+                                '</bg:sub.adresBuitenland3>\n';
+                            tmba += '                       <bg:sub.adresBuitenland3>' +
+                                this.fields[i].maxvalue +
+                                '</bg:sub.adresBuitenland3>\n';
+                        } else {
+                            gelijkba += '                       <bg:sub.adresBuitenland3>' +
+                                this.fields[i].value +
+                                '</bg:sub.adresBuitenland3>\n';
+                        }
+                        break;
+                    case 4: // aanduidingEigenaarGebruiker
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafb += '            <woz:aanduidingEigenaarGebruiker>' +
+                                this.fields[i].value +
+                                '</bg:sub.adresBuitenland3>\n';
+                            tmb += '            <woz:aanduidingEigenaarGebruiker>' +
+                                this.fields[i].maxvalue +
+                                '</bg:sub.adresBuitenland3>\n';
+                        } else {
+                            gelijkb += '            <woz:aanduidingEigenaarGebruiker>' +
+                                this.fields[i].value +
+                                '</bg:sub.adresBuitenland3>\n';
+                        }
+                        break;
+                    case 5: // wozObjectnummer
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanafw += '        <woz:wozObjectNummer>' +
+                                this.fields[i].value +
+                                '</woz:wozObjectNummer>\n';
+                            tmw += '        <woz:wozObjectNummer>' +
+                                this.fields[i].maxvalue +
+                                '</woz:wozObjectNummer>\n';
+                        } else {
+                            gelijkw += '        <woz:wozObjectNummer>' +
+                                this.fields[i].value +
+                                '</woz:wozObjectNummer>\n';
+                        }
+                        break;
+                    default:
+                }
+            }
+        }
+        var c1: string = '';
+        var c2: string = '';
+
+        var cb0: string = '';
+        var cb1: string = '';
+        var cb2: string = '';
+
+        var cba0: string = '';
+        var cba1: string = '';
+        var cba2: string = '';
+
+        if (gelijkba.length > 0) {
+            cba0 = adresNederland01 + gelijkba + adresNederland02;
+        }
+
+        if ((vanafba.length > 0) && (tmba.length > 0)) {
+            cba1 = adresNederland01 + vanafba + adresNederland02;
+            cba2 = adresNederland01 + tmba + adresNederland02;
+        }
+
+        // belanghebbende criteria benoemd voor gelijk
+        if (gelijkb.length > 0) {
+            cb0 = belangHebbende01 + cba0 + gelijkb + belangHebbende02;
+        } else {
+            cb0 = belangHebbende01 + cba0 + belangHebbende02;
+        }
+
+        // belanghebbende criteria benoemd voor vanaf en t/m
+        if ((vanafb.length > 0) && (tmb.length > 0)) {
+            cb1 = belangHebbende01 + cba1 + vanafb + belangHebbende02;
+            cb2 = belangHebbende01 + cba2 + tmb + belangHebbende02;
+        } else if ((vanafb.length == 0) && (tmb.length == 0) && (cba1.length > 0) && (cba2.length > 0)) {
+            cb1 = belangHebbende01 + cba1 + belangHebbende02;
+            cb2 = belangHebbende01 + cba2 + belangHebbende02;
+        }
+
+        if ((cb0.length > 0) || (gelijkw.length > 0)) {
+            c1 = gelijkBegin + gelijkw + cb0 + gelijkEind;
+        }
+        if (((cb1.length > 0) && (cb2.length > 0)) || ((vanafw.length > 0) && ((tmw.length > 0)))) {
+            c2 = vanafBegin + vanafw + cb1 + vanafEind + tmBegin + tmw + cb2 + tmEind;
+        }
+        console.log('c1: ' + c1 + '\nc2: ' + c2 + '\ncriteria: ' + criteria);
+        criteria = c1 + c2;
+        return criteria;
+    }
 
 }

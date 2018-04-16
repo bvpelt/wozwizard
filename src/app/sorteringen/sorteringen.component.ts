@@ -170,6 +170,10 @@ export class SorteringenComponent implements OnInit {
                         case 'deelperceelnummer':
                             pattern = '\\d{4}';
                             break;
+                        case 'gebruikscode':
+                            pattern = '(10|11|12|20|21|30|31|40|80)';
+                            break;
+                        case 'gor.openbareruimteNaam':
                         case 'gor.openbareRuimteNaam':
                             pattern = '.{0,80}';
                             break;
@@ -213,7 +217,8 @@ export class SorteringenComponent implements OnInit {
                             pattern = '\\d{1,5}';
                             break;
                         case 'wpl.woonplaatsNaam':
-                            pattern =  '.{0,80}';
+                        case 'wpl.woonplaatsnaam':
+                            pattern = '.{0,80}';
                             break;
                         case 'wozObjectNummer':
                             pattern = '\\d{12}';
