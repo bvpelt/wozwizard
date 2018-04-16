@@ -140,14 +140,20 @@ export class SorteringenComponent implements OnInit {
                         case 'aanduidingEigenaarGebruiker':
                             pattern = '(E|G|B|M)';
                             break;
+                        case 'apr.appartementsIndex':
+                            pattern = '\\d{4}';
+                            break;
                         case 'aoa.huisletter':
-                            pattern = '[A-Za-z]{1}';
+                            pattern = '[A-Za-z]';
                             break;
                         case 'aoa.huisnummer':
                             pattern = '\\d{5}';
                             break;
+                        case 'apr.appartementsindex':
+                            pattern = '\\d{4}';
+                            break;
                         case 'aoa.huisnummertoevoeging':
-                            pattern = '(bis|[a-zA-Z])';
+                            pattern = '([a-zA-Z0-9]{0,4})';
                             break;
                         case 'aoa.identificatie':
                             pattern = '\\d{16}';
@@ -158,41 +164,56 @@ export class SorteringenComponent implements OnInit {
                         case 'appartementsindex':
                             pattern = '\\d{5}';
                             break;
+                        case 'bsVesNummerOfId':
+                            pattern = '(\\d{9}|\\d{17})';
+                            break;
                         case 'deelperceelnummer':
-                            pattern = '\\d{5}';
+                            pattern = '\\d{4}';
                             break;
                         case 'gor.openbareRuimteNaam':
-                            pattern = '.{0,35}';
+                            pattern = '.{0,80}';
                             break;
                         case 'huisnummer':
                             pattern = '\\d{1,5}';
                             break;
                         case 'huisnummertoevoeging':
-                            pattern = '(bis|[a-zA-Z])';
+                            pattern = '([a-zA-Z0-9]{0,4})';
                             break;
                         case 'huisletter':
-                            pattern = '[a-zA-Z]{1}';
-                            break;
-                        case 'kadastraleIdentificatie':
-                            pattern = '\\d{12}';
-                            break;
-                        case 'kadastraleGemeenteCode':
-                            pattern = '[A-Za-z0-9]{5}';
-                            break;
-                        case 'kadastraleSectie':
-                            pattern = '\\d{5}';
+                            pattern = '[a-zA-Z]';
                             break;
                         case 'identificatie (ontleentaanduiding aan)':
-                            pattern = '\\d{16}';
+                            pattern = '[0-9]{4}(01|02|03)[0-9]{10}';
+                            break;
+                        case 'kadastraleIdentificatie':
+                            pattern = '\\d{15}';
+                            break;
+                        case 'kadastraleGemeenteCode':
+                            pattern = '[A-Za-z]{3}[0-9]{2}';
+                            break;
+                        case 'kadastraleSectie':
+                            pattern = '[A-Za-z]\\d';
+                            break;
+                        case 'kdp.deelperceelNummer':
+                            pattern = '\\d{4}';
+                            break;
+                        case 'locatieOmschrijving':
+                            pattern = '.{0,40}';
+                            break;
+                        case 'naam':
+                            pattern = '.{0,200}';
                             break;
                         case 'perceelnummer':
                             pattern = '\\d{5}';
                             break;
                         case 'postcode':
-                            pattern = '\\d{4}[A-Z]{2}';
+                            pattern = '[1-9]\\d{3}[A-Z]{0,2}';
+                            break;
+                        case 'postadresnummer':
+                            pattern = '\\d{1,5}';
                             break;
                         case 'wpl.woonplaatsNaam':
-                            pattern =  '.{0,35}';
+                            pattern =  '.{0,80}';
                             break;
                         case 'wozObjectNummer':
                             pattern = '\\d{12}';
