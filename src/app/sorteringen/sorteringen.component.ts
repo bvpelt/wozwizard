@@ -41,7 +41,7 @@ const wozdata = [
         'aanduidingEigenaarGebruiker', 'wozObjectNummer']),
     new Sortering(18, ['gebruikscode', 'wpl.woonplaatsnaam', 'gor.openbareruimteNaam', 'aoa.huisnummer',
         'aoa.huisletter', 'aoa.huisnummertoevoeging']),
-    new Sortering(20, ['wozObjectnummer', 'wozObjectNummer']),
+    new Sortering(20, ['swoObjectnummer', 'wozObjectNummer']),
     new Sortering(24, ['identificatie isVerbondenMet']),
     new Sortering(25, ['identificatie heeftPand']),
     new Sortering(26, ['identificatie heeftAlsAanduiding']),
@@ -164,6 +164,9 @@ export class SorteringenComponent implements OnInit {
                         case 'appartementsindex':
                             pattern = '\\d{5}';
                             break;
+                        case 'betrokkenWaterschap':
+                            pattern = '\\d{4}';
+                            break;
                         case 'bsVesNummerOfId':
                             pattern = '(\\d{9}|\\d{17})';
                             break;
@@ -172,6 +175,9 @@ export class SorteringenComponent implements OnInit {
                             break;
                         case 'gebruikscode':
                             pattern = '(10|11|12|20|21|30|31|40|80)';
+                            break;
+                        case 'gemeenteCode':
+                            pattern = '\\d{4}';
                             break;
                         case 'gor.openbareruimteNaam':
                         case 'gor.openbareRuimteNaam':
@@ -188,6 +194,11 @@ export class SorteringenComponent implements OnInit {
                             break;
                         case 'identificatie (ontleentaanduiding aan)':
                             pattern = '[0-9]{4}(01|02|03)[0-9]{10}';
+                            break;
+                        case 'identificatie heeftAlsAanduiding':
+                        case 'identificatie heeftPand':
+                        case 'identificatie isVerbondenMet':
+                            pattern = '\\d{16}';
                             break;
                         case 'kadastraleIdentificatie':
                             pattern = '\\d{15}';
@@ -220,6 +231,7 @@ export class SorteringenComponent implements OnInit {
                         case 'wpl.woonplaatsnaam':
                             pattern = '.{0,80}';
                             break;
+                        case 'swoObjectnummer':
                         case 'wozObjectNummer':
                             pattern = '\\d{12}';
                             break;

@@ -201,16 +201,22 @@ export class WOZBuilder {
                     criteria = this.makeCriteriaAanduidingWOZObject05();
                     break;
                 case 20: // ['wozObjectnummer', 'wozObjectnummer']),
+                    criteria = this.makeCriteriaSWOWOZObject01();
                     break;
                 case 24: // ['identificatie isVerbondenMet']),
+                    criteria = this.makeCriteriaIdentificatie01();
                     break;
                 case 25: // ['identificatie heeftPand']),
+                    criteria = this.makeCriteriaIdentificatie02();
                     break;
                 case 26: // ['identificatie heeftAlsAanduiding']),
+                    criteria = this.makeCriteriaIdentificatie03();
                     break;
                 case 27: // ['gemeenteCode']),
+                    criteria = this.makeCriteriaGemeente();
                     break;
                 case 28: // ['betrokkenWaterschap'])
+                    criteria = this.makeCriteriaWaterschap();
                     break;
                 default:
             }
@@ -2550,4 +2556,482 @@ export class WOZBuilder {
         return criteria;
     }
 
+    /*
+            <woz:wozObjectNummer>122334455667</woz:wozObjectNummer>
+            <woz:heeftSluimerendObject stuf:entiteittype="WOZSWO">
+                <woz:gerelateerde stuf:entiteittype="SWO">
+                    <woz:wozObjectNummer>988776655443</woz:wozObjectNummer>
+                </woz:gerelateerde>
+            </woz:heeftSluimerendObject>
+
+     */
+
+    // ['swoObjectnummer', 'swoObjectnummer']),
+    private makeCriteriaSWOWOZObject01() {
+        var criteria: string;
+
+        var swo01 = '        <woz:heeftSluimerendObject stuf:entiteittype="WOZSWO">\n' +
+            '            <woz:gerelateerde stuf:entiteittype="SWO">\n';
+        var swo02 = '            </woz:gerelateerde>\n' +
+            '        </woz:heeftSluimerendObject>\n';
+
+
+        var gelijkBegin: string = '    <woz:gelijk stuf:entiteittype="WOZ">\n';
+        var gelijkEind: string = '    </woz:gelijk>\n';
+
+        var vanafBegin: string = '    <woz:vanaf stuf:entiteittype="WOZ">\n';
+        var vanafEind: string = '    </woz:vanaf>\n';
+
+        var tmBegin: string = '    <woz:totEnMet stuf:entiteittype="WOZ">\n';
+        var tmEind: string = '    </woz:totEnMet>\n';
+
+        var gelijk: string = '';
+        var vanaf: string = '';
+        var tm: string = '';
+
+        // Voor elk veld
+        // bepaal of
+        // - alleen field.value is ingevuld, dan toevoegen bij gelijk
+        // - field.value en field.maxvalue zijn ingevuld, dan toevoegen bij vanaf en t/m
+        //
+        for (var i = 0; this.fields && i < this.fields.length; i++) {
+            if (this.fields[i] && this.fields[i].value && this.fields[i].value.length > 0) {
+                switch (i) {
+                    case 0: // swoObjectnummer
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += swo01 +
+                                '                <woz:wozObjectNummer>' +
+                                this.fields[i].value +
+                                '</woz:wozObjectNummer>\n' +
+                                swo02;
+                            tm += swo01 +
+                                '                <woz:wozObjectNummer>' +
+                                this.fields[i].maxvalue +
+                                '</woz:wozObjectNummer>\n' +
+                                swo02;
+                        } else {
+                            gelijk += swo01 +
+                                '                <woz:wozObjectNummer>' +
+                                this.fields[i].value +
+                                '</woz:wozObjectNummer>\n' +
+                                swo02;
+                        }
+                        break;
+                    case 1: // wozObjectnummer
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += '        <woz:wozObjectNummer>' +
+                                this.fields[i].value +
+                                '</woz:wozObjectNummer>\n';
+                            tm += '        <woz:wozObjectNummer>' +
+                                this.fields[i].maxvalue +
+                                '</woz:wozObjectNummer>\n';
+                        } else {
+                            gelijk += '        <woz:wozObjectNummer>' +
+                                this.fields[i].value +
+                                '</woz:wozObjectNummer>\n';
+                        }
+                        break;
+                    default:
+                }
+            }
+        }
+
+        var c1: string = '';
+        var c2: string = '';
+
+        if (gelijk.length > 0) {
+            c1 = gelijkBegin + gelijk + gelijkEind;
+        }
+        if ((vanaf.length > 0) && (tm.length > 0)) {
+            c2 = vanafBegin + vanaf + vanafEind + tmBegin + tm + tmEind;
+        }
+        console.log('c1: ' + c1 + '\nc2: ' + c2 + '\ncriteria: ' + criteria);
+        criteria = c1 + c2;
+        return criteria;
+    }
+
+    /*
+        <woz:gelijk stuf:entiteittype="WOZ">
+            <woz:isVerbondenMet stuf:entiteittype="WOZAOTOND">
+                <woz:gerelateerde stuf:entiteittype="AOT">
+                    <bg:identificatie>0123021234567890</bg:identificatie>
+                </woz:gerelateerde>
+            </woz:isVerbondenMet>
+        </woz:gelijk>
+     */
+
+    // ['identificatie isVerbondenMet']),
+    private makeCriteriaIdentificatie01() {
+        var criteria: string;
+
+        var id01 = '        <woz:isVerbondenMet stuf:entiteittype="WOZAOTOND">\n' +
+            '            <woz:gerelateerde stuf:entiteittype="AOT">\n';
+        var id02 = '            </woz:gerelateerde>\n' +
+            '        </woz:isVerbondenMet>\n';
+
+
+        var gelijkBegin: string = '    <woz:gelijk stuf:entiteittype="WOZ">\n';
+        var gelijkEind: string = '    </woz:gelijk>\n';
+
+        var vanafBegin: string = '    <woz:vanaf stuf:entiteittype="WOZ">\n';
+        var vanafEind: string = '    </woz:vanaf>\n';
+
+        var tmBegin: string = '    <woz:totEnMet stuf:entiteittype="WOZ">\n';
+        var tmEind: string = '    </woz:totEnMet>\n';
+
+        var gelijk: string = '';
+        var vanaf: string = '';
+        var tm: string = '';
+
+        for (var i = 0; this.fields && i < this.fields.length; i++) {
+            if (this.fields[i] && this.fields[i].value && this.fields[i].value.length > 0) {
+                switch (i) {
+                    case 0: // identificatie isVerbondenMet
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += id01 +
+                                '                <bg:identificatie>' +
+                                this.fields[i].value +
+                                '</bg:identificatie>\n' +
+                                id02;
+                            tm += id01 +
+                                '                <bg:identificatie>' +
+                                this.fields[i].maxvalue +
+                                '</bg:identificatie>\n' +
+                                id02;
+                        } else {
+                            gelijk += id01 +
+                                '                <bg:identificatie>' +
+                                this.fields[i].value +
+                                '</bg:identificatie>\n' +
+                                id02;
+                        }
+                        break;
+                    default:
+                }
+            }
+        }
+
+
+        var c1: string = '';
+        var c2: string = '';
+
+        if (gelijk.length > 0) {
+            c1 = gelijkBegin + gelijk + gelijkEind;
+        }
+        if ((vanaf.length > 0) && (tm.length > 0)) {
+            c2 = vanafBegin + vanaf + vanafEind + tmBegin + tm + tmEind;
+        }
+        console.log('c1: ' + c1 + '\nc2: ' + c2 + '\ncriteria: ' + criteria);
+        criteria = c1 + c2;
+        return criteria;
+
+    }
+
+
+    /*
+    <woz:gelijk stuf:entiteittype="WOZ">
+        </woz:heeftAlsAanduiding>
+        <woz:heeftPand stuf:entiteittype="WOZPND">
+            <woz:gerelateerde stuf:entiteittype="PND">
+                <bg:identificatie>0000000988776655</bg:identificatie>
+            </woz:gerelateerde>
+        </woz:heeftPand>
+
+    </woz:gelijk>
+     */
+
+    // ['identificatie heeftPand']),
+    private makeCriteriaIdentificatie02() {
+        var criteria: string;
+
+        var id01 = '        <woz:heeftPand stuf:entiteittype="WOZPND">\n' +
+            '            <woz:gerelateerde stuf:entiteittype="PND">\n';
+        var id02 = '            </woz:gerelateerde>\n' +
+            '        </woz:heeftPand>\n';
+
+
+        var gelijkBegin: string = '    <woz:gelijk stuf:entiteittype="WOZ">\n';
+        var gelijkEind: string = '    </woz:gelijk>\n';
+
+        var vanafBegin: string = '    <woz:vanaf stuf:entiteittype="WOZ">\n';
+        var vanafEind: string = '    </woz:vanaf>\n';
+
+        var tmBegin: string = '    <woz:totEnMet stuf:entiteittype="WOZ">\n';
+        var tmEind: string = '    </woz:totEnMet>\n';
+
+        var gelijk: string = '';
+        var vanaf: string = '';
+        var tm: string = '';
+
+        for (var i = 0; this.fields && i < this.fields.length; i++) {
+            if (this.fields[i] && this.fields[i].value && this.fields[i].value.length > 0) {
+                switch (i) {
+                    case 0: // 'identificatie heeftPand'
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += id01 +
+                                '                <bg:identificatie>' +
+                                this.fields[i].value +
+                                '</bg:identificatie>\n' +
+                                id02;
+                            tm += id01 +
+                                '                <bg:identificatie>' +
+                                this.fields[i].maxvalue +
+                                '</bg:identificatie>\n' +
+                                id02;
+                        } else {
+                            gelijk += id01 +
+                                '                <bg:identificatie>' +
+                                this.fields[i].value +
+                                '</bg:identificatie>\n' +
+                                id02;
+                        }
+                        break;
+                    default:
+                }
+            }
+        }
+
+
+        var c1: string = '';
+        var c2: string = '';
+
+        if (gelijk.length > 0) {
+            c1 = gelijkBegin + gelijk + gelijkEind;
+        }
+        if ((vanaf.length > 0) && (tm.length > 0)) {
+            c2 = vanafBegin + vanaf + vanafEind + tmBegin + tm + tmEind;
+        }
+        console.log('c1: ' + c1 + '\nc2: ' + c2 + '\ncriteria: ' + criteria);
+        criteria = c1 + c2;
+        return criteria;
+
+    }
+
+
+    /*
+        <woz:gelijk stuf:entiteittype="WOZ">
+            <woz:heeftAlsAanduiding stuf:entiteittype="WOZNUM">
+                <woz:gerelateerde stuf:entiteittype="NUM">
+                    <bg:identificatie>0340991234567890</bg:identificatie>
+                </woz:gerelateerde>
+            </woz:heeftAlsAanduiding>
+        </woz:gelijk>
+
+     */
+
+    // ['identificatie heeftAlsAanduiding']),
+    private makeCriteriaIdentificatie03() {
+        var criteria: string;
+
+        var id01 = '            <woz:heeftAlsAanduiding stuf:entiteittype="WOZNUM">\n' +
+            '                <woz:gerelateerde stuf:entiteittype="NUM">\n';
+        var id02 = '                </woz:gerelateerde>\n' +
+            '            </woz:heeftAlsAanduiding>\n';
+
+
+        var gelijkBegin: string = '    <woz:gelijk stuf:entiteittype="WOZ">\n';
+        var gelijkEind: string = '    </woz:gelijk>\n';
+
+        var vanafBegin: string = '    <woz:vanaf stuf:entiteittype="WOZ">\n';
+        var vanafEind: string = '    </woz:vanaf>\n';
+
+        var tmBegin: string = '    <woz:totEnMet stuf:entiteittype="WOZ">\n';
+        var tmEind: string = '    </woz:totEnMet>\n';
+
+        var gelijk: string = '';
+        var vanaf: string = '';
+        var tm: string = '';
+
+        for (var i = 0; this.fields && i < this.fields.length; i++) {
+            if (this.fields[i] && this.fields[i].value && this.fields[i].value.length > 0) {
+                switch (i) {
+                    case 0: // identificatie heeftAlsAanduiding
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += id01 +
+                                '                    <bg:identificatie>' +
+                                this.fields[i].value +
+                                '</bg:identificatie>\n' +
+                                id02;
+                            tm += id01 +
+                                '                    <bg:identificatie>' +
+                                this.fields[i].maxvalue +
+                                '</bg:identificatie>\n' +
+                                id02;
+                        } else {
+                            gelijk += id01 +
+                                '                    <bg:identificatie>' +
+                                this.fields[i].value +
+                                '</bg:identificatie>\n' +
+                                id02;
+                        }
+                        break;
+                    default:
+                }
+            }
+        }
+
+
+        var c1: string = '';
+        var c2: string = '';
+
+        if (gelijk.length > 0) {
+            c1 = gelijkBegin + gelijk + gelijkEind;
+        }
+        if ((vanaf.length > 0) && (tm.length > 0)) {
+            c2 = vanafBegin + vanaf + vanafEind + tmBegin + tm + tmEind;
+        }
+        console.log('c1: ' + c1 + '\nc2: ' + c2 + '\ncriteria: ' + criteria);
+        criteria = c1 + c2;
+        return criteria;
+    }
+
+/*
+    <woz:gelijk stuf:entiteittype="WOZ">
+        <woz:verantwoordelijkeGemeente>
+            <bg:gemeenteCode>0340</bg:gemeenteCode>
+        </woz:verantwoordelijkeGemeente>
+    </woz:gelijk>
+
+ */
+// [ 'gemeenteCode' ]
+    private makeCriteriaGemeente() {
+        var criteria: string;
+
+        var id01 = '        <woz:verantwoordelijkeGemeente>\n';
+        var id02 = '        </woz:verantwoordelijkeGemeente>\n';
+
+
+        var gelijkBegin: string = '    <woz:gelijk stuf:entiteittype="WOZ">\n';
+        var gelijkEind: string = '    </woz:gelijk>\n';
+
+        var vanafBegin: string = '    <woz:vanaf stuf:entiteittype="WOZ">\n';
+        var vanafEind: string = '    </woz:vanaf>\n';
+
+        var tmBegin: string = '    <woz:totEnMet stuf:entiteittype="WOZ">\n';
+        var tmEind: string = '    </woz:totEnMet>\n';
+
+        var gelijk: string = '';
+        var vanaf: string = '';
+        var tm: string = '';
+
+        for (var i = 0; this.fields && i < this.fields.length; i++) {
+            if (this.fields[i] && this.fields[i].value && this.fields[i].value.length > 0) {
+                switch (i) {
+                    case 0: // identificatie heeftAlsAanduiding
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += id01 +
+                                '            <bg:gemeenteCode>' +
+                                this.fields[i].value +
+                                '</bg:gemeenteCode>\n' +
+                                id02;
+                            tm += id01 +
+                                '            <bg:gemeenteCode>' +
+                                this.fields[i].maxvalue +
+                                '</bg:gemeenteCode>\n' +
+                                id02;
+                        } else {
+                            gelijk += id01 +
+                                '            <bg:gemeenteCode>' +
+                                this.fields[i].value +
+                                '</bg:gemeenteCode>\n' +
+                                id02;
+                        }
+                        break;
+                    default:
+                }
+            }
+        }
+
+
+        var c1: string = '';
+        var c2: string = '';
+
+        if (gelijk.length > 0) {
+            c1 = gelijkBegin + gelijk + gelijkEind;
+        }
+        if ((vanaf.length > 0) && (tm.length > 0)) {
+            c2 = vanafBegin + vanaf + vanafEind + tmBegin + tm + tmEind;
+        }
+        console.log('c1: ' + c1 + '\nc2: ' + c2 + '\ncriteria: ' + criteria);
+        criteria = c1 + c2;
+        return criteria;
+    }
+
+
+
+    /*
+        <woz:gelijk stuf:entiteittype="WOZ">
+            <woz:ligtIn stuf:entiteittype="WOZWSP">
+                <woz:gerelateerde stuf:entiteittype="WSP">
+                    <woz:betrokkenWaterschap>2343</woz:betrokkenWaterschap>
+                </woz:gerelateerde>
+            </woz:ligtIn>
+        </woz:gelijk>
+
+     */
+    // [ 'betrokkenWaterschap' ]
+    private makeCriteriaWaterschap() {
+        var criteria: string;
+
+        var id01 = '            <woz:ligtIn stuf:entiteittype="WOZWSP">\n' +
+            '                <woz:gerelateerde stuf:entiteittype="WSP">\n';
+        var id02 = '                </woz:gerelateerde>\n' +
+            '            </woz:ligtIn>\n';
+
+
+        var gelijkBegin: string = '    <woz:gelijk stuf:entiteittype="WOZ">\n';
+        var gelijkEind: string = '    </woz:gelijk>\n';
+
+        var vanafBegin: string = '    <woz:vanaf stuf:entiteittype="WOZ">\n';
+        var vanafEind: string = '    </woz:vanaf>\n';
+
+        var tmBegin: string = '    <woz:totEnMet stuf:entiteittype="WOZ">\n';
+        var tmEind: string = '    </woz:totEnMet>\n';
+
+        var gelijk: string = '';
+        var vanaf: string = '';
+        var tm: string = '';
+
+        for (var i = 0; this.fields && i < this.fields.length; i++) {
+            if (this.fields[i] && this.fields[i].value && this.fields[i].value.length > 0) {
+                switch (i) {
+                    case 0: // identificatie heeftAlsAanduiding
+                        if (this.fields[i].maxvalue && this.fields[i].maxvalue.length > 0) { // vanaf en t/m
+                            vanaf += id01 +
+                                '                    <woz:betrokkenWaterschap>' +
+                                this.fields[i].value +
+                                '</woz:betrokkenWaterschap>\n' +
+                                id02;
+                            tm += id01 +
+                                '                    <woz:betrokkenWaterschap>' +
+                                this.fields[i].maxvalue +
+                                '</woz:betrokkenWaterschap>\n' +
+                                id02;
+                        } else {
+                            gelijk += id01 +
+                                '                    <woz:betrokkenWaterschap>' +
+                                this.fields[i].value +
+                                '</woz:betrokkenWaterschap>\n' +
+                                id02;
+                        }
+                        break;
+                    default:
+                }
+            }
+        }
+
+
+        var c1: string = '';
+        var c2: string = '';
+
+        if (gelijk.length > 0) {
+            c1 = gelijkBegin + gelijk + gelijkEind;
+        }
+        if ((vanaf.length > 0) && (tm.length > 0)) {
+            c2 = vanafBegin + vanaf + vanafEind + tmBegin + tm + tmEind;
+        }
+        console.log('c1: ' + c1 + '\nc2: ' + c2 + '\ncriteria: ' + criteria);
+        criteria = c1 + c2;
+        return criteria;
+    }
 }
